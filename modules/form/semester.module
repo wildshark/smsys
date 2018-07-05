@@ -1,0 +1,38 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 24-May-18
+ * Time: 7:58 AM
+ */
+
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
+if ($_GET['submit'] == "add"){
+    $semester = $_GET['semester'];
+    $s_date = $_GET['start-date'];
+    $e_date = $_GET['end-date'];
+    $yearID = $_GET['academic-year'];
+
+    $add = "INSERT INTO `semester_list` (`semester`, `start_date`, `end_date`, `yearID`, `statusID`) VALUES ('$semester', '$s_date', '$e_date', '$yearID', '1')";
+    $result = $conn->query($add);
+
+}elseif ($_GET['submit'] == "delete"){
+    $id=$_GET['detail'];
+    $delete = "DELETE FROM `semester_list` WHERE (`semesterID`='$id')";
+    $result = $conn->query($delete);
+
+}
+
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+    }else{
+        header("location: page.php?page=".$url_page."&box=4&msg=9");
+    }
+}
+
+

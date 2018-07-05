@@ -1,0 +1,77 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 23-May-18
+ * Time: 5:13 PM
+ */
+
+If ($_GET['submit'] == "add"){
+
+    $date = $_GET['date'];
+    $year = $_GET['year'];
+    $semester = $_GET['calendar'];
+    $level = $_GET['level'];
+    $course = $_GET['course'];
+    $school = $_GET['school'];
+    $lecture = $_GET['lecture'];
+
+    $add = "INSERT INTO `result_main` (`result_date`, `schoolID`, `staffID`, `levelID`, `yearID`, `semesterID`, `courseID`) VALUES ('$date', '$school', '$lecture', '$level', '$year', c$semesteralendar, '$course')";
+    $result = $conn->query($add);
+
+}elseif($_GET['submit'] =="add-marks"){
+
+    $id = $_GET['result'];
+    $year = $_GET['year'];
+    $semester = $calendarmester'];
+    $course = $_GET['course'];
+    $level = $_GET['level'];
+
+    $student = $_GET['student'];
+    $case_study = $_GET['case-study'];
+    $group_work = $_GET['group-work'];
+    $presentation = $_GET['presentation'];
+    $examination = $_GET['examination'];
+
+    $add="INSERT INTO `result_details` (`result_semID`, `yearID`, `semesterID`, `courseID`,`levelID`, `studentID`, `case_study`, `group_work`, `presentation`, `exam`) VALUES ('$id', '$year', '$semester', '$course','$level', '$student', '$case_study', '$group_work', '$presentation', '$examination')";
+    $result = $conn->query($add);
+
+}elseif ($_GET['submit'] == 'update-marks'){
+
+    $id = $_GET['detail'];
+    $case_study = $_GET['case-study'];
+    $group_work = $_GET['group-work'];
+    $presentation = $_GET['presentation'];
+    $examination = $_GET['examination'];
+
+    $update = "UPDATE `result_details` SET `case_study`='$case_study', `group_work`='$group_work', `presentation`='$presentation', `exam`='$examination' WHERE (`resultID`='$id') LIMIT 1";
+
+    $result = $conn->query($update);
+
+}elseif ($_GET['submit'] == 'delete-marks'){
+
+    $id = $_GET['detail'];
+    $delete = "DELETE FROM `result_details` WHERE (`resultID`='$id')";
+    $result = $conn->query($delete);
+
+}elseif ($_GET['submit'] == 'delete-marking-sheet'){
+
+    $id = $_GET['detail'];
+    $delete = "DELETE FROM `result_main` WHERE (`result_semID`='$id')";
+    $result = $conn->query($delete);
+
+    if ($result == TRUE){
+
+        $delete = "DELETE FROM `result_details` WHERE (`result_semID`='$id')";
+        $result = $conn->query($delete);
+    }else{
+        echo"error";
+    }
+
+}
+
+
+if ($result === TRUE){
+
+    header("location: ".  $_SERVER['HTTP_REFERER']);
+}

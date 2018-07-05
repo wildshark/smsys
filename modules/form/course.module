@@ -1,0 +1,68 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 08-Mar-18
+ * Time: 12:33 AM
+ */
+
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
+if ($_GET['submit'] == 'add'){
+
+    $programme = $_GET['programme'];
+    $course_name = $_GET['course-name'];
+    $course_code = $_GET['course-code'];
+    $credit_hours = $_GET['credit-hours'];
+    $level = $_GET['level'];
+    $semester = $_GET['semester'];
+    $status = $_GET['status'];
+
+    $sql="INSERT INTO `course` (`progID`, `course`, `course_code`, `course_level`, `credit`, `semesterID`, `statusID`) VALUES ('$programme', '$course_name', '$course_code', '$level', '$credit_hours', c$semesteralendar, '$status')";
+    $result = $conn->query($sql);
+
+
+}elseif ($_GET['submit'] == 'update'){
+
+    $id = $_SESSION['subject-id'];
+    $programme = $_GET['programme'];
+    $course_name = $_GET['course-name'];
+    $course_code = $_GET['course-code'];
+    $level = $_GET['level'];
+    $credit_hours = $_GET['credit-hours'];
+    $semester = $_GET['semester'];
+    $status = $_GET['status'];
+
+    $sql="UPDATE `course` SET `progID`='$programme', `course`='$course_name', `course_code`='$course_code', `credit`='$credit_hours', `course_level`='$level', `semesterID`=c$semesteralendar, `statusID`='$status' WHERE (`courseID`='$id') LIMIT 1";
+   $result = $conn->query($sql);
+
+}elseif ($_GET['submit'] == 'delete'){
+
+    $id = $_GET['id'];
+
+    $sql="DELETE FROM `course` WHERE (`courseID`='$id')";
+    $result = $conn->query($sql);
+
+}elseif ($_GET['submit']=="add-courses-taught"){
+
+    $profileID = $_SESSION['profile-ID'];
+    $day = $_GET['day'];
+    $time = $_GET['time'];
+    $courseID = $_GET['course'];
+
+    $update ="UPDATE `course` SET `profileID`='$profileID', `dayID`='$day', `time`='$time' WHERE (`courseID`='$courseID') LIMIT 1";
+    $result = $conn->query($update);
+
+}
+
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+    }else{
+        header("location: page.php?page=".$url_page."&box=4&msg=9");
+    }
+}
+

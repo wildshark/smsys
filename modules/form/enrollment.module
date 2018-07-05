@@ -1,0 +1,51 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 16-May-18
+ * Time: 10:16 PM
+ */
+
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
+
+if ($_GET['submit'] == 'add') {
+
+    $date = $_GET['date'];
+    $student = $_GET['student'];
+    $semester = $_GET['semester'];
+    $academic = $_GET['academic-year'];
+    $course = $_GET['course'];
+
+    $add = "INSERT INTO `enrollment` (`enroll_date`, `studentID`, `semesterID`, `yearID`, `progID`) VALUES ('$date', '$student','$semester', '$academic', '$course')";
+    $result = $conn->query($add);
+
+}elseif ($_GET['submit'] == 'update'){
+    $id = $_SESSION['enroll-id'];
+    $date = $_GET['date'];
+    $student = $_GET['student'];
+    $semester = $_GET['semester'];
+    $academic = $_GET['academic-year'];
+    $course = $_GET['course'];
+
+    $add = "UPDATE `enrollment` SET `enroll_date`='$date', `studentID`='$student', `semesterID`='$semester', `yearID`='$academic', `progID`='$course' WHERE (`enrollID`='$id') LIMIT 1";
+    $result = $conn->query($add);
+
+}elseif ($_GET['submit'] == 'delete'){
+
+    $id = $_GET['detail'];
+    $delete = "DELETE FROM `enrollment` WHERE (`enrollID`='$id')";
+    $result = $conn->query($delete);
+
+}
+
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+    }else{
+        header("location: page.php?page=".$url_page."&box=4&msg=9");
+    }
+}

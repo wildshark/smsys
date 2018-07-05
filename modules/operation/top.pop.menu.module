@@ -1,0 +1,23 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 08-May-18
+ * Time: 7:12 PM
+ */
+
+function total_messages($conn){
+
+    $sql ="select * from get_total_message";
+    $result = $conn->query($conn);
+    $ans = $result->fetch_assoc();
+
+}
+
+function total_task($conn){
+
+    $sql ="select * from get_total_message";
+    $result = $conn->query($conn);
+    $ans = $result->fetch_assoc();
+
+}

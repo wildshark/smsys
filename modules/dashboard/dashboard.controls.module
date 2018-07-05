@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 24-May-18
+ * Time: 12:56 PM
+ */
+
+function total_department_staff($conn){
+
+
+    $sql="select * from get_total_department_staff";
+    $result=$conn->query($sql);
+    $r=$result->fetch_assoc();
+
+    return $r['total'];
+
+}

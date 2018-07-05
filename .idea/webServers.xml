@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e10734e3-6c25-4d56-b60a-a5a956a3cdb7" name="smsys_location" url="http://192.168.2.250">
+        <fileTransfer host="192.168.2.250" port="21" rootFolder="/smsys">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

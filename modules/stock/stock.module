@@ -1,0 +1,50 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 10-May-18
+ * Time: 4:32 PM
+ */
+
+if($_GET['submit'] == "create-stock"){
+    $stock = $_GET['stock-name'];
+
+    $add = "INSERT INTO `stock_main` (`stock`) VALUES ('$stock')";
+    $result = $conn->query($add);
+
+}elseif($_GET['submit'] == "add-order"){
+
+    $date = $_GET['date'];
+    $order = $_GET['order'];
+    $ref = $_GET['ref'];
+    $qty = $_GET['qty'];
+
+    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `order_qty`) VALUES ('$now', '$date', '$order', '$ref','$qty')";
+    $result = $conn->query($add);
+
+}elseif ($_GET['submit'] == "add-purchase"){
+
+    $date = $_GET['date'];
+    $purchase = $_GET['purchase'];
+    $ref = $_GET['ref'];
+    $qty = $_GET['qty'];
+
+    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `purchase_qty`) VALUES ('$now', '$date', '$purchase', '$ref','$qty')";
+    $result = $conn->query($add);
+
+}elseif ($_GET['submit'] == "add-issue"){
+
+    $date = $_GET['date'];
+    $issue = $_GET['issue'];
+    $ref = $_GET['ref'];
+    $qty = $_GET['qty'];
+
+    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `issue_qty`) VALUES ('$now', '$date', '$issue', '$ref','$qty')";
+    $result = $conn->query($add);
+}
+
+if ($result === TRUE){
+    header("location: ".$_SERVER['HTTP_REFERER']);
+}else{
+    header("location: page.php?page=error");
+}

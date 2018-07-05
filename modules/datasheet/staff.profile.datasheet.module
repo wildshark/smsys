@@ -1,0 +1,103 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 20-May-18
+ * Time: 11:15 AM
+ */
+
+if (!empty($r['staff_profile_ID'])){
+    $profileID = $r['staff_profile_ID'];
+}
+function staff_qualification($conn,$profileID){
+    $sql="SELECT * FROM `get_staff_qualification` WHERE profileID = '$profileID'";
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()) {
+
+        echo "
+        <tr>
+           <td class=''>{$r['year']}</td>
+
+           <td>
+                <a href='#'>{$r['school']}</a>
+           </td>
+
+           <td class='hidden-480'>
+                {$r['qualification']}
+           </td>
+           <td class='hidden-480'>
+                <div class='hidden-sm hidden-xs action-buttons'>
+                    <a class='red' href='model.php?ui=enrollment&submit=delete&detail={$r['profileID']}'>
+                        <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                    </a>
+                </div>
+           </td>
+        </tr>
+    ";
+    }
+}
+
+function staff_promotion($conn,$profileID){
+    //get_staff_promotion
+    $sql="SELECT * FROM `get_staff_promotion` WHERE profileID = '$profileID'";
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()) {
+
+        echo "
+        <tr>
+           <td class=''>{$r['promo_date']}</td>
+
+           <td>
+               {$r['position']}
+           </td>
+
+           <td class='hidden-480'>
+                {$r['approve']}
+           </td>
+           <td class='hidden-480'>
+                <div class='hidden-sm hidden-xs action-buttons'>
+                    <a class='red' href='model.php?ui=staff-promotion-rank&submit=delete&detail={$r['promotionID']}'>
+                        <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                    </a>
+                </div>
+           </td>
+        </tr>
+    ";
+    }
+}
+
+function staff_courses_taught($conn,$profileID){
+
+    $sql="SELECT * FROM `get_course_table` WHERE profileID = '$profileID'";
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()) {
+
+        echo "
+        <tr>
+           <td class=''>{$r['course_code']}</td>
+
+           <td>
+               {$r['course']}
+           </td>
+
+           <td class='hidden-480'>
+                {$r['semesterID']}
+           </td>
+           <td class='hidden-480'>
+                {$r['dayID']}
+           </td>
+           <td class='hidden-480'>
+                {$r['time']}
+           </td>
+           <td class='hidden-480'>
+                <div class='hidden-sm hidden-xs action-buttons'>
+                    <a class='red' href='model.php?ui=course&submit=delete&detail={$r['courseID']}'>
+                        <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                    </a>
+                </div>
+           </td>
+        </tr>
+    ";
+    }
+}
+

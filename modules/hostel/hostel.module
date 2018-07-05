@@ -1,0 +1,57 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 11-May-18
+ * Time: 12:29 PM
+ */
+
+if ($_GET['submit'] == "add-block"){
+
+    $block = $_GET['name'];
+    $add = "INSERT INTO `hostel_block` (`block_name`) VALUES ('$block')";
+    $result = $conn->query($add);
+
+
+}elseif ($_GET['submit'] == "add-room"){
+
+    $block = $_GET['block'];
+    $room = $_GET['room'];
+    $bed = $_GET['number-bed'];
+
+    $add ="INSERT INTO `hostel_room` (`blockID`, `room`, `bed`) VALUES ('$block', '$room', '$bed')";
+    $result = $conn->query($add);
+}elseif ($_GET['submit'] == "add-booking"){
+
+    $date = $_GET['date'];
+    $student = $_GET['student'];
+    $room = $_GET['room'];
+    $ref = $_GET['ref-no'];
+    $book_in = $_GET['book-in'];
+    //$book_out = $_GET['book-out'];
+
+    $add="INSERT INTO `hostel_detail` (`tran_date`,`date`, `studentID`, `roomID`, `book_in`,`ref_no`) VALUES ('$now','$date', '$student', '$room', '$book_in','$ref')";
+    $result = $conn->query($add);
+
+
+}elseif ($_GET['submit'] == "update-booking"){
+
+    $rowID = $_SESSION['row-id'];
+    $room = $_GET['room'];
+    $ref = $_GET['ref-no'];
+    $book_in = $_GET['book-in'];
+    $book_out = $_GET['book-out'];
+
+    if (!empty($_GET['book-out'])){
+        $update = "UPDATE `hostel_detail` SET  `roomID`='$room', `book_in`='$book_in', `book_out`='$book_out', `status`='2' WHERE (`userID`='$rowID') LIMIT 1";
+        $result = $conn->query($update);
+    }else{
+        $update = "UPDATE `hostel_detail` SET  `roomID`='$room', `book_in`='$book_in' WHERE (`userID`='$rowID') LIMIT 1";
+      $result = $conn->query($update);
+    }
+}
+
+if ($result === TRUE){
+
+    header("location: ".  $_SERVER['HTTP_REFERER']);
+}

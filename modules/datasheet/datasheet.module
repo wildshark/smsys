@@ -1,0 +1,1141 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 09-May-18
+ * Time: 7:55 PM
+ */
+
+function student_data($conn){
+
+    $sql='SELECT * FROM get_student_profile_detail';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        $id = ($r['studentID'] * date('Y')) + 1204;
+        $id = "X0X".$id;
+        echo "
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['first_name']} {$r['surname']}
+                    </td>
+                    <td>{$r['admissionNo']}</td>
+                    <td class='hidden-480'>{$r['yearID']}</td>
+                    <td>{$r['programme']}</td>
+
+                    <td class='hidden-480'>
+                        {$r['prefix']}
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='page.php?page=view-student-profile&id={$id}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='page.php?page=edit-student-profile&id={$id}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='#'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>                   
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+function get_schools_department_data($conn){
+
+    $sql='SELECT * FROM `get_department`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+
+        $id = $r['departID'];
+
+        if($r['statusID'] == 1){
+            $css = "ace-icon fa fa-eye bigger-130";
+            $url = "model.php?ui=department&submit=status&detail={$r['departID']}&status=2";
+        }else{
+            $css ="ace-icon fa fa-eye-slash bigger-130";
+            $url ="model.php?ui=department&submit=status&detail={$r['departID']}&status=1";
+        }
+
+        /**
+         * Total staff in a department
+         */
+        $total_staff="select * from get_total_department_staff WHERE departmentID ='$id'";
+        $total_staff_result = $conn->query($total_staff);
+        $t=$total_staff_result->fetch_assoc();
+
+        if (!isset($t['total'])){
+            $total_staff ="0";
+        }else{
+            $total_staff = $t['total'];
+        }
+
+
+        echo "
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['department']}
+                    </td>
+                    <td>{$r['school']}</td>
+                    <td class='hidden-480'>{$r['prefix']}</td>
+                    <td class='hidden-480'>
+                        {$total_staff}
+                    </td>
+                    <td></td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='{$url}'>
+                                <i class='{$css}'></i>
+                            </a>
+
+                            <a class='green' data-toggle='modal' href='#department-view-{$r['departID']}'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=department&submit=delete&detail={$r['departID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>                   
+                    </td>
+                </tr>
+            
+            
+                <div class='modal fade' id='department-view-{$r['departID']}' tabindex='-1' role='dialog' aria-labelledby='create-school' aria-hidden='true'>
+                    <div class='modal-dialog' role='document'>
+                        <div class='modal-content'>
+                            <form method='get' action='model.php'>
+                                <div class='modal-header'>
+                                    <h5 class='modal-title' id='exampleModalLabel'>New message</h5>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                                <div class='modal-body'>
+                                    <input type='hidden' name='ui' value='department'>
+                                    <input type='hidden' name='department-code' value='{$r['departID']}'>
+                
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'>School/Faculty:</label>
+                                        <input type='text' readonly name='department' value='{$r['school']}' class='form-control' id='recipient-name'>
+                                    </div>
+                
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'>Department:</label>
+                                        <input type='text' name='department' value='{$r['department']}' class='form-control' id='recipient-name'>
+                                    </div>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                                    <button type='submit' name='submit' value='update' class='btn btn-primary'>Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        ";
+    }
+}
+
+function get_administration_xxx_data($conn){
+
+    $sql='SELECT * FROM `get_department` WHERE catID = 2';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+
+        $id = $r['departID'];
+
+        if($r['statusID'] == 1){
+            $css = "ace-icon fa fa-eye bigger-130";
+            $url = "model.php?ui=department&submit=status&detail={$r['departID']}&status=2";
+        }else{
+            $css ="ace-icon fa fa-eye-slash bigger-130";
+            $url ="model.php?ui=department&submit=status&detail={$r['departID']}&status=1";
+        }
+
+        /**
+         * Total staff in a department
+         */
+        $total_staff="select * from get_total_department_staff WHERE departmentID ='$id'";
+        $total_staff_result = $conn->query($total_staff);
+        $t=$total_staff_result->fetch_assoc();
+
+        if (!isset($t['total'])){
+            $total_staff ="0";
+        }else{
+            $total_staff = $t['total'];
+        }
+
+
+        echo "
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['department']}
+                    </td>
+                    <td>{$r['school']}</td>
+                    <td class='hidden-480'>{$r['prefix']}</td>
+                    <td class='hidden-480'>
+                        {$total_staff}
+                    </td>
+                    <td></td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='{$url}'>
+                                <i class='{$css}'></i>
+                            </a>
+
+                            <a class='green' data-toggle='modal' href='#department-view-{$r['departID']}'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=department&submit=delete&detail={$r['departID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>                   
+                    </td>
+                </tr>
+            
+            
+                <div class='modal fade' id='department-view-{$r['departID']}' tabindex='-1' role='dialog' aria-labelledby='create-school' aria-hidden='true'>
+                    <div class='modal-dialog' role='document'>
+                        <div class='modal-content'>
+                            <form method='get' action='model.php'>
+                                <div class='modal-header'>
+                                    <h5 class='modal-title' id='exampleModalLabel'>New message</h5>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                                <div class='modal-body'>
+                                    <input type='hidden' name='ui' value='department'>
+                                    <input type='hidden' name='department-code' value='{$r['departID']}'>
+                
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'>School/Faculty:</label>
+                                        <input type='text' readonly name='department' value='{$r['school']}' class='form-control' id='recipient-name'>
+                                    </div>
+                
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'>Department:</label>
+                                        <input type='text' name='department' value='{$r['department']}' class='form-control' id='recipient-name'>
+                                    </div>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                                    <button type='submit' name='submit' value='update' class='btn btn-primary'>Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        ";
+    }
+}
+
+function student_enrollment_data($conn){
+
+    $sql="SELECT * FROM `get_student_enrollment`";
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+
+        echo "
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['enroll_date']}
+                    </td>
+                    <td>{$r['yearID']}</td>
+                    <td>{$r['semester']}</td>
+                    <td>{$r['admissionNo']} - {$r['first_name']} {$r['surname']}</td>
+
+                    <td class='hidden-480'>
+                         {$r['prefix']} / {$r['programme']} 
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                             <a class='green' href='page.php?page=edit-enrollment&detail={$r['enrollID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+                        
+                            <a class='red' href='model.php?ui=enrollment&submit=delete&detail={$r['enrollID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+function programme_data($conn){
+    $sql='SELECT * FROM `get_programme`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+
+        If ($r['statusID'] == 1){
+            $status = "Active";
+        }else{
+            $status = "Passive";
+        }
+        echo "
+                <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+                    <td>{$r['progID']}</td>
+                    <td>{$r['programme']}</td>
+                    <td class='hidden-480'>{$r['school']}</td>
+                    <td class='hidden-480'>{$r['prefix']}</td>
+                    <td class='hidden-480'>
+                        <span class='label label-sm label-warning'>{$status}</span>
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                          
+                            <a class='green' href='page.php?page=edit-programme&detail={$r['progID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=programme&submit=delete&detail={$r['progID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+function staff_profile_data($conn){
+    $sql='SELECT * FROM `get_staff_profile`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        $id = ($r['staff_profile_ID'] * date('Y')) + 1204;
+        $id = "X0X".$id;
+        echo "
+                <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+                    <td>
+                        {$r['f_name']} {$r['l_name']}</a>
+                    </td>
+                    <td>{$r['nationality']}</td>
+                    <td class='hidden-480'>{$r['position']}</td>
+                    <td>{$r['department']}</td>
+
+                    <td class='hidden-480'>
+                        {$r['staff_type']}
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='page.php?page=view-staff-profile&ui={$r['token']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='page.php?page=view-staff-profile&ui={$r['token']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=view-staff-profile&ui={$r['token']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+function staff_profile_terminated_data($conn){
+
+    $sql='SELECT * FROM `get_staff_terminated`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        $id = ($r['staff_profile_ID'] * date('Y')) + 1204;
+         $id = "X0X".$id;
+        echo "
+                <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+                    <td>
+                        {$r['f_name']} {$r['l_name']}</a>
+                    </td>
+                    <td>{$r['nationality']}</td>
+                    <td class='hidden-480'>{$r['position']}</td>
+                    <td>{$r['department']}</td>
+
+                    <td class='hidden-480'>
+                        {$r['staff_type']}
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='page.php?page=view-staff-profile&ui={$r['token']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='page.php?page=view-staff-profile&ui={$r['token']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=view-staff-profile&ui={$r['token']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+function academic_calender($conn){
+    //get_calendar
+
+    $sql='SELECT * FROM `get_calendar`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        $id = ($r['calendarID'] * date('Y')) + 1204;
+        $id = "X0X".$id;
+
+        if ($r['statusID'] == 1){
+            $status = "<span class='label label-sm label-success'>Active</span>";
+        }else{
+            $status = "<span class='label label-sm label-danger'>Expired</span>";
+        }
+        echo "
+                <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+                    <td>{$r['semester_year']}</td>
+                    <td>{$r['semester']}</td>
+                    <td class='hidden-480'>{$r['activities']}</td>
+                    <td>{$r['start_date']}</td>
+                    <td>{$r['end_date']} {$status}</td>
+                  
+                    <td>
+                        
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='#'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='page.php?page=edit-academic-calendar&detail={$r['calendarID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=academic-calendar&submit=delete&detail={$r['calendarID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+
+}
+
+function stock_balance($conn){
+    //get_calendar
+
+    $sql='SELECT * FROM `get_stock_balance`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        echo "
+                <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+                    <td>{$r['stock']}</td>
+                    <td>{$r['purchase']}</td>
+                    <td>{$r['issue']}</td>
+                    <td>{$r['bal_qty']}</td>
+                    <td class='hidden-480'>
+                        <span class='label label-sm label-warning'>Expiring</span>
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='store.php?page=view-stock-list&detail={$r['stockID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='#'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='#'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+
+}
+
+function get_stock_details($conn){
+    //get_calendar
+    $id = $_GET['detail'];
+
+    $sql="SELECT * FROM `get_stock_details` WHERE  stockID ='$id'";
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        echo "
+                <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+                    <td>{$r['stock']}</td>
+                    <td>{$r['ref_no']}</td>
+                    <td>{$r['order_qty']}</td>
+                    <td>{$r['purchase_qty']}</td>
+                    <td>{$r['issue_qty']}</td>
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='store.php?ui=view-stock-list&&detail={$r['stockID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='#'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='#'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+
+}
+
+function get_hostel_book_details($conn){
+    //get_calendar
+
+    $sql="SELECT * FROM `get_hostel_booking`";
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+            if (empty($r['book_out'])){
+
+                $warning_css= "label-warning";
+                $book_out = "Not Out Yet";
+            }else{
+                $warning_css = "label-inverse arrowed-in";
+                $book_out = "Signed Out" ;
+            }
+        echo "
+               <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+                    
+                    <td>
+                    {$r['date']}</td>
+                    <td>
+                        <a href='hostel.php?page=edit-booking&detail={$r['userID']}&box=1&msg=1'>{$r['admissionNo']}</a> 
+                    </td>
+                    <td class='hidden-480'>{$r['first_name']} {$r['surname']}</td>
+                    <td>{$r['block_name']} {$r['room']}</td>
+                    <td>{$r['book_in']}</td>
+                    <td class='hidden-480'>
+                        <span class='label label-sm {$warning_css}'>{$book_out}</span>
+                    </td>
+                    
+                </tr>
+        ";
+    }
+
+}
+
+function get_lecture_note($conn){
+
+    $sql="SELECT * FROM get_lecture_note";
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        echo "
+               <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+                    
+                    <td>
+                    {$r['lect_date']}</td>
+                    <td>
+                        <a href='note.php?page=edit-note&detail={$r['lectureID']}&box=1&msg=1''>{$r['title']}</a> 
+                    </td>
+                    <td class='hidden-480'>{$r['department']}</td>
+                    <td>{$r['levelID']}</td>
+                    <td>{$r['calendar']}</td>
+                    <td class='hidden-480'>
+                        <a href='' class='btn btn-minier btn-danger ace-icon fa fa-bolt bigger-110'> Downalod</a>
+                    </td>
+                    
+                </tr>
+        ";
+    }
+}
+
+function semester_data($conn){
+    $sql='SELECT * FROM `get_semester_list`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        echo "
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['semester']}
+                    </td>
+                    <td>{$r['start_date']}</td>
+                    <td class='hidden-480'>{$r['end_date']}</td>
+                    <td>{$r['yearID']}</td>
+
+                    <td class='hidden-480'>
+                        <span class='label label-sm label-warning'>Expiring</span>
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='#'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='#'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=calendar&submit=delete&detail={$r['semesterID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+function course_data($conn){
+    $sql='SELECT * FROM `get_course`';
+    $result = $conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        echo"
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['course_code']}</a>
+                    </td>
+                    <td>{$r['course']}</td>
+                    <td class='hidden-480'>{$r['course_level']}</td>
+                    <td>{$r['credit']}</td>
+
+                    <td class='hidden-480'>
+                        {$r['semester']}
+                    </td>
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='green' href='page.php?page=edit-course-profile&id={$r['courseID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=course&submit=delete&id={$r['courseID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+function subject($conn){
+
+    $sql = "select * from get_subject";
+    $result = $conn->query($sql);
+    while ($r = $result->fetch_assoc()) {
+        echo"
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        <a href='page.php?page=edit-course-profile&&box=1&msg=1&id={$r['subjectID']}'>{$r['course']}'</a>
+                    </td>
+                    <td>{$r['course_code']}</td>
+                    <td class='hidden-480'>{$r['programme']}</td>
+                    <td>{$r['course_level']}</td>
+                    <td>{$r['credit']}</td>
+                    <td>{$r['semester']}</td>
+                    <td class='hidden-480'>
+                        <span class='label label-sm label-warning'>Expiring</span>
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='#'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='#'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='#'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+
+                        <div class='hidden-md hidden-lg'>
+                            <div class='inline pos-rel'>
+                                <button class='btn btn-minier btn-yellow dropdown-toggle' data-toggle='dropdown' data-position='auto'>
+                                    <i class='ace-icon fa fa-caret-down icon-only bigger-120'></i>
+                                </button>
+
+                                <ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
+                                    <li>
+                                        <a href='page.php?page=&id={$r['subjectID']}' class='tooltip-info' data-rel='tooltip' title='View'>
+											<span class='blue'>
+												<i class='ace-icon fa fa-search-plus bigger-120'></i>
+											</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href='page.php?page=student-profile&id={$r['subjectID']}&box=1&msg=1' class='tooltip-success' data-rel='tooltip' title='Edit'>
+											<span class='green'>
+												<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
+											</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href='page.php?page=student-profile&submit=delete&id={$r['subjectID']}&box=1&msg=1' class='tooltip-error' data-rel='tooltip' title='Delete'>
+											<span class='red'>
+												<i class='ace-icon fa fa-trash-o bigger-120'></i>
+											</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+function school_data($conn){
+
+    $sql = "select * from get_school WHERE catID = '1'";
+    $result = $conn->query($sql);
+    while ($r = $result->fetch_assoc()) {
+
+        if ($r['statusID'] == 1){
+            $css = "ace-icon fa fa-eye bigger-130";
+            $url = "model.php?ui=school&submit=status&detail={$r['schoolID']}&status=2";
+        }else{
+            $css = "ace-icon fa fa-eye-slash bigger-130";
+            $url = "model.php?ui=school&submit=status&detail={$r['schoolID']}&status=1";
+        }
+        echo"
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['schoolID']}</a>
+                    </td>
+                    <td>{$r['school']}</td>
+                    <td class='hidden-480'>{$r['prefix']}</td>
+                    <td>{$r['statusID']}</td>
+                    <td class='hidden-480'></td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='{$url}'>
+                                <i class='{$css}'></i>
+                            </a>
+
+                            <a class='green' data-toggle='modal' href='#school-view-{$r['schoolID']}'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=school&submit=delete&detail={$r['schoolID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                
+                
+                <div class='modal fade' id='school-view-{$r['schoolID']}' tabindex='-1' role='dialog' aria-labelledby='create-school' aria-hidden='true'>
+                    <div class='modal-dialog' role='document'>
+                        <div class='modal-content'>
+                            <form method='get' action='model.php'>
+                                <div class='modal-header'>
+                                    <h5 class='modal-title' id='exampleModalLabel'>New message</h5>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                                <div class='modal-body'>
+                                    <input type='hidden' name='ui' value='school'>
+                                    <input type='hidden' name='school-code' value='{$r['schoolID']}'>
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'>School/Faculty Name:</label>
+                                        <input type='text' name='school' value='{$r['school']}' class='form-control' id='recipient-name'>
+                                    </div>
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'>Prefix:</label>
+                                        <input type='text' name='prefix' value='{$r['prefix']}' class='form-control' id='recipient-name'>
+                                    </div>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                                    <button type='submit' name='submit' value='update' class='btn btn-primary'>Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        ";
+    }
+}
+
+function administration_data($conn){
+
+    $sql = "select * from get_school WHERE catID = '2'";
+    $result = $conn->query($sql);
+    while ($r = $result->fetch_assoc()) {
+
+        if ($r['statusID'] == 1){
+            $css = "ace-icon fa fa-eye bigger-130";
+            $url = "model.php?ui=school&submit=status&detail={$r['schoolID']}&status=2";
+        }else{
+            $css = "ace-icon fa fa-eye-slash bigger-130";
+            $url = "model.php?ui=school&submit=status&detail={$r['schoolID']}&status=1";
+        }
+        echo"
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['schoolID']}</a>
+                    </td>
+                    <td>{$r['school']}</td>
+                    <td class='hidden-480'>{$r['prefix']}</td>
+                    <td>{$r['statusID']}</td>
+                    <td class='hidden-480'></td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='{$url}'>
+                                <i class='{$css}'></i>
+                            </a>
+
+                            <a class='green' data-toggle='modal' href='#school-view-{$r['schoolID']}'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=school&submit=delete&detail={$r['schoolID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                
+                
+                <div class='modal fade' id='school-view-{$r['schoolID']}' tabindex='-1' role='dialog' aria-labelledby='create-school' aria-hidden='true'>
+                    <div class='modal-dialog' role='document'>
+                        <div class='modal-content'>
+                            <form method='get' action='model.php'>
+                                <div class='modal-header'>
+                                    <h5 class='modal-title' id='exampleModalLabel'>New message</h5>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                                <div class='modal-body'>
+                                    <input type='hidden' name='ui' value='school'>
+                                    <input type='hidden' name='school-code' value='{$r['schoolID']}'>
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'>School/Faculty Name:</label>
+                                        <input type='text' name='school' value='{$r['school']}' class='form-control' id='recipient-name'>
+                                    </div>
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'>Prefix:</label>
+                                        <input type='text' name='prefix' value='{$r['prefix']}' class='form-control' id='recipient-name'>
+                                    </div>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                                    <button type='submit' name='submit' value='update' class='btn btn-primary'>Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        ";
+    }
+}
+
+function marking_sheet_data($conn){
+    //get_result_main
+    $sql = "select * from get_result_main";
+    $result = $conn->query($sql);
+    while ($r = $result->fetch_assoc()) {
+        echo"
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['result_date']}</a>
+                    </td>
+                    <td>{$r['yearID']}</td>
+                    <td class='hidden-480'>{$r['semester']}</td>
+                    <td>{$r['levelID']}</td>
+                    <td class='hidden-480'>{$r['course_code']} - {$r['course']}</td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='#'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='result.php?page=add-assessment&detail={$r['result_semID']}&year={$r['yearID']}&semester={$r['semesterID']}&course={$r['courseID']}&level={$r['levelID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=result&submit=delete-marking-sheet&detail={$r['result_semID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+function get_assessment_data($conn){
+    //get_result_details
+    $sql = "select * from get_result_details";
+    $result = $conn->query($sql);
+    while ($r = $result->fetch_assoc()) {
+
+        if (empty($r['admissionNo'])){
+            $student = "No Index Number ". $r['first_name']." ".$r['surname'];
+        }else{
+            $student = $r['admissionNo']." ".$r['first_name']." ".$r['surname'];
+        }
+        echo"
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['yearID']}</a>
+                    </td>
+                    <td>{$r['semester']}</td>
+                    <td class='hidden-480'>{$student}</td>
+                    <td>{$r['levelID']}</td>
+                    <td class='hidden-480'>{$r['total']}</td>
+                   
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='#'>
+                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='' data-toggle='modal' data-target='#assessment-{$r['resultID']}'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=result&submit=delete-marks&detail={$r['resultID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!--Start Form Assessment-->
+                <div id='assessment-{$r['resultID']}' class='modal' tabindex='-1'>
+                    <div class='modal-dialog'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                                <h4 class='blue bigger'>Student : {$student}</h4>
+                            </div>
+                            <form method='get' action='model.php' enctype='multipart/form-data'>
+                                <input type='hidden' name='ui' value='result'>
+                                <input type='hidden' name='detail' value='{$r['resultID']}'>
+                                <div class='modal-body'>
+                                    <div class='row'>
+                
+                                        <div class='col-xs-6 col-sm-6' >
+                
+                                            <div class='form-group'>
+                                                <label for='form-field-username'>Case Study</label>
+                
+                                                <div>
+                                                    <input type='text' name='case-study' id='form-field-username' placeholder='' value='{$r['case_study']}' />
+                                                </div>
+                                            </div>
+                
+                                            <div class='form-group'>
+                                                <label for='form-field-username'>Group Work</label>
+                
+                                                <div>
+                                                    <input type='text' name='group-work' id='form-field-username' placeholder='' value='{$r['group_work']}' />
+                                                </div>
+                                            </div>
+                                            
+                                            <div class='form-group'>
+                                                <label for='form-field-username'>Class Presentation</label>
+                
+                                                <div>
+                                                    <input type='text' name='presentation' id='form-field-username' placeholder='' value='{$r['presentation']}' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-xs-6 col-xs-6'>
+                                            
+                                            <div class='form-group'>
+                                                <label for='form-field-username'>Final Examination</label>
+                
+                                                <div>
+                                                    <input type='text' name='examination' id='form-field-username' placeholder='' value='{$r['exam']}' />
+                                                </div>
+                                            </div>
+                                            <div class='form-group'>
+                                                <label for='form-field-username'>Assessment</label>
+                
+                                                <div>
+                                                    <input type='text' name='assessment' readonly id='form-field-username' placeholder='' value='{$r['assessment']}' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-xs-6 col-sm-6'>
+                                            <div class='form-group'>
+                                                <label for='form-field-username'>Total</label>
+                
+                                                <div>
+                                                    <input type='text' name='total' readonly id='form-field-username' placeholder='' value='{$r['total']}' />
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button type='submit' name='submit' value='update-marks' class='btn btn-sm btn-primary'>
+                                        <i class='ace-icon fa fa-check'></i>
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Form Courses Taught-->
+        ";
+    }
+}
+
+

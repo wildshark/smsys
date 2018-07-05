@@ -1,0 +1,41 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 09-May-18
+ * Time: 8:12 PM
+ */
+
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
+if ($_GET['submit'] == 'add'){
+
+    $year = $_GET['year'];
+    $semester = $_GET['semester'];
+    $activities = $_GET['activities'];
+    $start_date = $_GET['start-date'];
+    $end_date = $_GET['end-date'];
+
+    $sql ="INSERT INTO `calendar` (`semester_year`, `semesterID`, `activities`, `start_date`, `end_date`, `statusID`) VALUES ('$year', '$semester', '$activities', '$start_date', '$end_date', '1')";
+    $result = $conn->query($sql);
+
+    //header("location: page.php?page=list-academic-calendar");
+}elseif ($_GET['submit'] == 'delete'){
+
+    $id = $_GET['detail'];
+    $delete = "DELETE FROM `calendar` WHERE (`calendarID`='$id')";
+    $result = $conn->query($delete);
+
+
+}
+
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+    }else{
+        header("location: page.php?page=".$url_page."&box=4&msg=9");
+    }
+}

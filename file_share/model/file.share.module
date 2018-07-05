@@ -1,0 +1,65 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 07-Jun-18
+ * Time: 10:16 AM
+ */
+
+if (isset($_POST['submit'])){
+    $submit = $_POST['submit'];
+}else{
+    $submit = $_GET['submit'];
+}
+
+if($submit == "submit"){
+
+    $date = $_POST['date'];
+    $department = $_POST['department'];
+    $title = $_POST['title'];
+    $note = $_POST['note'];
+
+    $file_name = $_FILES['file']['name'];
+    $file_tmp_name = $_FILES['file']['tmp_name'];
+    $file_size = $_FILES['file']['size'];
+    $file_error = $_FILES['file']['error'];
+    $file_type = $_FILES['file']['type'];
+
+    $fileExt = explode('.', $file_name);
+    $file_actualExt = strtolower(end($fileExt));
+    $allowed =  array ('jpg','jpeg', 'png','bmp','doc','docx','pdf','zip','txt','xlsx','vsdx','rar','pptx','ppt');
+
+    if (in_array($file_actualExt, $allowed)){
+        if($file_error === 0){
+            if ($file_size < 204800000000 ){
+                $file_new_name = uniqid('',true).".".$file_actualExt;
+                $file_destination = "uploads/document/".$file_new_name;
+                move_uploaded_file($file_tmp_name,$file_destination);
+
+                echo $sql="INSERT INTO `file_storage` (`departID`, `date`, `title`, `note`, `file_path`, `file_seize`, `file_type`) VALUES ('$department', '$date', '$title', '$note', '$file_destination', '$file_size', '$file_type')";
+                $result = $conn->query($sql);
+               // $error_no = "2";
+            }else{
+                //echo"file is to large to upload";
+                header("location: page.php?page=".$url_page."&box=3&msg=2");
+            }
+        }else{
+            //echo"there was an error uploading the file";
+            header("location: page.php?page=".$url_page."&box=3&msg=6");
+        }
+    }else{
+        //echo"you can nout upload this kind of file";
+        header("location: page.php?page=".$url_page."&box=3&msg=7");
+    }
+
+}elseif($submit == "del.file-share"){
+
+    $id = $_GET['file'];
+    $sql ="DELETE FROM `file_storage` WHERE (`shareID`='$id')";
+    $result = $conn->query($sql);
+    if ($result == TRUE){
+        header("location: page.php?page=dir-list&box=2&msg=4");
+    }else{
+        header("location: page.php?page=dir-list&box=1&msg=1");
+    }
+}

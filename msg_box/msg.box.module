@@ -1,0 +1,109 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 29-May-18
+ * Time: 5:44 PM
+ */
+
+if (!isset($_GET['msg'])){
+    $error= $_POST['msg']; //error message
+    $alert=$_POST['box']; //message box type
+}else{
+    $error= $_GET['msg']; //error message
+    $alert=$_GET['box']; //message box type
+if (empty($error) || empty($alert)){
+
+    $alert = "1";
+    $error = "1";
+}
+
+    switch ($error){
+        case 1:
+            $msg="All text field most be filled.";
+            break;
+        case 2:
+            $msg="Record was successfully submit.";
+            break;
+        case 3:
+            $msg="Record Update was successful.";
+            break;
+        case 4:
+            $msg="Record has been deleted.";
+            break;
+        case 5:
+            $msg="Passport picture is to large to upload. Passport picture most 1 MB.";
+            break;
+        case 6:
+            $msg="Server error when uploading passport picture.";
+            break;
+        case 7:
+            $msg="Can not upload file. Please try PNG, JPG, JPEG, BMP";
+            break;
+        case 8:
+            $msg="update record was successful";
+            break;
+        case 9:
+            $msg="System operation failed, please try again.";
+            break;
+        case 10:
+            $msg="SVC number most be 7 characters";
+            break;
+        case 11:
+            $msg="Connection to server failed";
+            break;
+        case 12:
+            $msg="file size is too large";
+            break;
+        case 13:
+            $msg="system error when uploading this file!";
+            break;
+        case 14:
+            $msg="You can not upload files of this type";
+            break;
+        case 100:
+            $msg="Terminal Script Error 100. Contact system administrator.";
+            break;
+        default:
+            $msg ="Fill in all text field.";
+    }
+
+    function alert_box_type($alert,$msg){
+
+        if ($alert== 1){ //information
+            $alert_box="alert alert-info alert-block";
+        }elseif ($alert == 2){ //success
+            $alert_box="alert alert-success alert-block";
+        }elseif ($alert == 3){ //error
+            $alert_box="alert alert-error alert-block";
+        }elseif ($alert == 4){//danger
+            $alert_box="alert alert-danger alert-block";
+        }
+
+        if ($alert== 1){ //information
+            $alert_label="Info";
+        }elseif ($alert == 2){ //success
+            $alert_label="Success";
+        }elseif ($alert == 3){ //error
+            $alert_label="Error";
+        }elseif ($alert == 4){
+            $alert_label ="Terminal Failure";
+        }
+
+        return"<div class='{$alert_box}'>
+		            <i class=\"ace-icon fa fa-hand-o-right\"></i>
+		                 $msg
+						<button class=\"close\" data-dismiss=\"alert\">
+						    <i class=\"ace-icon fa fa-times\"></i>
+				        </button>
+		        </div>
+        ";
+
+        /*
+        return "<div class='".$alert_box."'> <a class='close' data-dismiss='alert' href='#'>×</a>
+              <h4 class='alert-heading'>".$alert_label."</h4>
+              ".$msg."</div>";
+        **/
+    }
+}
+

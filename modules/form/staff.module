@@ -1,0 +1,125 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 09-Mar-18
+ * Time: 11:09 PM
+ */
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
+if ($_POST['submit'] == "add") {
+    $user_id =uniqid();
+    $date = $_POST['employ-date'];
+    $staffID = $_POST['staff-id'];
+    $f_name = $_POST['first-name'];
+    $l_name = $_POST['surname'];
+    $marital = $_POST['marital-status'];
+    $gender = $_POST['gender'];
+    $nationality = $_POST['nationality'];
+    echo $staff_category = $_POST['staff-category'];
+    $position = $_POST['position'];
+    $working_status = $_POST['working-status'];
+    $department = $_POST['department'];
+    $aos = $_POST['aos'];
+    $email = $_POST['email'];
+    $mobile1 = $_POST['personal-mobile'];
+    $mobile2 = $_POST['home-mobile'];
+    $ssn = $_POST['ssn'];
+    $bank_name = $_POST['bank-name'];
+    $account_name = $_POST['account-name'];
+    $account_number = $_POST['account-name'];
+    $emerge_name = $_POST['emerge-name'];
+    $emerge_mobile = $_POST['emerge-mobile'];
+    $emerge_email = $_POST['emerge-email'];
+    $emerge_relation = $_POST['emerge-relation'];
+    $emerge_address = $_POST['emerge-address'];
+    $status = $_POST['status'];
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $accessID = $_POST['access'];
+
+    $file= $_FILES['image'];
+    $file_name = $_FILES['image']['name'];
+    $file_tmp_name = $_FILES['image']['tmp_name'];
+    $file_size = $_FILES['image']['size'];
+    $file_error = $_FILES['image']['error'];
+    $file_type = $_FILES['image']['type'];
+
+    $fileExt = explode('.', $file_name);
+    $file_actualExt = strtolower(end($fileExt));
+    $allowed =  array ('jpg','jpeg', 'png');
+
+    if (in_array($file_actualExt, $allowed)){
+        if($file_error === 0){
+            if ($file_size < 1000000 ){
+                $file_new_name = uniqid('',true).".".$file_actualExt;
+                $file_destination = "uploads/".$file_new_name;
+                move_uploaded_file($file_tmp_name,$file_destination);
+
+                $sql = "INSERT INTO `staff_profile` (`employDate`, `staffID`, `f_name`, `l_name`, `marital_status`, `genderID`, `countryID`, `categoryID`, `positionID`, `departmentID`, `email`, `mobile1`, `mobile2`, `ssn`, `bankID`, `acctName`, `acctNumber`, `emerge_name`, `emerge_phone`, `emerge_email`, `emerge_relation`, `emerge_address`,`photo`,`operation_status`,`aos`,`token`,`accessID`,`username`,`password`,`statusID`) VALUES ('$date', '$staffID', '$f_name', '$l_name', '$marital', '$gender', '$nationality', '$staff_category', '$position', '$department', '$email', '$mobile1', '$mobile2', '$ssn', '$bank_name', '$account_name', '$account_number', '$emerge_name', '$emerge_mobile', '$emerge_email', '$emerge_relation', '$emerge_address','$file_new_name','$working_status','$aos','$user_id','$accessID','$username','$password','$status')";
+               $result = $conn->query($sql);
+
+               if ($result === TRUE){
+                   header("location: page.php?page=add-staff-profile-form-b&ui={$user_id}");
+               }else{
+                   echo "connection error";
+               }
+
+            }else{
+                echo"file is to large to upload";
+            }
+        }else{
+            echo"there was an error uploading the file";
+        }
+    }else{
+        echo"you can nout upload this kind of file";
+    }
+}elseif ($_POST['submit'] == "update"){
+
+    $id = $_SESSION['staff-id'];
+    $marital = $_POST['marital-status'];
+    $gender = $_POST['gender'];
+    $nationality = $_POST['nationality'];
+    $staff_category = $_POST['staff-category'];
+    $position = $_POST['position'];
+    $department = $_POST['department'];
+    $email = $_POST['email'];
+    $mobile1 = $_POST['personal-mobile'];
+    $mobile2 = $_POST['home-mobile'];
+    $ssn = $_POST['ssn'];
+    $bank_name = $_POST['bank-name'];
+    $account_name = $_POST['account-name'];
+    $account_number = $_POST['account-name'];
+    $emerge_name = $_POST['emerge-name'];
+    $emerge_mobile = $_POST['emerge-mobile'];
+    $emerge_email = $_POST['emerge-email'];
+    $emerge_relation = $_POST['emerge-relation'];
+    $emerge_address = $_POST['emerge-address'];
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $accessID = $_POST['access'];
+
+    $sql="UPDATE `staff_profile` SET `marital_status`='$marital', `genderID`='$gender', `nationality`='$nationality', `categoryID`='$staff_category', `positionID`='$position', `departmentID`='$department',`email` ='$email',`mobile1`='$mobile1',`mobile2`='$mobile2',`ssn`='$ssn',`bankID`='$bank_name',`acctName`='$account_name', `acctNumber`='$account_number', `emerge_name`='$emerge_name',
+ `emerge_phone`='$emerge_mobile',`emerge_email`='$emerge_email', `emerge_relation`='$emerge_relation',`emerge_address`='$emerge_address',`username` ='$username',`password`='$password' `accessID` = '$accessID' WHERE (`staff_profile_ID`='$id') LIMIT 1";
+
+}elseif ($_POST['submit'] == "delete"){
+
+    /**
+    $id = $_GET[''];
+    $delete = "DELETE FROM `staff_profile` WHERE (`staff_profile_ID`='20')";
+    $result = $conn->query($delete);
+    **/
+
+}
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+    }else{
+        header("location: page.php?page=".$url_page."&box=4&msg=9");
+    }
+}

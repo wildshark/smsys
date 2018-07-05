@@ -1,0 +1,37 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 20-May-18
+ * Time: 1:11 PM
+ */
+
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
+
+if($_GET['submit'] == "add"){
+
+    $id = $_SESSION['profile-ID'];
+    $date = $_GET['date'];
+    $approved = $_GET['approved'];
+    $promotion = $_GET['promotion'];
+
+    $sql ="INSERT INTO `staff_promotion` (`profileID`,`promo_data`, `approve`, `promotion`) VALUES ('$id','$date', '$approved', '$promotion')";
+    $result = $conn->query($sql);
+
+}elseif ($_GET['submit'] == "delete"){
+    $id = $_GET['detail'];
+    $sql="DELETE FROM `staff_promotion` WHERE (`promotionID`='$id')";
+    $result = $conn->query($sql);
+
+}
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+    }else{
+        header("location: page.php?page=".$url_page."&box=4&msg=9");
+    }
+}

@@ -1,0 +1,53 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 06-Mar-18
+ * Time: 9:20 AM
+ */
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
+if ($_GET['submit'] == 'add'){
+
+    $school = $_GET['school'];
+    $programme = $_GET['programme'];
+    $status = $_GET['status'];
+
+    $add = "INSERT INTO `programme` (`programme`, `schoolID`,`statusID`) VALUES ('$programme', '$school','$status')";
+    $result = $conn->query($add);
+
+}elseif ($_GET['submit'] == 'update') {
+
+    $id = $_SESSION['programme-id'];
+    $school = $_GET['school'];
+    $programme = $_GET['programme'];
+    $status = $_GET['status'];
+    $edit = "1";
+
+    $update = "UPDATE `programme` SET `programme`='$programme', `schoolID`='$school', `statusID`='$status' WHERE (`progID`='$id') LIMIT 1";
+    $result = $conn->query($update);
+
+}elseif ($_GET['submit'] == 'delete'){
+    $id = $_GET['detail'];
+    $delete="DELETE FROM `programme` WHERE (`progID`='$id')";
+    $result = $conn->query($delete);
+
+}else{
+    header("location: page.php?page=dashboard");
+}
+
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        if (isset($edit)){
+            header("location: page.php?page={$url_page}&detail={$id}&box=2&msg={$error_no}");
+        }else{
+            header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+        }
+
+    }else{
+        header("location: page.php?page=".$url_page."&box=4&msg=9");
+    }
+}

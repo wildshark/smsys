@@ -1,0 +1,31 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 11-Mar-18
+ * Time: 3:56 PM
+ */
+
+if ($_GET['submit'] == 'staff-position'){
+
+    $position = $_GET['position'];
+    $sql = "INSERT INTO `position_list` (`position`) VALUES ('$position')";
+    $result = $conn->query($sql);
+    if ($result == TRUE){
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+    }else{
+        echo "error";
+    }
+}elseif ($_GET['submit'] == 'staff-department'){
+
+    $department = $_GET['department'];
+    $sql = "INSERT INTO `department` (`department`) VALUES ('$department')";
+    $result = $conn->query($sql);
+    if ($result == TRUE){
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+    }else{
+        echo "error";
+    }
+}else{
+    header("page.php?page=500");
+}
