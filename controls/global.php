@@ -7,9 +7,15 @@
  *
  */
 
-function logout (){
-    require header("location: index.php");
+function logout ($conn){
+    session_unset();
+    session_destroy();
+    $conn->close;
+
+    header("location: index.php");
 }
+
+
 function generate_academic_session(){
 
     $date = date("Y");
@@ -18,7 +24,17 @@ function generate_academic_session(){
     return $prev_date."/".$date;
 }
 
-function cmb_day_list($conn){
+function cmb_new_student_serial_index($conn){
+
+    $sql='SELECT * FROM `get_new_student`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        echo"<option value='{$r['admissionID']}'>{$r['serial_no']}->{$r['f_name']} {$r['l_name']}</option>";
+    }
+}
+
+function cmb_student_entry_list($conn){
+
     $sql='SELECT * FROM `get_day_list`';
     $result=$conn->query($sql);
     while ($r=$result->fetch_assoc()){
@@ -26,6 +42,14 @@ function cmb_day_list($conn){
     }
 }
 
+function cmb_day_list($conn){
+
+    $sql='SELECT * FROM `get_day_list`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        echo"<option value='{$r['dayID']}'>{$r['day_type']}</option>";
+    }
+}
 
 
 function cmb_gender_status($conn){
@@ -38,6 +62,7 @@ function cmb_gender_status($conn){
 }
 
 function cmb_marital_status($conn){
+
     $sql='SELECT * FROM `get_category_list` WHERE classificationID = 3';
     $result=$conn->query($sql);
     while ($r=$result->fetch_assoc()){
@@ -76,7 +101,7 @@ function cmb_staff_status($conn){
 function Staff_access($conn){
 
     $access = $_GET['ui'];
-    $user = "select * from get_staff_profile_summary WHERE access='$access'";
+    $user = "SELECT * from get_staff_profile_summary WHERE access='$access'";
     $result = $conn->query($user);
     $u = $result->fetch_assoc();
 
@@ -84,7 +109,7 @@ function Staff_access($conn){
 }
 function cmb_access_id($conn){
 
-    $user = "select * from get_position";
+    $user = "SELECT * from get_position";
     $result = $conn->query($user);
     while ($u = $result->fetch_assoc()){
 
@@ -145,6 +170,15 @@ function cmb_academic_session($conn){
     $sql='SELECT * FROM `get_academic_session`';
     $result=$conn->query($sql);
     while ($r=$result->fetch_assoc()){
+        echo"<option value='{$r['academic_yr']}'>{$r['academic_yr']}</option>";
+    }
+}
+
+function cmb_year($conn){
+    //get_academic_session
+    $sql='SELECT * FROM `get_academic_session`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
         echo"<option value='{$r['year']}'>{$r['year']}</option>";
     }
 }
@@ -160,7 +194,7 @@ function student_category($conn){
 
 function cmb_nationality($conn){
 
-    $sql="select * from get_countries";
+    $sql="SELECT * from get_countries";
     $result = $conn->query($sql);
     while($r=$result->fetch_assoc()){
         echo"<option value='{$r['countryID']}'>{$r['nationality']}</option>";
@@ -169,7 +203,7 @@ function cmb_nationality($conn){
 
 function position($conn){
 
-    $sql="select * from get_position";
+    $sql="SELECT * from get_position";
     $result = $conn->query($sql);
     while($r=$result->fetch_assoc()){
         echo"<option value='{$r['positionID']}'>{$r['position']}</option>";
@@ -178,7 +212,7 @@ function position($conn){
 
 function department($conn){
 
-    $sql="select * from get_department";
+    $sql="SELECT * from get_department";
     $result = $conn->query($sql);
     while($r=$result->fetch_assoc()){
         echo"<option value='{$r['departID']}'>{$r['department']}</option>";
@@ -188,7 +222,7 @@ function department($conn){
 function stock_list($conn){
     //get_stock_list
 
-    $sql="select * from get_stock_list";
+    $sql="SELECT * from get_stock_list";
     $result = $conn->query($sql);
     while($r=$result->fetch_assoc()){
         echo"<option value='{$r['stockID']}'>{$r['stock']}</option>";
@@ -199,7 +233,7 @@ function stock_list($conn){
 function student_index_list($conn){
     //get_stock_list
 
-    $sql="select * from get_student_index_list";
+    $sql="SELECT * from get_student_index_list";
     $result = $conn->query($sql);
     while($r=$result->fetch_assoc()){
         if (empty($r['admissionNo'])){
@@ -215,7 +249,7 @@ function student_index_list($conn){
 function hostel_block_list($conn){
     //get_stock_list
 
-    $sql="select * from get_hostel_block";
+    $sql="SELECT * from get_hostel_block";
     $result = $conn->query($sql);
     while($r=$result->fetch_assoc()){
         echo"<option value='{$r['blockID']}'>{$r['block_name']}</option>";
@@ -226,7 +260,7 @@ function hostel_block_list($conn){
 function get_list_semester($conn){
     //get_list_semester
 
-    $sql="select * from get_list_semester";
+    $sql="SELECT * from get_list_semester";
     $result = $conn->query($sql);
     while($r=$result->fetch_assoc()){
         echo"<option value='{$r['semesterID']}'>{$r['semester']}</option>";
@@ -235,9 +269,18 @@ function get_list_semester($conn){
 
 function get_staff_lecturer($conn){
 
-    $sql="select * from get_staff_lecture";
+    $sql="SELECT * from get_staff_lecture";
     $result = $conn->query($sql);
     while($r=$result->fetch_assoc()){
         echo"<option value='{$r['staff_profile_ID']}'>{$r['f_name']} {$r['l_name']}</option>";
+    }
+}
+
+function get_rental_list($conn){
+
+    $sql="SELECT * FROM list_rental";
+    $result = $conn->query($sql);
+    while($r=$result->fetch_assoc()){
+        echo"<option value='{$r['rental_typeID']}'>{$r['rental_type']}</option>";
     }
 }

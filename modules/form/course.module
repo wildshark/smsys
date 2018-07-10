@@ -9,7 +9,13 @@
 $url_page = $_SESSION['url-page'];
 $error_no = "2";
 
-if ($_GET['submit'] == 'add'){
+if (isset($_GET['submit'])){
+    $submit = $_GET['submit'];
+}else{
+    $submit = $_POST['submit'];
+}
+
+if ($submit == 'add'){
 
     $programme = $_GET['programme'];
     $course_name = $_GET['course-name'];
@@ -19,11 +25,11 @@ if ($_GET['submit'] == 'add'){
     $semester = $_GET['semester'];
     $status = $_GET['status'];
 
-    $sql="INSERT INTO `course` (`progID`, `course`, `course_code`, `course_level`, `credit`, `semesterID`, `statusID`) VALUES ('$programme', '$course_name', '$course_code', '$level', '$credit_hours', c$semesteralendar, '$status')";
+    $sql="INSERT INTO `course` (`progID`, `course`, `course_code`, `course_level`, `credit`, `semesterID`, `statusID`) VALUES ('$programme', '$course_name', '$course_code', '$level', '$credit_hours', $semester, '$status')";
     $result = $conn->query($sql);
 
 
-}elseif ($_GET['submit'] == 'update'){
+}elseif ($submit == 'update'){
 
     $id = $_SESSION['subject-id'];
     $programme = $_GET['programme'];
@@ -37,14 +43,14 @@ if ($_GET['submit'] == 'add'){
     $sql="UPDATE `course` SET `progID`='$programme', `course`='$course_name', `course_code`='$course_code', `credit`='$credit_hours', `course_level`='$level', `semesterID`=c$semesteralendar, `statusID`='$status' WHERE (`courseID`='$id') LIMIT 1";
    $result = $conn->query($sql);
 
-}elseif ($_GET['submit'] == 'delete'){
+}elseif ($submit == 'delete'){
 
     $id = $_GET['id'];
 
     $sql="DELETE FROM `course` WHERE (`courseID`='$id')";
     $result = $conn->query($sql);
 
-}elseif ($_GET['submit']=="add-courses-taught"){
+}elseif ($submit =="add-courses-taught"){
 
     $profileID = $_SESSION['profile-ID'];
     $day = $_GET['day'];

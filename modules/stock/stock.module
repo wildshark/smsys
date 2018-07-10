@@ -6,33 +6,63 @@
  * Time: 4:32 PM
  */
 
-if($_GET['submit'] == "create-stock"){
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
+if (isset($_GET['submit'])){
+    $submit = $_GET['submit'];
+}else{
+    $submit = $_POST['submit'];
+}
+
+if( $submit == "create-stock"){
     $stock = $_GET['stock-name'];
 
     $add = "INSERT INTO `stock_main` (`stock`) VALUES ('$stock')";
     $result = $conn->query($add);
 
-}elseif($_GET['submit'] == "add-order"){
+}elseif($submit == "add-order"){
 
-    $date = $_GET['date'];
-    $order = $_GET['order'];
-    $ref = $_GET['ref'];
+    $date = $_GET['order-date'];
+    $item = $_GET['item'];
+    $detail = $_GET['details'];
+    $ref = $_GET['ref-no'];
     $qty = $_GET['qty'];
+    $department = $_GET['department'];
+    $remark = $_GET['remark'];
+    $status = "1"; // mean the post is a purchase order
 
-    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `order_qty`) VALUES ('$now', '$date', '$order', '$ref','$qty')";
+    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `order_qty`,`remarks`,`departmentID`,`details`,`status`) 
+    VALUES ('$now', '$date', '$item', '$ref','$qty','$remark','$department','$detail','$status')";
     $result = $conn->query($add);
 
-}elseif ($_GET['submit'] == "add-purchase"){
+}elseif($submit == "add-request"){
+
+    $date = $_GET['order-date'];
+    $item = $_GET['item'];
+    $detail = $_GET['details'];
+    $ref = $_GET['ref-no'];
+    $qty = $_GET['qty'];
+    $department = $_GET['department'];
+    $remark = $_GET['remark'];
+    $status = "1"; // mean the post is a request
+
+    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `order_qty`,`remarks`,`departmentID`,`details`,`status`) 
+    VALUES ('$now', '$date', '$item', '$ref','$qty','$remark','$department','$detail','$status')";
+    $result = $conn->query($add);
+
+}elseif ($submit == "add-purchase"){
 
     $date = $_GET['date'];
     $purchase = $_GET['purchase'];
     $ref = $_GET['ref'];
     $qty = $_GET['qty'];
+    $status = "2";
 
-    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `purchase_qty`) VALUES ('$now', '$date', '$purchase', '$ref','$qty')";
+    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `purchase_qty`,`status`) VALUES ('$now', '$date', '$purchase', '$ref','$qty','$status')";
     $result = $conn->query($add);
 
-}elseif ($_GET['submit'] == "add-issue"){
+}elseif ($submit == "add-issue"){
 
     $date = $_GET['date'];
     $issue = $_GET['issue'];
@@ -42,9 +72,20 @@ if($_GET['submit'] == "create-stock"){
     $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `issue_qty`) VALUES ('$now', '$date', '$issue', '$ref','$qty')";
     $result = $conn->query($add);
 }
-
-if ($result === TRUE){
-    header("location: ".$_SERVER['HTTP_REFERER']);
+/**
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&box=4&msg=9");
 }else{
-    header("location: page.php?page=error");
+    if ($result === TRUE){
+        if (isset($edit)){
+            header("location: page.php?page={$url_page}&detail={$id}&box=2&msg={$error_no}");
+        }else{
+            header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+        }
+
+    }else{
+        header("location: page.php?page=".$url_page."&box=4&msg=9");
+    }
 }
+
+**/

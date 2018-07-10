@@ -6,6 +6,107 @@
  * Time: 7:55 PM
  */
 
+
+function student_admission_entry($conn){
+
+    $sql='SELECT * FROM get_new_student';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        if ($r['proofID'] == 1){
+            $color = "";
+            $approved = "";
+        }elseif ($r['proofID']){
+            $color = "red";
+            $approved = " <i class='ace-icon red fa fa-check-square-o bigger-130'></i>";
+        }
+
+        echo "
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td class='{$color}'>
+                        {$r['serial_no']}
+                    </td>
+                    <td class='{$color}'>{$r['yearID']}</td>
+                    <td class='{$color}'>{$r['f_name']} {$r['l_name']}</td>
+                    <td class='hidden-480 {$color}'>{$r['mobile1']} / {$r['mobile2']}</td>
+                    
+                    <td class='hidden-480 {$color}'>
+                        {$r['programme']} | {$r['prefix']} {$approved}
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='page.php?page=view-student-admission&id={$r['admissionID'] }&box=1&msg=1'>
+                                <i class='ace-icon fa fa-envelope-o bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='page.php?page=add-student-admission&id={$r['admissionID'] }&box=1&msg=1'>
+                                <i class='ace-icon fa fa-cogs bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=student-admission-entry&submit=delete&id={$r['admissionID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>                   
+                    </td>
+                </tr>
+        ";
+    }
+
+}
+
+function add_student_admission_index($conn){
+
+    $sql='SELECT * FROM get_new_student';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+        if ($r['proofID'] == 1){
+            $color = "";
+            $approved = "";
+        }elseif ($r['proofID']){
+            $color = "red";
+            $approved = " <i class='ace-icon red fa fa-check-square-o bigger-130'></i>";
+        }
+
+        echo "
+            <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td class='{$color}'>
+                        {$r['serial_no']}
+                    </td>
+                    <td class='{$color}'>{$r['yearID']}</td>
+                    <td class='{$color}'>{$r['f_name']} {$r['l_name']}</td>
+                    <td class='hidden-480 {$color}'>{$r['mobile1']}</td>
+                    
+                    <td class='hidden-480 {$color}'>
+                        {$r['programme']} | {$r['prefix']} {$approved}
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='page.php?page=view-student.admission.index&box=1&msg=1&id={$r['admissionID'] }'>
+                                <i class='ace-icon fa fa-cogs  bigger-130'></i>
+                            </a>
+                        </div>                   
+                    </td>
+                </tr>
+        ";
+    }
+
+}
+
 function student_data($conn){
 
     $sql='SELECT * FROM get_student_profile_detail';
@@ -43,7 +144,7 @@ function student_data($conn){
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
-                            <a class='red' href='#'>
+                            <a class='red' href='model.php?ui=student&submit=delete&id={$id}'>
                                 <i class='ace-icon fa fa-trash-o bigger-130'></i>
                             </a>
                         </div>                   
@@ -311,6 +412,12 @@ function programme_data($conn){
         }else{
             $status = "Passive";
         }
+
+        if(isset($r['prog_prefix'])){
+            $prefix = $r['prog_prefix'];
+        }else{
+            $prefix = "No Prefix";
+        }
         echo "
                 <tr>
                     <td class='center'>
@@ -322,7 +429,7 @@ function programme_data($conn){
                     <td>{$r['progID']}</td>
                     <td>{$r['programme']}</td>
                     <td class='hidden-480'>{$r['school']}</td>
-                    <td class='hidden-480'>{$r['prefix']}</td>
+                    <td class='hidden-480'>{$prefix} | {$r['prefix']}</td>
                     <td class='hidden-480'>
                         <span class='label label-sm label-warning'>{$status}</span>
                     </td>

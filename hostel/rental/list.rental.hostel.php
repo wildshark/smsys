@@ -11,13 +11,6 @@ function get_hostel_rental_details($conn){
     $sql='SELECT * FROM get_hostel_rental';
     $result=$conn->query($sql);
     while ($r=$result->fetch_assoc()){
-        if ($r['proofID'] == 1){
-            $color = "";
-            $approved = "";
-        }elseif ($r['proofID']){
-            $color = "red";
-            $approved = " <i class='ace-icon red fa fa-check-square-o bigger-130'></i>";
-        }
 
         echo "
             <tr>
@@ -28,28 +21,28 @@ function get_hostel_rental_details($conn){
                         </label>
                     </td>
 
-                    <td class='{$color}'>
-                        {$r['serial_no']}
+                    <td>
+                        {$r['tranDate']}
                     </td>
-                    <td class='{$color}'>{$r['student']}</td>
-                    <td class='hidden-480 {$color}'>{$r['mobile']}</td>
-                    <td class='{$color}'>{$r['yearID']}</td>
+                    <td>{$r['church_name']}</td>
+                    <td class='hidden-480'>{$r['start_date']}</td>
+                    <td>{$r['end_date']}</td>
 
-                    <td class='hidden-480 {$color}'>
-                        {$r['programme']} | {$r['prefix']} {$approved}
+                    <td class='hidden-480'>
+                        {$r['NoOfDays']}
                     </td>
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='page.php?page=view-student-admission&id={$r['admissionID'] }&box=1&msg=1'>
+                            <a class='blue' href='hostel.php?page=edit-hostel-rental&id={$r['rentalID'] }&box=1&msg=1'>
                                 <i class='ace-icon fa fa-search-plus bigger-130'></i>
                             </a>
 
-                            <a class='green' href='page.php?page=edit-student-admission&id={$r['admissionID'] }&box=1&msg=1'>
-                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            <a class='green' href='model.php?ui=hostel&submit=status-rental&id={$r['rentalID']}&days={$r['NoOfDays']}'>
+                                <i class='ace-icon fa fa-flag bigger-130'></i>
                             </a>
 
-                            <a class='red' href='#'>
+                            <a class='red' href='model.php?ui=hostel&submit=del-rental&id={$r['rentalID'] }&box=1&msg=1'>
                                 <i class='ace-icon fa fa-trash-o bigger-130'></i>
                             </a>
                         </div>                   
@@ -59,6 +52,95 @@ function get_hostel_rental_details($conn){
     }
 }
 ?>
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">New Rental Booking</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="POST" action="model.php">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="ui" value="hostel">
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Date:</label>
+                        <input type="date" name="date" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Name Of Group:</label>
+                        <input type="text" name="name-of-group" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Contact Address:</label>
+                        <input type="text" name="contact-address" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Mobile 1:</label>
+                        <input type="text" name="mobile-1" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Mobile 2:</label>
+                        <input type="text" name="mobile-2" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Type of rental need:</label>
+                        <select name="rental-type" class="form-control" id="recipient-name">
+                            <?php get_rental_list($conn);?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Population:</label>
+                        <input type="number" name="population" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Ref. Number:</label>
+                        <input type="text" name="ref-number" value="<?php echo 'H'.date("dYm")?>" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Bill Amount:</label>
+                        <input type="number" name="bill-amount" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Discount:</label>
+                        <input type="number" name="discount" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Date of arrival:</label>
+                        <input type="date" name="start-date" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Date of departure:</label>
+                        <input type="date" name="end-date" class="form-control" id="recipient-name">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" value="add-rental" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-xs-12">
 
@@ -83,10 +165,10 @@ function get_hostel_rental_details($conn){
                         </label>
                     </th>
                     <th>Date</th>
-                    <th class="hidden-480"> Admission No#</th>
-                    <th>Student Name</th>
-                    <th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>Room</th>
-                    <th>Book In</th>
+                    <th class="hidden-480">Name of Group</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Day(s) Left</th>
                     <th></th>
                 </tr>
                 </thead>

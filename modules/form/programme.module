@@ -12,9 +12,10 @@ if ($_GET['submit'] == 'add'){
 
     $school = $_GET['school'];
     $programme = $_GET['programme'];
+    $prefix = $_GET['programme-prefix'];
     $status = $_GET['status'];
 
-    $add = "INSERT INTO `programme` (`programme`, `schoolID`,`statusID`) VALUES ('$programme', '$school','$status')";
+    $add = "INSERT INTO `programme` (`programme`, `schoolID`,`prog_prefix`,`statusID`) VALUES ('$programme', '$school','$prefix','$status')";
     $result = $conn->query($add);
 
 }elseif ($_GET['submit'] == 'update') {
@@ -22,10 +23,11 @@ if ($_GET['submit'] == 'add'){
     $id = $_SESSION['programme-id'];
     $school = $_GET['school'];
     $programme = $_GET['programme'];
+    $prefix = $_GET['programme-prefix'];
     $status = $_GET['status'];
     $edit = "1";
 
-    $update = "UPDATE `programme` SET `programme`='$programme', `schoolID`='$school', `statusID`='$status' WHERE (`progID`='$id') LIMIT 1";
+    $update = "UPDATE `programme` SET `programme`='$programme', `schoolID`='$school',`prog_prefix`='$prefix' ,`statusID`='$status' WHERE (`progID`='$id') LIMIT 1";
     $result = $conn->query($update);
 
 }elseif ($_GET['submit'] == 'delete'){

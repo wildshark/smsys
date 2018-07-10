@@ -6,8 +6,17 @@
  * Time: 8:53 PM
  */
 
-
+//create.sql
 ?>
+
+    <li class="">
+        <a href="page.php?page=create.sql&box=1&msg=1">
+            <i class="menu-icon fa fa-tachometer"></i>
+            <span class="menu-text"> Create SQL </span>
+        </a>
+
+        <b class="arrow"></b>
+    </li>
 
 <li class="">
         <a href="page.php?page=dashboard&box=1&msg=1">
@@ -32,10 +41,29 @@
 
         <ul class="submenu">
 
+
+            <li class="">
+                <a href="page.php?page=student.admission-list&box=1&msg=1">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Student Admission
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
             <li class="">
                 <a href="page.php?page=add-student&box=1&msg=1">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Add Student
+                     Student Profile
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
+                <a href="page.php?page=student-admission-index&box=1&msg=1">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    **Add Student Profile
                 </a>
 
                 <b class="arrow"></b>
@@ -322,12 +350,21 @@
                 </a>
 
                 <b class="arrow"></b>
-            </li>
+            </li> 
 
             <li class="">
                 <a href="store.php?page=stock-order&box=1&msg=1">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Order
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
+                <a href="store.php?page=stock-request&box=1&msg=1">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Request Form
                 </a>
 
                 <b class="arrow"></b>
@@ -377,6 +414,15 @@
             </li>
 
             <li class="">
+                <a href="" data-toggle="modal" data-target="#add-rental-modal">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Create Rentals
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
                 <a href="" data-toggle="modal" data-target="#create-block">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Create Block
@@ -394,6 +440,8 @@
                 <b class="arrow"></b>
             </li>
 
+
+
             <li class="">
                 <a href="hostel.php?page=hostel-booking&box=1&msg=1">
                     <i class="menu-icon fa fa-caret-right"></i>
@@ -404,9 +452,9 @@
             </li>
 
             <li class="">
-                <a href="store.php?page=stock-issue&box=1&msg=1">
+                <a href="hostel.php?page=hostel-rental-list&box=1&msg=1">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Issue
+                    Hostel Rental
                 </a>
 
                 <b class="arrow"></b>

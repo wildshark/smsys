@@ -36,7 +36,14 @@ if ($_GET['submit'] == "add"){
     $department = $_GET['department'];
     $update = "UPDATE `department` SET `department`='$department' WHERE (`departID`='$id') LIMIT 1";
     $result = $conn->query($update);
-}
+
+}//elseif ($_GET['submit'] === "add.student.admission.index"){
+
+   // $id = $_GET['id'];
+   // $sql = "";
+
+
+//}
 
 if (!isset($result)){
     header("location: page.php?page=".$url_page."&box=4&msg=9");

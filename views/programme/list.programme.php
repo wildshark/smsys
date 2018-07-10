@@ -37,6 +37,10 @@
                         <input type="text" name="programme" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Programme Prefix:</label>
+                        <input type="text" name="programme-prefix" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
                         <label for="recipient-name" class="form-control-label">School:</label>
                         <select name="status" id="form-field-1" class="form-control">
                             <option value="1">Active</option>

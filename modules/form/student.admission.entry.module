@@ -4,4 +4,90 @@
  * User: Andrew Quaye
  * Date: 19-Jun-18
  * Time: 7:20 PM
- */
+ **/
+
+$url_page = $_SESSION['url-page'];
+
+if (isset($_POST['submit'])){
+    $submit = $_POST['submit'];
+}else{
+    $submit = $_GET['submit'];
+}
+
+if($submit === "add"){
+
+    $f_name = $_POST['first-name'];
+    $l_name = $_POST['last-name'];
+    $mobile1 = $_POST['mobile1'];
+    $mobile2 = $_POST['mobile2'];
+    $email = $_POST['email'];
+    $programme = $_POST['programme'];
+    $stream = $_POST['stream'];
+    $nationality = $_POST['nationality'];
+    $category = $_POST['category'];
+    $exam_result= $_POST['result'];
+    $date= $_POST['date'];
+    $academic_year = $_POST['academic-year'];
+    $year = substr($academic_year,0,4);
+
+    //$date_y = strtotime($date);
+    //$year = date("Y",$date_y);
+
+    $count_student = "SELECT * FROM get_total_new_student_intake WHERE yearID = '$academic_year' AND progID='$programme'";
+    $result_count = $conn->query($count_student);
+    $count_total = $result_count->fetch_assoc();
+
+    $student_total = $count_total['total_student'];
+
+    if (!isset($student_total) || empty($student_total) || $student_total == 0){
+        $student_total =  1;
+        $serial = "ST".$programme."".$year."".$stream."0000".$student_total;
+    }else{
+        $student_total = $count_total['total_student'] + 1;
+        $unit = strlen($student_total);
+        switch ($unit){
+            case 1:
+                $serial = "ST".$programme."".$year."".$stream."000".$student_total;
+            break;
+            case 2:
+                $serial = "ST".$programme."".$year."".$stream."00".$student_total;
+                break;
+            case 3:
+                $serial = "ST".$programme."".$year."".$stream."0".$student_total;
+                break;
+            case 1:
+                $serial = "ST".$programme."".$year."".$stream."".$student_total;
+                break;
+        }
+
+    }
+
+    $sql ="INSERT INTO `new_student` (`date`, `f_name`,`l_name`, `mobile1`,`mobile2`, `yearID`, `progID`, `streaID`, `proofID`, `serial_no`,`nationality`,`categoryID`,`exam_result`,`email`) 
+VALUES ('$date', '$f_name','$l_name','$mobile1', '$mobile2', '$academic_year', '$programme', '$stream', '1', '$serial','$nationality','$category','$exam_result','$email')";
+    $result = $conn->query($sql);
+
+    $last_id = $conn->insert_id;
+
+}elseif ($submit === "delete"){
+
+    $id = $_GET['id'];
+    $delete = "DELETE FROM `new_student` WHERE (`admissionID`='$id')";
+    $result = $conn->query($delete);
+
+}
+
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&box=4&msg=9");
+}else{
+    if ($result == TRUE){
+        if (isset($last_id)){
+            header("location: page.php?page=student-confirmation&box=2&msg=2&i={$last_id}");
+        }else{
+            header("location: page.php?page={$url_page}&box=2&msg=2");
+        }
+
+    }else{
+        header("location: page.php?page=".$url_page."&box=4&msg=9");
+    }
+
+}

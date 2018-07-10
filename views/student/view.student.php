@@ -23,17 +23,17 @@ if (empty($r['admissionNo'])){
 }
 
 if ($r['mobile1'] == 0){
-    $mobile_1 = "No mobile line";
+    $mobile_1 = "No mobile line 1";
 }elseif (empty($r['mobile1'])){
-    $mobile_1 = "No mobile line";
+    $mobile_1 = "No mobile line 1";
 }else{
     $mobile_1 =$r['mobile1'];
 }
 
 if ($r['mobile2'] == 0){
-    $mobile_2 = "No mobile line";
+    $mobile_2 = "No mobile line 2";
 }elseif (empty($r['mobile2'])){
-    $mobile_2 = "No mobile line";
+    $mobile_2 = "No mobile line 2";
 }else{
     $mobile_2 =$r['mobile2'];
 }
@@ -44,24 +44,32 @@ if (empty($r['email'])){
     $email = $r['email'];
 }
 
-if (empty($r['admissionYr'])){
+if (empty($r['yearID'])){
     $year = "No Academic Year";
 }else{
-    $year = $r['admissionYr'];
+    $year = $r['yearID'];
 }
 
-if (empty($r['course'])){
-    $course ="No Course";
+if (empty($r['programme'])){
+    $programme ="No Programme";
 }else{
-    $course = $r['course'];
+    $programme = $r['programme'];
 }
 
 if (empty($r['categoryID'])){
     $category = "No Student Category";
 }elseif ($r['categoryID'] == 1){
-    $category = "Rec";
+    $category = "Local Student";
 }else{
-    $category = "weekend";
+    $category = "Foreign Student";
+}
+
+if(!isset($r['stream'])){
+    $stream = "No Stream";
+}elseif ($r['stream'] == 1){
+    $stream = "Regular Student";
+}else{
+    $stream = "Weekend Student";
 }
 
 if(empty($r['statusID'])){
@@ -174,10 +182,10 @@ if (empty($r['picture'])){
                 </div>
 
                 <div class="profile-info-row">
-                    <div class="profile-info-name"> Enroll Course </div>
+                    <div class="profile-info-name"> Programme </div>
 
                     <div class="profile-info-value">
-                        <span class="editable" id="enroll-course"><?php echo $course;?></span>
+                        <span class="editable" id="enroll-course"><?php echo $programme;?></span>
                     </div>
                 </div>
 
@@ -186,6 +194,14 @@ if (empty($r['picture'])){
 
                     <div class="profile-info-value">
                         <span class="editable" id="student-category"><?php echo $category;?></span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Student Stream  </div>
+
+                    <div class="profile-info-value">
+                        <span class="editable" id="student-category"><?php echo $stream;?></span>
                     </div>
                 </div>
 

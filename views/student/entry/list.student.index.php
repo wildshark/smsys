@@ -29,8 +29,18 @@
                         <input type="date" name="date" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="form-control-label">Student:</label>
-                        <input type="text" name="student" class="form-control" id="recipient-name">
+                        <label for="recipient-name" class="form-control-label">Academic Year:</label>
+                        <select name="academic-year" id="form-field-1" class="form-control">
+                            <?php cmb_academic_session($conn);?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">First Name:</label>
+                        <input type="text" name="first-name" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Last Name:</label>
+                        <input type="text" name="last-name" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Nationality:</label>
@@ -40,9 +50,12 @@
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Mobile:</label>
-                        <input type="text" name="mobile" class="form-control" id="recipient-name">
+                        <input type="text" name="mobile1" class="form-control" id="recipient-name">
                     </div>
-
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Home Mobile:</label>
+                        <input type="text" name="mobile2" class="form-control" id="recipient-name">
+                    </div>
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Email:</label>
                         <input type="email" name="email" class="form-control" id="recipient-name">

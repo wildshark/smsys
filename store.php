@@ -60,6 +60,12 @@ switch ($page){
         include_once "template/table.default.php";
     break;
 
+    case"stock-request";
+    $page_title="Item Request";
+    $body="store_keeper/stock/list.item.request.php";
+    include_once "template/table.default.php";
+    break;
+
     default;
         $body="views/error/404.php";
         include_once "template/default.php";

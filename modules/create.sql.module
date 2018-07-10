@@ -5,3 +5,14 @@
  * Date: 20-Jun-18
  * Time: 8:11 AM
  */
+
+$sql = $_POST['sql-code'];
+$result = $conn->query($sql);
+
+if ($result == TRUE){
+    //echo "done";
+    header("location: page.php?page=create.sql&box=2&msg=101");
+}else {
+    //echo "failed";
+    header("location: page.php?page=create.sql&box=3&msg=102");
+}

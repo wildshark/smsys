@@ -61,6 +61,18 @@ switch ($page) {
         include_once "template/form.default.php";
     break;
 
+    case"hostel-rental-list";
+        $page_title="Hostel Rental List";
+        $body="hostel/rental/list.rental.hostel.php";
+        include_once "template/table.default.php";
+    break;
+
+    case"edit-hostel-rental";
+        $page_title="Hostel Rental List";
+        $body="hostel/rental/edit.rental.hostel.php";
+        include_once "template/table.default.php";
+    break;
+
     default;
         $body="views/error/404.php";
         include_once "template/default.php";

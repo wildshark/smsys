@@ -6,7 +6,13 @@
  * Time: 3:56 PM
  */
 
-if ($_GET['submit'] == 'staff-position'){
+ if (isset($_GET['submit'])){
+     $submit = $_GET['submit'];
+ }else{
+    $submit = $_POST['submit'];
+ }
+
+if ($submit == 'staff-position'){
 
     $position = $_GET['position'];
     $sql = "INSERT INTO `position_list` (`position`) VALUES ('$position')";
@@ -16,10 +22,20 @@ if ($_GET['submit'] == 'staff-position'){
     }else{
         echo "error";
     }
-}elseif ($_GET['submit'] == 'staff-department'){
+}elseif ($submit == 'staff-department'){
 
     $department = $_GET['department'];
     $sql = "INSERT INTO `department` (`department`) VALUES ('$department')";
+    $result = $conn->query($sql);
+    if ($result == TRUE){
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+    }else{
+        echo "error";
+    }
+}elseif($submit == 'rental-item'){
+
+    $rental_item = $_GET['rental-item'];
+    $sql = "INSERT INTO list_rental (`rental_type`) VALUES ('$rental_item')";
     $result = $conn->query($sql);
     if ($result == TRUE){
         header("Location: " . $_SERVER["HTTP_REFERER"]);

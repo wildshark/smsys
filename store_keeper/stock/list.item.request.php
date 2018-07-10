@@ -96,7 +96,7 @@ function get_stock_order_data($conn){
 ?>
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#create-school">New Order</button>
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#create-school">New Request </button>
 
 <div class="modal fade" id="create-school" tabindex="-1" role="dialog" aria-labelledby="create-school" aria-hidden="true">
     <div class="modal-dialog" role="document">

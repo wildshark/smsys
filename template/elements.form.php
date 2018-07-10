@@ -75,7 +75,7 @@
             <a href="index.html" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
-                    Ace Admin
+                    <?php echo $template->page_title;?>
                 </small>
             </a>
         </div>

@@ -9,6 +9,7 @@
 include_once "controls/config.php";
 include_once "controls/db.connection.php";
 include_once "controls/global.php";
+include_once "controls/control.php";
 include_once "modules/datasheet/datasheet.module";
 include_once "modules/datasheet/profile.datasheet.module";
 include_once "msg_box/msg.box.module";
@@ -22,19 +23,50 @@ if ($_GET['page']){
 }
 
 if ($page =="login"){
-    logout ();
+    logout ($conn);
 }else {
     if (!isset($_SESSION['username'])) {
-        logout ();
+        logout ($conn);
     } else {
 
         $_SESSION['url-page'] = $page;
         switch ($page) {
 
+            case"create.sql";
+                $page_title = "Run SQL Script";
+                $body= "setup/setup.sql.php";
+                include_once "template/form.element.php";
+            break;
+
+
             case"dashboard";
                 $body = "views/dashboard/dashboard.php";
                 include_once "template/default.php";
                 break;
+
+            case"student.admission-list" ;
+                $page_title = "Student Admission List";
+                $body = "views/student/entry/list.student.index.php";
+                include_once "template/table.default.php";
+            break;
+
+            case"add-student-admission";
+                $page_title = "Student Admission";
+                $body = "views/student/entry/add.student.index.php";
+                include_once "template/form.element.php";
+            break;
+
+            case"student-confirmation";
+            //echo "student-confirmation";
+                include_once "confirmation/new.student.confirmation.php";
+            break;
+
+            case"view-student-admission";
+            //echo"view-student-admission";
+                $page_title = "Student Admission Profile";
+                $body = "views/student/entry/index.admission.student.php";
+                include_once "template/table.default.php";
+            break;
 
             case"student-list";
                 $page_title = "Student List";
@@ -65,6 +97,18 @@ if ($page =="login"){
                 $body = "views/student/view.student.php";
                 include_once "template/form.profile.php";
                 break;
+
+            case"student-admission-index";
+                $page_title = "Add Student Admission Index";
+                $body = "views/student/admission/list.student.admission.php";
+                include_once "template/table.default.php";
+            break;
+
+            case"view-student.admission.index";
+                $page_title = "View Student's Profile";
+                $body = "views/student/admission/view.student.admission.index.php";
+                include_once "template/form.profile.php";
+            break;
 
             case"add-enrollment";
                 $page_title = "Add Enrollment";
@@ -223,6 +267,8 @@ if ($page =="login"){
                 $body = "views/administration/list.administration.php";
                 include_once "template/table.default.php";
             break;
+
+
 
 
             case"table";

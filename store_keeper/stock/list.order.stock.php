@@ -5,6 +5,7 @@
  * Date: 05-Jun-18
  * Time: 9:18 PM
  */
+
 function get_stock_order_data($conn){
 
     $sql = "SELECT * FROM get_stock_details";
@@ -95,7 +96,7 @@ function get_stock_order_data($conn){
 ?>
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#create-school">Create School/Faculty</button>
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#create-school">New Order</button>
 
 <div class="modal fade" id="create-school" tabindex="-1" role="dialog" aria-labelledby="create-school" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -108,36 +109,43 @@ function get_stock_order_data($conn){
                     </button>
                 </div>
                 <div class='modal-body'>
-                    <input type='hidden' name='ui' value='school'>
-                    <input type='hidden' name='school-code' value=''>
+                    <input type='hidden' name='ui' value='store-keeper'>
                     <div class='form-group'>
                         <label for='recipient-name' class='form-control-label'>Order Date:</label>
-                        <input type='date' name='school' value='' class='form-control' id='recipient-name'>
+                        <input type='date' name='order-date' value='' class='form-control' id='recipient-name'>
                     </div>
                     <div class='form-group'>
                         <label for='recipient-name' class='form-control-label'>Item </label>
-                        <input type='text' name='prefix' value='' class='form-control' id='recipient-name'>
+                        <select name='item' value='' class='form-control' id='recipient-name'>
+                            <?php stock_list($conn);?>
+                        </select>
                     </div>
                     <div class='form-group'>
                         <label for='recipient-name' class='form-control-label'>Details </label>
-                        <input type='text' name='prefix' value='' class='form-control' id='recipient-name'>
+                        <input type='text' name='details' value='' class='form-control' id='recipient-name'>
                     </div>
                     <div class='form-group'>
                         <label for='recipient-name' class='form-control-label'>Ref. No# </label>
-                        <input type='text' name='prefix' value='' class='form-control' id='recipient-name'>
+                        <input type='text' name='ref-no' value='<?php echo date("ydmhis");?>' class='form-control' id='recipient-name'>
                     </div>
                     <div class='form-group'>
                         <label for='recipient-name' class='form-control-label'>Qty </label>
-                        <input type='text' name='prefix' value='' class='form-control' id='recipient-name'>
+                        <input type='number' name='qty' value='' class='form-control' id='recipient-name'>
+                    </div>
+                    <div class='form-group'>
+                        <label for='recipient-name' class='form-control-label'>Department</label>
+                        <select name='department' value='' class='form-control' id='recipient-name'>
+                            <?php department($conn);?>
+                        </select>
                     </div>
                     <div class='form-group'>
                         <label for='recipient-name' class='form-control-label'>Remark </label>
-                        <input type='text' name='prefix' value='' class='form-control' id='recipient-name'>
+                        <input type='text' name='remark' value='' class='form-control' id='recipient-name'>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="submit" value="add" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="submit" value="add-order" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>

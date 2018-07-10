@@ -47,7 +47,7 @@ if (empty($error) || empty($alert)){
             $msg="System operation failed, please try again.";
             break;
         case 10:
-            $msg="SVC number most be 7 characters";
+            $msg="Student index number already exist";
             break;
         case 11:
             $msg="Connection to server failed";
@@ -64,23 +64,29 @@ if (empty($error) || empty($alert)){
         case 100:
             $msg="Terminal Script Error 100. Contact system administrator.";
             break;
+        case 101:
+            $msg="SQL script has run successfully";
+            break;
+        case 102:
+            $msg="Error running SQL script";
+            break;
         default:
             $msg ="Fill in all text field.";
     }
 
     function alert_box_type($alert,$msg){
 
-        if ($alert== 1){ //information
-            $alert_box="alert alert-info alert-block";
+        if ($alert == 1){ //information
+            $alert_box = "alert alert-info alert-block";
         }elseif ($alert == 2){ //success
-            $alert_box="alert alert-success alert-block";
+            $alert_box = "alert alert-success alert-block";
         }elseif ($alert == 3){ //error
-            $alert_box="alert alert-error alert-block";
+            $alert_box = "alert alert-warning alert-block";
         }elseif ($alert == 4){//danger
-            $alert_box="alert alert-danger alert-block";
+            $alert_box = "alert alert-danger alert-block";
         }
 
-        if ($alert== 1){ //information
+        if ($alert == 1){ //information
             $alert_label="Info";
         }elseif ($alert == 2){ //success
             $alert_label="Success";

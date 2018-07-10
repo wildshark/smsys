@@ -5,6 +5,33 @@
  * Date: 05-Mar-18
  * Time: 10:39 PM
  */
+if (isset($_GET['first-name'])){
+    $f_name = ucfirst($_GET['first-name']);
+    $l_name = ucfirst($_GET['surname']);
+    $admission = ucwords($_GET['admission-number']);
+    $email = $_GET['email'];
+    $mobile1 = $_GET['mobile-1'];
+    $mobile2 = $_GET['mobile-2'];
+    $programme = $_GET['programme'];
+    $year = $_GET['year'];
+    $category = $_GET['category'];
+    $stream = $_GET['stream'];
+    $campus = $_GET['campus-status'];
+}else{
+    $f_name = '';
+    $l_name = '';
+    $admission = '';
+    $email = '';
+    $mobile1 = '';
+    $mobile2 = '';
+    $programme = '';
+    $year = '';
+    $category ='';
+    $stream = '';
+    $campus ='';
+}
+
+
 ?>
 <form class="form-horizontal" role="form" method="post" action="model.php" enctype="multipart/form-data">
     <input type="hidden" name="ui" value="student">
@@ -12,7 +39,7 @@
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">First Name </label>
 
         <div class="col-sm-9">
-            <input type="text" name="first-name" id="form-field-1" placeholder="First Name" class="col-xs-10 col-sm-5" />
+            <input type="text" name="first-name" value="<?php echo $f_name;?>" id="form-field-1" placeholder="First Name" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 
@@ -22,7 +49,7 @@
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Surname </label>
 
         <div class="col-sm-9">
-            <input type="text" name="surname" id="form-field-1" placeholder="Surname" class="col-xs-10 col-sm-5" />
+            <input type="text" name="surname" value="<?php echo $l_name;?>" id="form-field-1" placeholder="Surname" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 
@@ -32,7 +59,7 @@
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Admission Number </label>
 
         <div class="col-sm-9">
-            <input type="text" name="admission-number" id="form-field-1" placeholder="Admission Number" class="col-xs-10 col-sm-5" />
+            <input type="text" name="admission-number" value="<?php echo $admission;?>" id="form-field-1" placeholder="Admission Number" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 
@@ -42,7 +69,7 @@
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mobile 1 </label>
 
         <div class="col-sm-9">
-            <input type="text" name="mobile-1" id="form-field-1" placeholder="Mobile 1" class="col-xs-10 col-sm-5" />
+            <input type="text" name="mobile-1" value="<?php echo $mobile1;?>" id="form-field-1" placeholder="Mobile 1" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 
@@ -52,7 +79,7 @@
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mobile 2 </label>
 
         <div class="col-sm-9">
-            <input type="text" name="mobile-2" id="form-field-1" placeholder="Mobile 2" class="col-xs-10 col-sm-5" />
+            <input type="text" name="mobile-2" value="<?php echo $mobile2;?>" id="form-field-1" placeholder="Mobile 2" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 
@@ -62,7 +89,7 @@
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Email </label>
 
         <div class="col-sm-9">
-            <input type="email" name="email" id="email" placeholder="Email" class="col-xs-10 col-sm-5" />
+            <input type="email" name="email" value="<?php echo $email;?>" id="email" placeholder="Email" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 

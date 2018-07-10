@@ -6,14 +6,20 @@
  * Time: 12:29 PM
  */
 
-if ($_GET['submit'] == "add-block"){
+if (isset($_GET['submit'])){
+    $submit = $_GET['submit'];
+}elseif (isset($_POST['submit'])){
+    $submit = $_POST['submit'];
+}
+
+if ($submit == "add-block"){
 
     $block = $_GET['name'];
     $add = "INSERT INTO `hostel_block` (`block_name`) VALUES ('$block')";
     $result = $conn->query($add);
 
 
-}elseif ($_GET['submit'] == "add-room"){
+}elseif ($submit == "add-room"){
 
     $block = $_GET['block'];
     $room = $_GET['room'];
@@ -21,7 +27,7 @@ if ($_GET['submit'] == "add-block"){
 
     $add ="INSERT INTO `hostel_room` (`blockID`, `room`, `bed`) VALUES ('$block', '$room', '$bed')";
     $result = $conn->query($add);
-}elseif ($_GET['submit'] == "add-booking"){
+}elseif ($submit == "add-booking"){
 
     $date = $_GET['date'];
     $student = $_GET['student'];
@@ -34,7 +40,7 @@ if ($_GET['submit'] == "add-block"){
     $result = $conn->query($add);
 
 
-}elseif ($_GET['submit'] == "update-booking"){
+}elseif ($submit == "update-booking"){
 
     $rowID = $_SESSION['row-id'];
     $room = $_GET['room'];
@@ -49,9 +55,64 @@ if ($_GET['submit'] == "add-block"){
         $update = "UPDATE `hostel_detail` SET  `roomID`='$room', `book_in`='$book_in' WHERE (`userID`='$rowID') LIMIT 1";
       $result = $conn->query($update);
     }
+
+}elseif ($submit == "add-rental"){
+
+    $date = $_POST['date'];
+    $group = $_POST['name-of-group'];
+    $address = $_POST['contact-address'];
+    $mobile1 = $_POST['mobile-1'];
+    $mobile2 = $_POST['mobile-2'];
+    $rental_type = $_POST['rental-type'];
+    $population = $_POST['population'];
+    $ref = $_POST['ref-number'];
+    $start_date = $_POST['start-date'];
+    $end_date = $_POST['end-date'];
+    $amount = $_POST['bill-amount'];
+    $discount = $_POST['discount'];
+
+  echo  $add = "INSERT INTO `hostel_rental` (`refNo`, `tranDate`, `church_name`, `people`,`start_date`,`end_date`,`amount`,`discount`,`mobile1`,`mobile2`,`rental_typeID`,`contact_address`)
+     VALUES ('$ref', '$date', '$group', '$population','$start_date','$end_date','$amount','$discount','$mobile1','$mobile2','$rental_type','$address')";
+    $result = $conn->query($add);
+
+}elseif ($submit == "edit-rental"){
+
+    $id = $_SESSION['rental-id'];
+    $date = $_POST['date'];
+    $group = $_POST['name-of-group'];
+    $address = $_POST['contact-address'];
+    $mobile1 = $_POST['mobile-1'];
+    $mobile2 = $_POST['mobile-2'];
+    $rental_type = $_POST['rental-type'];
+    $population = $_POST['population'];
+    $ref = $_POST['ref-number'];
+    $start_date = $_POST['start-date'];
+    $end_date = $_POST['end-date'];
+    $amount = $_POST['bill-amount'];
+    $discount = $_POST['discount'];
+    $status =$_POST['status'];
+
+    $update = "UPDATE `hostel_rental` SET `refNo`='$ref', `tranDate`='$date', `church_name`='$group', `people`='$population', `amount`='$amount', `discount`='$discount', `start_date`='$start_date', 
+    `end_date`='$end_date', `statusID`='$status', `contact_address`='$address',`mobile1`='$mobile1',`mobile2`='$mobile2',`rental_typeID`='$rental_type' WHERE (`rentalID`='$id')";
+    $result = $conn->query($update);
+
+
+}elseif ($submit == "del-rental"){
+
+    $id = $_GET['id'];
+    $del = "DELETE FROM `hostel_rental` WHERE (`rentalID`='$id')";
+    $result = $conn->query($del);
+
+}elseif($submit == 'status-rental'){
+
+    $rental = $_GET['id'];
+    $days = $_GET['days'];
+
+    $sql ="UPDATE `hostel_rental` SET `NoOfdays`='$days', `statusID`='2' WHERE (`rentalID`='$rental')";
+    $result = $conn->query($sql);
 }
 
-if ($result === TRUE){
+if ($result == TRUE){
 
     header("location: ".  $_SERVER['HTTP_REFERER']);
 }

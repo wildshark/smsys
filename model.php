@@ -8,6 +8,7 @@
 
 include_once "controls/db.connection.php";
 include_once "controls/config.php";
+include_once "controls/control.php";
 
 session_start();
 
@@ -19,7 +20,16 @@ if (isset($_GET['ui'])){
 
 switch ($page){
 
+    case"sql-setup-text";
+     include_once "modules/create.sql.module";
+    break;
+
+    case "student-admission-entry";
+        include_once "modules/form/student.admission.entry.module";
+    break;
+
     case"student";
+       // echo"student admission and indexing";
         include_once "modules/form/student.module";
     break;
 
@@ -28,6 +38,7 @@ switch ($page){
     break;
 
     case "course";
+        //echo "course";
         include_once "modules/form/course.module";
     break;
 
@@ -44,6 +55,7 @@ switch ($page){
     break;
 
     case"operation";
+        //echo "operation";
         include_once "modules/operation/staff.operation.module";
     break;
 
@@ -56,6 +68,7 @@ switch ($page){
     break;
 
     case "store-keeper";
+        //echo "store-keeper";
         include_once "modules/stock/stock.module";
     break;
 

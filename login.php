@@ -42,20 +42,16 @@ if (isset($_POST)){
 session_start();
 $_SESSION['username'] = $username;
 
-function login($conn,$username,$password){
-
     $sql = "SELECT * FROM get_admin WHERE username = '$username' AND  password = '$password'";
     $result = $conn->query($sql);
     $admin = $result->fetch_assoc();
 
     if ($admin > 0){
-
+        $user_access = $admin['access'];
         $token = uniqid();
-
         header("location: page.php?page=dashboard&box=1&msg=1");
+
     }else{
         header("location: ".  $_SERVER['HTTP_REFERER']);
         exit(0);
     }
-}
-login($conn,$username,$password);

@@ -8,7 +8,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "usbw";
+$password = "";
 $database = "school_data";
 
 // Create connection

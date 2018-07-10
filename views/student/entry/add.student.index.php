@@ -55,7 +55,7 @@ if($campus == 1){
     <input type="hidden" name="student" value="<?php echo $id;?>">
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Admission Number </label>
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Serial Number </label>
 
         <div class="col-sm-9">
             <input type="text" name="admission-number" readonly id="form-field-1" value="<?php echo $admission;?>" placeholder="Admiaaion Number" class="col-xs-10 col-sm-5" />
@@ -182,7 +182,7 @@ if($campus == 1){
     <div class="hr hr-dotted"></div>
 
     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="passport">Add Passport Picture:</label>
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="passport">Add Passport Picture</label>
 
         <div class="col-xs-12 col-sm-9">
             <div class="clearfix">

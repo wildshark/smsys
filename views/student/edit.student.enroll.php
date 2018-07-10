@@ -5,6 +5,7 @@
  * Date: 19-May-18
  * Time: 10:28 PM
  */
+
 $id = $_GET['detail'];
 $sql ="select * from get_student_enrollment WHERE enrollID ='$id'";
 $result = $conn->query($sql);

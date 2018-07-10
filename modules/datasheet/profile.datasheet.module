@@ -6,7 +6,10 @@
  * Time: 10:14 PM
  */
 
+
+
 function enrollment($conn,$id){
+
     $sql="SELECT * FROM get_enrollment WHERE  studentID = '$id'";
     $result=$conn->query($sql);
     while ($r=$result->fetch_assoc()){

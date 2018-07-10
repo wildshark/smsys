@@ -165,66 +165,6 @@
 </div>
 <!-- End Form Qualification-->
 
-<!--Start Form Promotion & Rank-->
-<div id="promotion-rank-form" class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="blue bigger">Please fill the following form fields</h4>
-            </div>
-            <form method="get" action="model.php" enctype="multipart/form-data">
-                <input type="hidden" name="ui" value="staff-promotion-rank">
-                <div class="modal-body">
-                    <div class="row">
-
-                        <div class="col-xs-3 col-sm-4">
-
-                            <div class="form-group">
-                                <label for="form-field-username">Promotion Date</label>
-
-                                <div>
-                                    <input type="date" name="date" id="form-field-username" placeholder="" value="" />
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="form-field-username">Approved by</label>
-
-                                <div>
-                                    <input type="text" name="approved" id="form-field-username" placeholder="Approved Name" value="" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-4 col-sm-4">
-                            <div class="form-group">
-                                <label for="form-field-select-3">Promotion/Rank</label>
-
-                                <div>
-                                    <select name="promotion">
-                                        <option value="">&nbsp;</option>
-                                        <?php position($conn)?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" name="submit" value="add" class="btn btn-sm btn-primary">
-                        <i class="ace-icon fa fa-check"></i>
-                        Save
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- End Promotion & Rank-->
-
 <!--Start Form Courses Taught-->
 <div id="courses-taught-form" class="modal" tabindex="-1">
     <div class="modal-dialog">
@@ -286,7 +226,27 @@
 </div>
 <!-- End Form Courses Taught-->
 
-
+<!-- hostel rental list-->
+<div class="modal fade" id="add-rental-modal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <form method="get" action="model.php" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Rental Name</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="ui" value="operation">
+                    <input type="text" id="form-field-1" name="rental-item" />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="submit" value="rental-item" class="btn btn-default" >Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Stop hostel rental list-->
 
 
 

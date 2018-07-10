@@ -10,20 +10,20 @@ If ($_GET['submit'] == "add"){
 
     $date = $_GET['date'];
     $year = $_GET['year'];
-    $semester = $_GET['calendar'];
+    $semester = $_GET['semester'];
     $level = $_GET['level'];
     $course = $_GET['course'];
     $school = $_GET['school'];
     $lecture = $_GET['lecture'];
 
-    $add = "INSERT INTO `result_main` (`result_date`, `schoolID`, `staffID`, `levelID`, `yearID`, `semesterID`, `courseID`) VALUES ('$date', '$school', '$lecture', '$level', '$year', c$semesteralendar, '$course')";
+    $add = "INSERT INTO `result_main` (`result_date`, `schoolID`, `staffID`, `levelID`, `yearID`, `semesterID`, `courseID`) VALUES ('$date', '$school', '$lecture', '$level', '$year', $semester, '$course')";
     $result = $conn->query($add);
 
 }elseif($_GET['submit'] =="add-marks"){
 
     $id = $_GET['result'];
     $year = $_GET['year'];
-    $semester = $calendarmester'];
+    $semester = $_GET['semester'];
     $course = $_GET['course'];
     $level = $_GET['level'];
 

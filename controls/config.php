@@ -8,14 +8,20 @@
 
 date_default_timezone_set('UTC');
 
-$now = date("Y-m-d ");
+$now = date("Y-m-d H:i:s");
 
 $template =new stdClass();
 
-$template->header ="";
-$template->title ="";
+$template->page_header ="e4school";
+$template->page_title ="e4school ver 3.0.1";
 $template->version ="";
 $template->copyright ="";
+$template->developer = "iQuipe Digital";
+
+$template->twitter ="#";
+$template->facebook ="#";
+$template->google ="#";
 
 $template->body ="";
 $template->username ="";
+
