@@ -9,11 +9,12 @@
 
 <form class="form-horizontal" method="get" action="model.php"  role="form">
     <input type="hidden" name="ui" value="lecture-note">
+    
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Date </label>
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Title </label>
 
         <div class="col-sm-9">
-            <input type="date" name="date" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+            <input type="text" name="title" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 
@@ -59,11 +60,11 @@
     <div class="space-4"></div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Department </label>
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> School </label>
 
         <div class="col-sm-9">
-            <select name="department" class="col-xs-10 col-sm-5">
-                <?php department($conn); ?>
+            <select name="school" class="col-xs-10 col-sm-5">
+                <?php cmb_school_data($conn); ?>
             </select>
         </div>
     </div>
@@ -71,23 +72,26 @@
     <div class="space-4"></div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Title </label>
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Course Code </label>
 
         <div class="col-sm-9">
-            <input type="text" name="title" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> file </label>
-
-        <div class="col-sm-9">
-            <input type="file" name="file" id="id-input-file-2"  placeholder="" class="col-xs-10 col-sm-5" />
+            <select name="department" class="col-xs-10 col-sm-5">
+                <?php cmb_course($conn); ?>
+            </select>
         </div>
     </div>
 
     <div class="space-4"></div>
 
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Attach File </label>
+
+        <div class="col-sm-9">
+            <input type="file" name="file" id=""  placeholder="" class="col-xs-10 col-sm-5" />
+        </div>
+    </div>
+
+    <div class="space-4"></div>
 
     <div class="clearfix form-actions">
         <div class="col-md-offset-3 col-md-9">

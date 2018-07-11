@@ -92,6 +92,7 @@ if (isset($_POST['submit'])){
     }elseif ($submit === "add-admission.index"){
 
         $date= date("Y-m-d");
+        $serial = $_POST['admission-number'];
         $f_name = ucfirst($_POST['first-name']);
         $l_name = ucfirst($_POST['surname']);
         //$admission = ucwords($_POST['admission-number']);
@@ -104,18 +105,19 @@ if (isset($_POST['submit'])){
         $stream = $_POST['stream'];
         $campus = $_POST['campus-status'];
 
-        $c = md5($f_name."".$l_name."".$mobile1);
-        $check_student = "SELECT * FROM get_student_profile_detail";
-        $check = $conn->query($check_student);
-        while ($check_result = $check->fetch_assoc()){
-            $t = md5($check_result['first_name']."".$check_result['surname']."".$check_result['mobile1']);
-        }
+       // $input_data = md5($f_name."".$l_name."".$serial);
 
-        if ( $t === $c){
-            //echo "data exist in database";
+       $check_student = "SELECT * FROM get_student_profile_detail WHERE serial_no = '$serial'";
+        $check = $conn->query($check_student);
+        $check_result = $check->fetch_assoc();
+
+        //echo $check_result['picture'];
+
+        if ($check_result > 0){
+            //echo"data exit in database";
             header("location: page.php?page={$url_page}&id={$_SESSION['student-id']}&box=4&msg=10");
         }else{
-            //echo "data do not exist in database";
+            //echo"data dont exit in database";
 
             $year = substr($academic_year,0,4);
 
@@ -125,6 +127,7 @@ if (isset($_POST['submit'])){
             $prefix_index = $prefix['prog_prefix'];
 
             if (!isset($prefix_index) Or empty($prefix_index)){
+                
                 $data = "first-name=".$f_name.
                     "&surname=".$l_name.
                     "&email=".$email.
@@ -134,7 +137,8 @@ if (isset($_POST['submit'])){
                     "&year=".$year.
                     "&category=".$category.
                     "&stream=".$stream.
-                    "&campus-status=".$campus;
+                    "&campus-status=".$campus.
+                    "&serial=".$serial;
                 header("location: page.php?page={$url_page}&box=4&msg=10&{$data}");
 
             }else{
@@ -185,11 +189,12 @@ if (isset($_POST['submit'])){
                             $file_destination = "uploads/student/".$file_new_name;
                             move_uploaded_file($file_tmp_name,$file_destination);
 
-                            $add_data = "INSERT INTO `student_profile` (`admissionDate`, `first_name`, `surname`, `admissionNo`, `mobile1`, `mobile2`, `email`, `progID`, `yearID`, `categoryID`, `stream`, `campus_status`,`picture`) 
-VALUES ('$date', '$f_name', '$l_name', '$admission', '$mobile1', '$mobile2', '$email', '$programme', '$academic_year', '$category', '$stream', '$campus','$file_destination')";
+                            $add_data = "INSERT INTO `student_profile` (`admissionDate`, `first_name`, `surname`, `admissionNo`, `mobile1`, `mobile2`, `email`, `progID`, `yearID`, `categoryID`, `stream`, `campus_status`,`picture`,`serial_no`) 
+VALUES ('$date', '$f_name', '$l_name', '$admission', '$mobile1', '$mobile2', '$email', '$programme', '$academic_year', '$category', '$stream', '$campus','$file_destination','$serial')";
                             $result = $conn->query($add_data);
                             $error_no = "2";
                             $url_page = "student-list";
+
                         }else{
                             //echo"file is to large to upload";
                             header("location: page.php?page=".$url_page."&box=3&msg=2");
@@ -202,10 +207,11 @@ VALUES ('$date', '$f_name', '$l_name', '$admission', '$mobile1', '$mobile2', '$e
                     //echo"you can nout upload this kind of file";
                     header("location: page.php?page=".$url_page."&box=3&msg=7");
                 }
-                //check student index
+            
             }
 
         }
+        
     }elseif ($submit == 'update'){
 
         $date= date("Y-m-d");

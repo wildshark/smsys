@@ -161,7 +161,7 @@ function cmb_course($conn){
     $sql='SELECT * FROM `get_course`';
     $result=$conn->query($sql);
     while ($r=$result->fetch_assoc()){
-        echo"<option value='{$r['courseID']}'>{$r['course']}</option>";
+        echo"<option value='{$r['courseID']}'>{$r['course_code']} - {$r['course']}</option>";
     }
 }
 
