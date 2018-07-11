@@ -451,6 +451,51 @@ function programme_data($conn){
     }
 }
 
+function position_data($conn){
+    $sql='SELECT * FROM `get_position`';
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+
+        If ($r['statusId'] == 1){
+            $status = "Active";
+        }else{
+            $status = "Passive";
+        }
+
+        echo "
+                <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+                    <td>{$r['positionID']}</td>
+                    <td>{$r['position']}</td>
+                    <td class='hidden-480'>{$r['category_name']}</td>
+                    <td class='hidden-480'></td>
+                    <td class='hidden-480'>
+                        <span class='label label-sm label-warning'>{$status}</span>
+                    </td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                          
+                            <a class='green' href='page.php?page=edit-position&detail={$r['positionID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=operation&submit=del-position&detail={$r['positionID']}'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}
+
+
 function staff_profile_data($conn){
     $sql='SELECT * FROM `get_staff_profile`';
     $result=$conn->query($sql);

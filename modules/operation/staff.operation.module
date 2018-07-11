@@ -42,6 +42,40 @@ if ($submit == 'staff-position'){
     }else{
         echo "error";
     }
+}elseif ($submit === 'edit-staff-position'){
+    
+    $id = $_SESSION['position-id'];
+    $poistion = $_GET['position'];
+    $department = $_GET['department'];
+    $sql ="UPDATE `position_list` SET `position`='$poistion', `categoryID`='$department' WHERE (`positionID`='$id')";
+    $result = $conn->query($sql);
+    if ($result == TRUE){
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+    }else{
+        echo "error";
+    }
+}elseif($submit ==="del-position"){
+    
+    $id = $_GET['detail'];
+    $sql = "DELETE FROM `position_list` WHERE (`positionID`='$id')";
+    $result = $conn->query($sql);
+    if ($result == TRUE){
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+    }else{
+        echo "error";
+    }
+}elseif($submit ==="add-staff-position"){
+    
+    $poistion = $_GET['position'];
+    $department = $_GET['department'];
+    $sql ="INSERT INTO `position_list` (`position`, `categoryID`) VALUES ('$poistion', '$department')";
+    $result = $conn->query($sql);
+    if ($result == TRUE){
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+    }else{
+        echo "error";
+    }
+
 }else{
     header("page.php?page=500");
 }

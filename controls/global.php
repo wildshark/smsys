@@ -219,6 +219,16 @@ function department($conn){
     }
 }
 
+function department_unit($conn){
+
+    $sql="SELECT * from get_category_list where classificationID = 6";
+    $result = $conn->query($sql);
+    while($r=$result->fetch_assoc()){
+        echo"<option value='{$r['categoryID']}'>{$r['category_name']}</option>";
+    }
+}
+
+
 function stock_list($conn){
     //get_stock_list
 

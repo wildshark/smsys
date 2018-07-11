@@ -148,33 +148,13 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="">
-            <a href="" data-toggle="modal" data-target="#myModal">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Position
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-        <li class="">
-            <a href="" data-toggle="modal" data-target="#add-department">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Department
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
     </ul>
 </li>
 
-    <li class="">
+<li class="">
     <a href="#" class="dropdown-toggle">
-        <i class="menu-icon fa fa-desktop"></i>
-        <span class="menu-text">
-		    Programme
-		</span>
+        <i class="menu-icon fa fa-pencil-square-o"></i>
+        <span class="menu-text"> Calendar </span>
 
         <b class="arrow fa fa-angle-down"></b>
     </a>
@@ -183,57 +163,25 @@
 
     <ul class="submenu">
 
-        <!--li class="">
-            <a href="page.php?page=add-programme">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Add Programme
-            </a>
-
-            <b class="arrow"></b>
-        <li-->
-
         <li class="">
-            <a href="page.php?page=programme-list&box=1&msg=1">
+            <a href="page.php?page=list-academic-calendar&box=1&msg=1">
                 <i class="menu-icon fa fa-caret-right"></i>
-                Programme List
+                Academic Calender
             </a>
 
             <b class="arrow"></b>
         </li>
+
+        <li class="">
+            <a href="page.php?page=add-semester&box=1&msg=1">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Semester
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
     </ul>
-</li>
-
-    <li class="">
-        <a href="#" class="dropdown-toggle">
-            <i class="menu-icon fa fa-pencil-square-o"></i>
-            <span class="menu-text"> Calendar </span>
-
-            <b class="arrow fa fa-angle-down"></b>
-        </a>
-
-        <b class="arrow"></b>
-
-        <ul class="submenu">
-
-            <li class="">
-                <a href="page.php?page=list-academic-calendar&box=1&msg=1">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Academic Calender
-                </a>
-
-                <b class="arrow"></b>
-            </li>
-
-            <li class="">
-                <a href="page.php?page=add-semester&box=1&msg=1">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Semester
-                </a>
-
-                <b class="arrow"></b>
-            </li>
-
-        </ul>
     </li>
 
     <li class="">
@@ -294,6 +242,15 @@
             <li class="">
                 <a href="page.php?page=school-list&box=1&msg=1">
                     <i class="menu-icon fa fa-caret-right"></i>
+                    School
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
+                <a href="page.php?page=school-list&box=1&msg=1">
+                    <i class="menu-icon fa fa-caret-right"></i>
                     School/Faculty
                 </a>
 
@@ -303,20 +260,29 @@
             <li class="">
                 <a href="page.php?page=department-list&box=1&msg=1">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Department
+                    Faculty Department
                 </a>
 
                 <b class="arrow"></b>
             </li>
 
             <li class="">
-                <a href="page.php?page=school-list&box=1&msg=1">
+                <a href="page.php?page=position-list&box=1&msg=1">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    School List
+                    Position
                 </a>
 
                 <b class="arrow"></b>
             </li>
+
+            <li class="">
+            <a href="page.php?page=programme-list&box=1&msg=1">
+                <i class="menu-icon fa fa-caret-right"></i>
+                Programme
+            </a>
+
+            <b class="arrow"></b>
+        </li>
         </ul>
     </li>
 

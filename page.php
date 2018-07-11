@@ -38,7 +38,6 @@ if ($page =="login"){
                 include_once "template/form.element.php";
             break;
 
-
             case"dashboard";
                 $body = "views/dashboard/dashboard.php";
                 include_once "template/default.php";
@@ -66,6 +65,20 @@ if ($page =="login"){
                 $page_title = "Student Admission Profile";
                 $body = "views/student/entry/index.admission.student.php";
                 include_once "template/table.default.php";
+            break;
+
+            case"position-list";
+            //echo"position-list";
+                $page_title = "Position List";
+                $body = "views/position/list.position.php";
+                include_once "template/table.default.php";
+            break;
+
+            case "edit-position";
+            //echo"edit-position";
+                $page_title = "Edit Position";
+                $body = "views/position/edit.position.php";
+                include_once "template/form.element.php";
             break;
 
             case"student-list";
