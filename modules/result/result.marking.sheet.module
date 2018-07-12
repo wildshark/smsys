@@ -6,7 +6,13 @@
  * Time: 5:13 PM
  */
 
-If ($_GET['submit'] == "add"){
+if (isset($_GET['submit'])){
+    $submit = $_GET['submit'];
+}else{
+    $submit = $_POST['submit'];
+}
+
+If ($submit == "add"){
 
     $date = $_GET['date'];
     $year = $_GET['year'];
@@ -19,7 +25,7 @@ If ($_GET['submit'] == "add"){
     $add = "INSERT INTO `result_main` (`result_date`, `schoolID`, `staffID`, `levelID`, `yearID`, `semesterID`, `courseID`) VALUES ('$date', '$school', '$lecture', '$level', '$year', $semester, '$course')";
     $result = $conn->query($add);
 
-}elseif($_GET['submit'] =="add-marks"){
+}elseif($submit =="add-marks"){
 
     $id = $_GET['result'];
     $year = $_GET['year'];
@@ -36,7 +42,7 @@ If ($_GET['submit'] == "add"){
     $add="INSERT INTO `result_details` (`result_semID`, `yearID`, `semesterID`, `courseID`,`levelID`, `studentID`, `case_study`, `group_work`, `presentation`, `exam`) VALUES ('$id', '$year', '$semester', '$course','$level', '$student', '$case_study', '$group_work', '$presentation', '$examination')";
     $result = $conn->query($add);
 
-}elseif ($_GET['submit'] == 'update-marks'){
+}elseif ($submit == 'update-marks'){
 
     $id = $_GET['detail'];
     $case_study = $_GET['case-study'];
@@ -48,13 +54,13 @@ If ($_GET['submit'] == "add"){
 
     $result = $conn->query($update);
 
-}elseif ($_GET['submit'] == 'delete-marks'){
+}elseif ($submit == 'delete-marks'){
 
     $id = $_GET['detail'];
     $delete = "DELETE FROM `result_details` WHERE (`resultID`='$id')";
     $result = $conn->query($delete);
 
-}elseif ($_GET['submit'] == 'delete-marking-sheet'){
+}elseif ($submit == 'delete-marking-sheet'){
 
     $id = $_GET['detail'];
     $delete = "DELETE FROM `result_main` WHERE (`result_semID`='$id')";

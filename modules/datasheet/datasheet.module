@@ -1139,7 +1139,7 @@ function marking_sheet_data($conn){
                     <td>{$r['yearID']}</td>
                     <td class='hidden-480'>{$r['semester']}</td>
                     <td>{$r['levelID']}</td>
-                    <td class='hidden-480'>{$r['course_code']} - {$r['course']}</td>
+                    <td class='hidden-480'>{$r['course_code']} - {$r['course']} / {$r['programme']} / {$r['prefix']}</td>
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
