@@ -14,7 +14,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form method="get" action="model.php">
+            <form method="POST" action="model.php" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">New message</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -22,39 +22,52 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="ui" value="operation">
+                    <input type="hidden" name="ui" value="lecture-note">
 
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Topic:</label>
-                        <input type="date" name="topic" class="form-control" id="recipient-name">
+                        <input type="text" name="topic" class="form-control" id="recipient-name">
                     </div>
 
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Course:</label>
                         <select name="course" id="form-field-1" class="form-control">
-                            <?php cmb_academic_session($conn);?>
+                            <?php cmb_course($conn);?>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Semester:</label>
                         <select name="semester" id="form-field-1" class="form-control">
-                            <?php  get_list_semester($conn);?>
+                            <?php get_list_semester($conn);?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Level:</label>
+                        <select name="level" id="form-field-1" class="form-control">
+                            <option value ="100">100</option>
+                            <option value ="200">200</option>
+                            <option value ="300">300</option>
+                            <option value ="400">400</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Lecturer:</label>
                         <select name="lecturer" id="form-field-1" class="form-control">
-                            <?php  get_list_semester($conn);?>
+                            <?php get_staff_lecturer($conn);?>
                         </select>
                     </div>
 
-                    
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Attach File:</label>
+                        <input type="file" name="attach-file">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="submit" value="add-staff-position" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="submit" value="add-note" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
@@ -84,15 +97,13 @@
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th>Date</th>
-                    <th>Semester</th>
+                    <th>Course</th>
+                    <th>Topic</th>
                     <th class="hidden-480">level</th>
-
                     <th>
-                        <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                        Title
+                        Semester
                     </th>
-                    <th>file</th>
+                    <th>Programme</th>
                     <th></th>
                 </tr>
                 </thead>

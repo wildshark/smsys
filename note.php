@@ -23,6 +23,8 @@ if ($_GET['page']){
     $page = $_POST['page'];
 }
 
+$_SESSION['url-page'] = $page;
+
 switch ($page) {
 
     case"login";

@@ -777,15 +777,28 @@ function get_lecture_note($conn){
                     </td>
                     
                     <td>
-                    {$r['lect_date']}</td>
-                    <td>
-                        <a href='note.php?page=edit-note&detail={$r['lectureID']}&box=1&msg=1''>{$r['title']}</a> 
+                    {$r['course_code'] }- {$r['course']}
                     </td>
-                    <td class='hidden-480'>{$r['department']}</td>
-                    <td>{$r['levelID']}</td>
-                    <td>{$r['calendar']}</td>
+                    <td>
+                        {$r['title']} 
+                    </td>
+                    <td class='hidden-480'>{$r['levelID']}</td>
+                    <td>{$r['semester']}</td>
+                    <td>{$r['programme']} / {$r['prefix']}</td>
                     <td class='hidden-480'>
-                        <a href='' class='btn btn-minier btn-danger ace-icon fa fa-bolt bigger-110'> Downalod</a>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='model.php?ui=lecture-note&submit=download&detail={$r['lectureID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-cloud-download  bigger-130'></i>
+                            </a>
+
+                            <a class='green' href='store.php?page=edit.lecture.note&detail={$r['lectureID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=lecture-note&submit=delete-note&detail={$r['lectureID']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
                     </td>
                     
                 </tr>
