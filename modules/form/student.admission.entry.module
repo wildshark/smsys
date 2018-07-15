@@ -41,7 +41,7 @@ if($submit === "add"){
 
     if (!isset($student_total) || empty($student_total) || $student_total == 0){
         $student_total =  1;
-        $serial = "ST".$programme."".$year."".$stream."0000".$student_total;
+        $serial = "ST".$programme."".$year."".$stream."000".$student_total;
     }else{
         $student_total = $count_total['total_student'] + 1;
         $unit = strlen($student_total);
@@ -74,20 +74,41 @@ VALUES ('$date', '$f_name','$l_name','$mobile1', '$mobile2', '$academic_year', '
     $delete = "DELETE FROM `new_student` WHERE (`admissionID`='$id')";
     $result = $conn->query($delete);
 
+}elseif ($submit === "edit-admission.index"){
+    $last_id = $_POST['student']; 
+    $f_name = $_POST['first-name'];
+    $l_name = $_POST['last-name'];
+    $mobile1 = $_POST['mobile-1'];
+    $mobile2 = $_POST['mobile-2'];
+    $email = $_POST['email']; 
+    $category = $_POST['category'];
+    $programme = $_POST['programme'];
+    $stream = $_POST['stream'];
+    $nationality = $_POST['nationality'];
+    $exam_result= $_POST['exam-result'];
+    $result = $_POST['exam-result'];
+
+    $data = "UPDATE `new_student` SET  `f_name`='$f_name', `l_name`='$l_name', `email`='$email', `mobile1`='$mobile1', `mobile2`='$mobile2',
+     `nationality`='$nationality', `exam_result`='$exam_result', `progID`='$programme', `streaID`='$stream', 
+     `categoryID`='$category',`exam_result`='$result' WHERE (`admissionID`='$last_id')";
+    $result = $conn->query($data);
+
+
+
 }
 
 if (!isset($result)){
-    header("location: page.php?page=".$url_page."&box=4&msg=9");
+    header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
 }else{
     if ($result == TRUE){
         if (isset($last_id)){
-            header("location: page.php?page=student-confirmation&box=2&msg=2&i={$last_id}");
+            header("location: page.php?page=student-confirmation&token={$_SESSION['user-token']}&box=2&msg=2&i={$last_id}");
         }else{
-            header("location: page.php?page={$url_page}&box=2&msg=2");
+            header("location: page.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg=2");
         }
 
     }else{
-        header("location: page.php?page=".$url_page."&box=4&msg=9");
+        header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 
 }

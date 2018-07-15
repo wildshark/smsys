@@ -47,9 +47,14 @@ $_SESSION['username'] = $username;
     $admin = $result->fetch_assoc();
 
     if ($admin > 0){
-        $user_access = $admin['access'];
+         $user_access = $admin['access'];
         $token = uniqid();
-        header("location: page.php?page=dashboard&box=1&msg=1");
+        $token = md5($user_access."".date('h-i-s')."".$token);
+
+        $_SESSION['user-token'] = $token;
+        $_SESSION['user-access'] = $user_access;
+
+        header("location: page.php?page=dashboard&token={$token}&box=1&msg=1");
 
     }else{
         header("location: ".  $_SERVER['HTTP_REFERER']);

@@ -150,7 +150,7 @@ if (isset($_POST['submit'])){
 
                 if (!isset($student_total) || empty($student_total) || $student_total == 0){
                     $student_total =  1;
-                    $admission = $prefix_index."".$programme."".$year."".$stream."0000".$student_total;
+                    $admission = $prefix_index."".$programme."".$year."".$stream."000".$student_total;
                 }else{
                     $student_total = $count_total['total_student'] + 1;
                     $unit = strlen($student_total);

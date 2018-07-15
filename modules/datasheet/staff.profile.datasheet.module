@@ -27,7 +27,7 @@ function staff_qualification($conn,$profileID){
            </td>
            <td class='hidden-480'>
                 <div class='hidden-sm hidden-xs action-buttons'>
-                    <a class='red' href='model.php?ui=enrollment&submit=delete&detail={$r['profileID']}'>
+                    <a class='red' href='model.php?ui=enrollment&submit=delete&detail={$r['profileID']}&token={$_SESSION['user-token']}'>
                         <i class='ace-icon fa fa-trash-o bigger-130'></i>
                     </a>
                 </div>
@@ -56,7 +56,7 @@ function staff_promotion($conn,$profileID){
            </td>
            <td class='hidden-480'>
                 <div class='hidden-sm hidden-xs action-buttons'>
-                    <a class='red' href='model.php?ui=staff-promotion-rank&submit=delete&detail={$r['promotionID']}'>
+                    <a class='red' href='model.php?ui=staff-promotion-rank&submit=delete&detail={$r['promotionID']}&token={$_SESSION['user-token']}'>
                         <i class='ace-icon fa fa-trash-o bigger-130'></i>
                     </a>
                 </div>
@@ -91,7 +91,7 @@ function staff_courses_taught($conn,$profileID){
            </td>
            <td class='hidden-480'>
                 <div class='hidden-sm hidden-xs action-buttons'>
-                    <a class='red' href='model.php?ui=course&submit=delete&detail={$r['courseID']}'>
+                    <a class='red' href='model.php?ui=course&submit=delete&detail={$r['courseID']}&token={$_SESSION['user-token']}'>
                         <i class='ace-icon fa fa-trash-o bigger-130'></i>
                     </a>
                 </div>

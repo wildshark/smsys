@@ -5,18 +5,21 @@
  * Date: 12-May-18
  * Time: 11:23 AM
  */
+session_start();
 
 include_once "controls/config.php";
 include_once "controls/db.connection.php";
 include_once "controls/global.php";
 include_once "controls/control.php";
+include_once "modules/menu/admin.user.php";
 include_once "modules/datasheet/datasheet.module";
 include_once "modules/datasheet/profile.datasheet.module";
 include_once "msg_box/msg.box.module";
 
+$token = $_GET['token'];
+$user_token = $_SESSION['user-token'];
 
-session_start();
-
+if ($user_token == $token){
 if ($_GET['page']){
     $page = $_GET['page'];
 }else{
@@ -64,4 +67,7 @@ switch ($page) {
         $body="views/error/404.php";
         include_once "template/default.php";
     break;
+}
+}else{
+    logout ($conn);
 }
