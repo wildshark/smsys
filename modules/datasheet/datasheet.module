@@ -42,7 +42,7 @@ function student_admission_entry($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='page.php?page=view-student-admission&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='blue' href='page.php?page=print.admission.letter&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-envelope-o bigger-130'></i>
                             </a>
 
@@ -423,6 +423,12 @@ function programme_data($conn){
         }else{
             $prefix = "No Prefix";
         }
+
+        if (isset($r['prog_year'])){
+            $duration_yr = $r['prog_year'];
+        }else{
+            $duration_yr = "No Duration";
+        }
         echo "
                 <tr>
                     <td class='center'>
@@ -434,7 +440,7 @@ function programme_data($conn){
                     <td>{$r['progID']}</td>
                     <td>{$r['programme']}</td>
                     <td class='hidden-480'>{$r['school']}</td>
-                    <td class='hidden-480'>{$prefix} | {$r['prefix']}</td>
+                    <td class='hidden-480'>{$duration_yr} | {$prefix} | {$r['prefix']}</td>
                     <td class='hidden-480'>
                         <span class='label label-sm label-warning'>{$status}</span>
                     </td>

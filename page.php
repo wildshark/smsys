@@ -50,7 +50,13 @@ if ($user_token == $token){
                     }elseif($user_access == 2){
                         $body = "views/dashboard/dashboard.php";
                         include_once "template/default.php";
-                    }
+                    }elseif($user_access == 3){
+                        $body = "views/dashboard/dashboard.php";
+                        include_once "template/default.php";
+                    }elseif($user_access == 4){
+                        $body = "views/dashboard/dashboard.php";
+                        include_once "template/default.php";
+                    }   
                 break;    
 
                 case"student.admission-list" ;
@@ -295,6 +301,11 @@ if ($user_token == $token){
                     $page_title = "Administration List";
                     $body = "views/administration/list.administration.php";
                     include_once "template/table.default.php";
+                break;
+
+                case"print.admission.letter";
+                    $page_title = "Administration List";
+                    include_once "print/admission.letter.php";
                 break;
 
 

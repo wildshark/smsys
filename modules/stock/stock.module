@@ -72,20 +72,20 @@ if( $submit == "create-stock"){
     $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `issue_qty`) VALUES ('$now', '$date', '$issue', '$ref','$qty')";
     $result = $conn->query($add);
 }
+
 /**
 if (!isset($result)){
-    header("location: page.php?page=".$url_page."&box=4&msg=9");
+    header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
 }else{
     if ($result === TRUE){
         if (isset($edit)){
-            header("location: page.php?page={$url_page}&detail={$id}&box=2&msg={$error_no}");
+            header("location: page.php?page={$url_page}&token={$_SESSION['user-token']}&detail={$id}&box=2&msg={$error_no}");
         }else{
-            header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+            header("location: page.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
         }
 
     }else{
-        header("location: page.php?page=".$url_page."&box=4&msg=9");
+        header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }
-
 **/

@@ -13,9 +13,10 @@ if ($_GET['submit'] == 'add'){
     $school = $_GET['school'];
     $programme = $_GET['programme'];
     $prefix = $_GET['programme-prefix'];
+    $duration = $_GET['programme-year'];
     $status = $_GET['status'];
 
-    $add = "INSERT INTO `programme` (`programme`, `schoolID`,`prog_prefix`,`statusID`) VALUES ('$programme', '$school','$prefix','$status')";
+    $add = "INSERT INTO `programme` (`programme`, `schoolID`,`prog_prefix`,`prog_year`,`statusID`) VALUES ('$programme', '$school','$prefix','$duration','$status')";
     $result = $conn->query($add);
 
 }elseif ($_GET['submit'] == 'update') {
@@ -23,11 +24,12 @@ if ($_GET['submit'] == 'add'){
     $id = $_SESSION['programme-id'];
     $school = $_GET['school'];
     $programme = $_GET['programme'];
+    $duration = $_GET['programme-year'];
     $prefix = $_GET['programme-prefix'];
     $status = $_GET['status'];
     $edit = "1";
 
-    $update = "UPDATE `programme` SET `programme`='$programme', `schoolID`='$school',`prog_prefix`='$prefix' ,`statusID`='$status' WHERE (`progID`='$id') LIMIT 1";
+    $update = "UPDATE `programme` SET `programme`='$programme', `schoolID`='$school',`prog_prefix`='$prefix',`prog_year`='$duration',`statusID`='$status' WHERE (`progID`='$id') LIMIT 1";
     $result = $conn->query($update);
 
 }elseif ($_GET['submit'] == 'delete'){
@@ -36,20 +38,20 @@ if ($_GET['submit'] == 'add'){
     $result = $conn->query($delete);
 
 }else{
-    header("location: page.php?page=dashboard");
+    header("location: page.php?page=dashboard&token={$_SESSION['user-token']}&box=4&msg=9");
 }
 
 if (!isset($result)){
-    header("location: page.php?page=".$url_page."&box=4&msg=9");
+    header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
 }else{
     if ($result === TRUE){
         if (isset($edit)){
-            header("location: page.php?page={$url_page}&detail={$id}&box=2&msg={$error_no}");
+            header("location: page.php?page={$url_page}&detail={$id}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
         }else{
-            header("location: page.php?page={$url_page}&box=2&msg={$error_no}");
+            header("location: page.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
         }
 
     }else{
-        header("location: page.php?page=".$url_page."&box=4&msg=9");
+        header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }

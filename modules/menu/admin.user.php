@@ -249,7 +249,7 @@ function admin($token){
         <b class='arrow'></b>
     </li>
 
-<li class=''>
+    <li class=''>
         <a href='#' class='dropdown-toggle'>
             <i class='menu-icon fa fa-desktop'></i>
             <span class='menu-text'>
@@ -312,89 +312,89 @@ function admin($token){
     </li>
 
     <li class=''>
-    <a href='#' class='dropdown-toggle'>
-        <i class='menu-icon fa fa-desktop'></i>
-        <span class='menu-text'>
-								Human Resource
-							</span>
+        <a href='#' class='dropdown-toggle'>
+            <i class='menu-icon fa fa-desktop'></i>
+            <span class='menu-text'>
+                                    Human Resource
+                                </span>
 
-        <b class='arrow fa fa-angle-down'></b>
-    </a>
+            <b class='arrow fa fa-angle-down'></b>
+        </a>
 
-    <b class='arrow'></b>
+        <b class='arrow'></b>
 
-    <ul class='submenu'>
-        <li class=''>
-            <a href='page.php?page=staff-list&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Staff List
-            </a>
+        <ul class='submenu'>
+            <li class=''>
+                <a href='page.php?page=staff-list&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Staff List
+                </a>
 
-            <b class='arrow'></b>
+                <b class='arrow'></b>
 
-        </li>
+            </li>
 
-        <li class=''>
-            <a href='page.php?page=add-staff-profile&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Add Staff
-            </a>
+            <li class=''>
+                <a href='page.php?page=add-staff-profile&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Add Staff
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-        <li class=''>
-            <a href='elements.html'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Staff Leave
-            </a>
+            <li class=''>
+                <a href='elements.html'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Staff Leave
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-        <li class=''>
-            <a href='page.php?page=staff-terminated&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Terminated Staff
-            </a>
+            <li class=''>
+                <a href='page.php?page=staff-terminated&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Terminated Staff
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-    </ul>
-</li>
+        </ul>
+    </li>
 
-<li class=''>
-    <a href='#' class='dropdown-toggle'>
-        <i class='menu-icon fa fa-pencil-square-o'></i>
-        <span class='menu-text'> Calendar </span>
+    <li class=''>
+        <a href='#' class='dropdown-toggle'>
+            <i class='menu-icon fa fa-pencil-square-o'></i>
+            <span class='menu-text'> Calendar </span>
 
-        <b class='arrow fa fa-angle-down'></b>
-    </a>
+            <b class='arrow fa fa-angle-down'></b>
+        </a>
 
-    <b class='arrow'></b>
+        <b class='arrow'></b>
 
-    <ul class='submenu'>
+        <ul class='submenu'>
 
-        <li class=''>
-            <a href='page.php?page=list-academic-calendar&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Academic Calender
-            </a>
+            <li class=''>
+                <a href='page.php?page=list-academic-calendar&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Academic Calender
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-        <li class=''>
-            <a href='page.php?page=add-semester&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Semester
-            </a>
+            <li class=''>
+                <a href='page.php?page=add-semester&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Semester
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-    </ul>
+        </ul>
     </li>
 
     <li class=''>
@@ -571,5 +571,141 @@ function admin($token){
         </ul>
     </li>
     ";
+}
+
+function  estate_mgs($token){
+    echo"
+    <li class=''>
+        <a href='page.php?page=create.sql&token={$token}&box=1&msg=1'>
+            <i class='menu-icon fa fa-tachometer'></i>
+            <span class='menu-text'> Create SQL </span>
+        </a>
+
+        <b class='arrow'></b>
+    </li>
+
+    <li class=''>
+        <a href='#' class='dropdown-toggle'>
+            <i class='menu-icon fa fa-desktop'></i>
+            <span class='menu-text'>
+								Hostel & Booking
+							</span>
+
+            <b class='arrow fa fa-angle-down'></b>
+        </a>
+
+        <b class='arrow'></b>
+
+        <ul class='submenu'>
+
+            <li class=''>
+                <a href='hostel.php?page=hostel-list&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Hostel List
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+
+            <li class=''>
+                <a href='' data-toggle='modal' data-target='#add-rental-modal'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Create Rentals
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+
+            <li class=''>
+                <a href='' data-toggle='modal' data-target='#create-block'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Create Block
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+
+            <li class=''>
+                <a href='hostel.php?page=hostel-room&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                     Create Room
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+
+
+
+            <li class=''>
+                <a href='hostel.php?page=hostel-booking&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Hostel Booking
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+
+            <li class=''>
+                <a href='hostel.php?page=hostel-rental-list&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Hostel Rental
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+        </ul>
+    </li>
+
+    <li class=''>
+        <a href='#' class='dropdown-toggle'>
+            <i class='menu-icon fa fa-tag'></i>
+            <span class='menu-text'> File Sharing </span>
+
+            <b class='arrow fa fa-angle-down'></b>
+        </a>
+
+        <b class='arrow'></b>
+
+        <ul class='submenu'>
+            <li class=''>
+                <a href='page.php?page=dir-list&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Dir
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+
+            <li class=''>
+                <a href='page.php?page=add-file&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Upload File
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+
+            <!--li class=''>
+                <a href='result.php?page=add-assessment'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Add Assessment
+                </a>
+
+                <b class='arrow'></b>
+            </li-->
+
+            <li class=''>
+                <a href='result.php?page=assessment-list&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Assessment List
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+
+        </ul>
+    </li>
+
+";
 }
 

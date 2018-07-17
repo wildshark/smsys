@@ -76,7 +76,6 @@ If ($submit == "add"){
 
 }
 
-
 if ($result === TRUE){
 
     header("location: ".  $_SERVER['HTTP_REFERER']);

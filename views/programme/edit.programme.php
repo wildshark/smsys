@@ -19,6 +19,7 @@ $programme = $r['programme'];
 $schoolID = $r['schoolID'];
 $school = $r['school'];
 $prefix = $r['prog_prefix'];
+$duration = $r['prog_year'];
 $status = $r['statusID'];
 
 if ($status == 1){
@@ -59,6 +60,16 @@ if ($status == 1){
 
         <div class="col-sm-9">
             <input type="text" name="programme-prefix" value="<?php echo $prefix;?>" id="form-field-1" placeholder="Programme Title" class="col-xs-10 col-sm-5" />
+        </div>
+    </div>
+
+    <div class="space-4"></div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Programme Year(s) Duration</label>
+
+        <div class="col-sm-9">
+            <input type="text" name="programme-year" value="<?php echo $duration;?>" id="form-field-1" placeholder="Programme Year(s) Duration" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 

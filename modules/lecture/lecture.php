@@ -48,15 +48,15 @@ if ($submit === 'add-note'){
                 $error_no = "2";
             }else{
                 echo"file is to large to upload";
-                //header("location: note.php?page=".$url_page."&box=3&msg=2");
+                //header("location: note.php?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=2");
             }
         }else{
             echo"there was an error uploading the file";
-            //header("location: note.php?page=".$url_page."&box=3&msg=6");
+            //header("location: note.php?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=6");
         }
     }else{
         echo"you can nout upload this kind of file";
-        //header("location: note.php?page=".$url_page."&box=3&msg=7");
+        //header("location: note.php?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=7");
     }
 
 }elseif ($submit == 'update-note'){

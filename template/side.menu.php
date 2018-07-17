@@ -22,7 +22,7 @@ function super_admin($token){
         <b class='arrow'></b>
     </li>
 
-<li class=''>
+    <li class=''>
         <a href='page.php?page=dashboard&token={$token}&box=1&msg=1'>
             <i class='menu-icon fa fa-tachometer'></i>
             <span class='menu-text'> Dashboard </span>
@@ -31,7 +31,7 @@ function super_admin($token){
         <b class='arrow'></b>
     </li>
 
-<li class=''>
+    <li class=''>
         <a href='#' class='dropdown-toggle'>
             <i class='menu-icon fa fa-desktop'></i>
             <span class='menu-text'>
@@ -103,89 +103,89 @@ function super_admin($token){
     </li>
 
     <li class=''>
-    <a href='#' class='dropdown-toggle'>
-        <i class='menu-icon fa fa-desktop'></i>
-        <span class='menu-text'>
-								Human Resource
-							</span>
+        <a href='#' class='dropdown-toggle'>
+            <i class='menu-icon fa fa-desktop'></i>
+            <span class='menu-text'>
+				Human Resource
+		    </span>
 
-        <b class='arrow fa fa-angle-down'></b>
-    </a>
+            <b class='arrow fa fa-angle-down'></b>
+        </a>
 
-    <b class='arrow'></b>
+        <b class='arrow'></b>
 
-    <ul class='submenu'>
-        <li class=''>
-            <a href='page.php?page=staff-list&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Staff List
-            </a>
+        <ul class='submenu'>
+            <li class=''>
+                <a href='page.php?page=staff-list&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Staff List
+                </a>
 
-            <b class='arrow'></b>
+                <b class='arrow'></b>
 
-        </li>
+            </li>
 
-        <li class=''>
-            <a href='page.php?page=add-staff-profile&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Add Staff
-            </a>
+            <li class=''>
+                <a href='page.php?page=add-staff-profile&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Add Staff
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-        <li class=''>
-            <a href='elements.html'>
-                <i class='menu-icon fa fa-caret-right&token={$token}&box=1&msg=1'></i>
-                Staff Leave
-            </a>
+            <li class=''>
+                <a href='elements.html'>
+                    <i class='menu-icon fa fa-caret-right&token={$token}&box=1&msg=1'></i>
+                    Staff Leave
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-        <li class=''>
-            <a href='page.php?page=staff-terminated&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Terminated Staff
-            </a>
+            <li class=''>
+                <a href='page.php?page=staff-terminated&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Terminated Staff
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-    </ul>
-</li>
+        </ul>
+    </li>
 
-<li class=''>
-    <a href='#' class='dropdown-toggle'>
-        <i class='menu-icon fa fa-pencil-square-o'></i>
-        <span class='menu-text'> Calendar </span>
+    <li class=''>
+        <a href='#' class='dropdown-toggle'>
+            <i class='menu-icon fa fa-pencil-square-o'></i>
+            <span class='menu-text'> Calendar </span>
 
-        <b class='arrow fa fa-angle-down'></b>
-    </a>
+            <b class='arrow fa fa-angle-down'></b>
+        </a>
 
-    <b class='arrow'></b>
+        <b class='arrow'></b>
 
-    <ul class='submenu'>
+        <ul class='submenu'>
 
-        <li class=''>
-            <a href='page.php?page=list-academic-calendar&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Academic Calender
-            </a>
+            <li class=''>
+                <a href='page.php?page=list-academic-calendar&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Academic Calender
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-        <li class=''>
-            <a href='page.php?page=add-semester&token={$token}&box=1&msg=1'>
-                <i class='menu-icon fa fa-caret-right'></i>
-                Semester
-            </a>
+            <li class=''>
+                <a href='page.php?page=add-semester&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Semester
+                </a>
 
-            <b class='arrow'></b>
-        </li>
+                <b class='arrow'></b>
+            </li>
 
-    </ul>
+         </ul>
     </li>
 
     <li class=''>
@@ -294,8 +294,8 @@ function super_admin($token){
         <a href='#' class='dropdown-toggle'>
             <i class='menu-icon fa fa-desktop'></i>
             <span class='menu-text'>
-								Store & Stock
-							</span>
+				Store & Stock
+			</span>
 
             <b class='arrow fa fa-angle-down'></b>
         </a>
@@ -475,6 +475,7 @@ function super_admin($token){
 
         </ul>
     </li>
+
     <li class=''>
         <a href='#' class='dropdown-toggle'>
             <i class='menu-icon fa fa-tag'></i>
@@ -583,6 +584,8 @@ if ($access == 1){
     admin($token);
 }elseif($access == 3){
     leaturer($token);
+}elseif ($access == 4){
+    estate_mgs($token);
 }
 
 include_once 'dialog.box.php';
