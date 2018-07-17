@@ -23,7 +23,10 @@ $nationality = $r['student_nationality'];
 $year = $r['yearID'];
 $category = $r['categoryID'];
 $stream = $r['streaID'];
+$schoolID = $r['attended'];
+$examID = $r['exam_index_id'];
 $result = $r['exam_result'];
+
 
 if ($category == 1){
     $category_type = "Local Student";
@@ -171,6 +174,26 @@ if($campus == 1){
                 <option value="1">Regular</option>
                 <option value="2">Weekend</option>
             </select>
+        </div>
+    </div>
+
+     <div class="space-4"></div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> School Attended  </label>
+
+        <div class="col-sm-9">
+            <input type="text" name="school-attended" id="form-field-1" value="<?php echo $schoolID;?>" placeholder="school attended" class="col-xs-10 col-sm-5" />
+        </div>
+    </div>
+
+    <div class="space-4"></div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Exam Index ID  </label>
+
+        <div class="col-sm-9">
+            <input type="text" name="exam-index-id" id="form-field-1" value="<?php echo $examID;?>" placeholder="Exam Index ID" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 

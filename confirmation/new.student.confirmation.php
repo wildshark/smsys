@@ -67,6 +67,12 @@ if (isset($confirm['email'])){
     $email = "No Email Address";
 }
 
+if (isset($_GET['token'])){
+    $token = $_GET['token'];
+}else{
+    $token = "0";
+}
+
 ?>
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml">

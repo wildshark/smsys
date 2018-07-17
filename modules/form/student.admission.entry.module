@@ -25,7 +25,11 @@ if($submit === "add"){
     $stream = $_POST['stream'];
     $nationality = $_POST['nationality'];
     $category = $_POST['category'];
+    $school = $_POST['school-attended'];
+    $examID = $_POST['exam-index-id'];
+
     $exam_result= $_POST['result'];
+
     $date= $_POST['date'];
     $academic_year = $_POST['academic-year'];
     $year = substr($academic_year,0,4);
@@ -62,8 +66,9 @@ if($submit === "add"){
 
     }
 
-    $sql ="INSERT INTO `new_student` (`date`, `f_name`,`l_name`, `mobile1`,`mobile2`, `yearID`, `progID`, `streaID`, `proofID`, `serial_no`,`nationality`,`categoryID`,`exam_result`,`email`) 
-VALUES ('$date', '$f_name','$l_name','$mobile1', '$mobile2', '$academic_year', '$programme', '$stream', '1', '$serial','$nationality','$category','$exam_result','$email')";
+    $sql ="INSERT INTO `new_student` (`date`, `f_name`,`l_name`, `mobile1`,`mobile2`, `yearID`, `progID`, `streaID`, `proofID`, `serial_no`,`nationality`,`categoryID`,`exam_result`,`email`,`attended`,`exam_index_id`) 
+VALUES ('$date', '$f_name','$l_name','$mobile1', '$mobile2', '$academic_year', '$programme', '$stream', '1', '$serial','$nationality','$category','$exam_result','$email',
+'$school', '$examID')";
     $result = $conn->query($sql);
 
     $last_id = $conn->insert_id;
@@ -85,16 +90,14 @@ VALUES ('$date', '$f_name','$l_name','$mobile1', '$mobile2', '$academic_year', '
     $programme = $_POST['programme'];
     $stream = $_POST['stream'];
     $nationality = $_POST['nationality'];
-    $exam_result= $_POST['exam-result'];
     $result = $_POST['exam-result'];
+    $school = $_POST['school-attended'];
+    $examID = $_POST['exam-index-id'];
 
     $data = "UPDATE `new_student` SET  `f_name`='$f_name', `l_name`='$l_name', `email`='$email', `mobile1`='$mobile1', `mobile2`='$mobile2',
      `nationality`='$nationality', `exam_result`='$exam_result', `progID`='$programme', `streaID`='$stream', 
-     `categoryID`='$category',`exam_result`='$result' WHERE (`admissionID`='$last_id')";
+     `categoryID`='$category',`exam_result`='$result', `attended` ='$school', `exam_index_id`='$examID' WHERE (`admissionID`='$last_id')";
     $result = $conn->query($data);
-
-
-
 }
 
 if (!isset($result)){

@@ -84,6 +84,16 @@
                         </select>
                     </div>
 
+                     <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">School Attended:</label>
+                        <input type="text" name="school-attended" class="form-control" id="recipient-name">
+                    </div>
+
+                     <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Exam Index ID:</label>
+                        <input type="text" name="exam-index-id" class="form-control" id="recipient-name">
+                    </div>
+
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Result(s):</label>
                         <textarea name="result" id="form-field-1" class="form-control"></textarea>
