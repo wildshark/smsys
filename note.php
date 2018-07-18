@@ -20,13 +20,13 @@ $token = $_GET['token'];
 $user_token = $_SESSION['user-token'];
 
 if ($user_token == $token){
-if ($_GET['page']){
-    $page = $_GET['page'];
-}else{
-    $page = $_POST['page'];
-}
-
+    if ($_GET['page']){
+        $page = $_GET['page'];
+    }else{
+        $page = $_POST['page'];
+    }
 $_SESSION['url-page'] = $page;
+
 
 switch ($page) {
 

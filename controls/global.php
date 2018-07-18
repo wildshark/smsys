@@ -294,3 +294,12 @@ function get_rental_list($conn){
         echo"<option value='{$r['rental_typeID']}'>{$r['rental_type']}</option>";
     }
 }
+
+function cmb_room_list($conn){
+
+    $sql="SELECT * FROM get_hostel_room";
+    $result = $conn->query($sql);
+    while($r=$result->fetch_assoc()){
+        echo"<option value='{$r['roomID']}'>{$r['room']}->{$r['block_name']}</option>";
+    }
+}

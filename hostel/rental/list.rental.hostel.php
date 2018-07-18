@@ -34,15 +34,15 @@ function get_hostel_rental_details($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='hostel.php?page=edit-hostel-rental&id={$r['rentalID'] }&box=1&msg=1'>
+                            <a class='blue' href='hostel.php?page=edit-hostel-rental&token={$_SESSION['user-token']}&id={$r['rentalID'] }&box=1&msg=1'>
                                 <i class='ace-icon fa fa-search-plus bigger-130'></i>
                             </a>
 
-                            <a class='green' href='model.php?ui=hostel&submit=status-rental&id={$r['rentalID']}&days={$r['NoOfDays']}'>
+                            <a class='green' href='model.php?ui=hostel&submit=status-rental&token={$_SESSION['user-token']}&id={$r['rentalID']}&days={$r['NoOfDays']}'>
                                 <i class='ace-icon fa fa-flag bigger-130'></i>
                             </a>
 
-                            <a class='red' href='model.php?ui=hostel&submit=del-rental&id={$r['rentalID'] }&box=1&msg=1'>
+                            <a class='red' href='model.php?ui=hostel&submit=del-rental&token={$_SESSION['user-token']}&id={$r['rentalID'] }&box=1&msg=1'>
                                 <i class='ace-icon fa fa-trash-o bigger-130'></i>
                             </a>
                         </div>                   

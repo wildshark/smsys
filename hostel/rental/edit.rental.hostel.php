@@ -81,7 +81,7 @@ if ($status == 1){
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Mobile 1 </label>
 
         <div class="col-sm-9">
-            <input type="text" name="mobie-1" value="<?php echo $mobile1;?>" class="col-xs-10 col-sm-5" id="form-field-1-1" placeholder="00"/>
+            <input type="text" name="mobile-1" value="<?php echo $mobile1;?>" class="col-xs-10 col-sm-5" id="form-field-1-1" placeholder="00"/>
         </div>
     </div>
 

@@ -585,10 +585,39 @@ function  estate_mgs($token){
     </li>
 
     <li class=''>
+        <a href='hostel.php?page=total-user&token={$token}&box=1&msg=1'>
+            <i class='menu-icon fa fa-tachometer'></i>
+            <span class='menu-text'> Hostel Report </span>
+        </a>
+
+        <b class='arrow'></b>
+    </li>
+
+    <li class=''>
+        <a href='hostel.php?page=hostel-list&token={$token}&box=1&msg=1'>
+            <i class='menu-icon fa fa-tachometer'></i>
+            <span class='menu-text'> Hostel Booking </span>
+        </a>
+
+        <b class='arrow'></b>
+    </li>
+
+    <li class=''>
+        <a href='hostel.php?page=hostel-rental-list&token={$token}&box=1&msg=1'>
+            <i class='menu-icon fa fa-caret-right'></i>
+            <span class='menu-text'>  Hostel Rental</span>
+               
+        </a>
+
+        <b class='arrow'></b>
+    </li>
+
+
+    <li class=''>
         <a href='#' class='dropdown-toggle'>
             <i class='menu-icon fa fa-desktop'></i>
             <span class='menu-text'>
-								Hostel & Booking
+								Setup
 							</span>
 
             <b class='arrow fa fa-angle-down'></b>
@@ -597,15 +626,6 @@ function  estate_mgs($token){
         <b class='arrow'></b>
 
         <ul class='submenu'>
-
-            <li class=''>
-                <a href='hostel.php?page=hostel-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Hostel List
-                </a>
-
-                <b class='arrow'></b>
-            </li>
 
             <li class=''>
                 <a href='' data-toggle='modal' data-target='#add-rental-modal'>
@@ -629,26 +649,6 @@ function  estate_mgs($token){
                 <a href='hostel.php?page=hostel-room&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
                      Create Room
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-
-
-            <li class=''>
-                <a href='hostel.php?page=hostel-booking&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Hostel Booking
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='hostel.php?page=hostel-rental-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Hostel Rental
                 </a>
 
                 <b class='arrow'></b>
@@ -702,6 +702,7 @@ function  estate_mgs($token){
 
                 <b class='arrow'></b>
             </li>
+            
 
         </ul>
     </li>

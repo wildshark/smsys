@@ -12,12 +12,15 @@ if (isset($_GET['submit'])){
     $submit = $_POST['submit'];
 }
 
+$url_page = $_SESSION['url-page'];
+
 if ($submit == "add-block"){
 
     $block = $_GET['name'];
     $add = "INSERT INTO `hostel_block` (`block_name`) VALUES ('$block')";
     $result = $conn->query($add);
 
+    $error_no = "2";
 
 }elseif ($submit == "add-room"){
 
@@ -27,24 +30,31 @@ if ($submit == "add-block"){
 
     $add ="INSERT INTO `hostel_room` (`blockID`, `room`, `bed`) VALUES ('$block', '$room', '$bed')";
     $result = $conn->query($add);
+
+    $error_no = "2";
 }elseif ($submit == "add-booking"){
 
     $date = $_GET['date'];
     $student = $_GET['student'];
     $room = $_GET['room'];
+    $yearID = $_GET['academic-year'];
     $ref = $_GET['ref-no'];
+    $bed_no = $_GET['bed-no'];
     $book_in = $_GET['book-in'];
     //$book_out = $_GET['book-out'];
 
-    $add="INSERT INTO `hostel_detail` (`tran_date`,`date`, `studentID`, `roomID`, `book_in`,`ref_no`) VALUES ('$now','$date', '$student', '$room', '$book_in','$ref')";
+    $add="INSERT INTO `hostel_detail` (`tran_date`,`date`, `studentID`, `roomID`, `book_in`,`ref_no`,`bed_no`,`yearID`) 
+    VALUES ('$now','$date', '$student', '$room', '$book_in','$ref','$bed_no','$yearID')";
     $result = $conn->query($add);
 
+    $error_no = "2";
 
 }elseif ($submit == "update-booking"){
 
     $rowID = $_SESSION['row-id'];
     $room = $_GET['room'];
     $ref = $_GET['ref-no'];
+    //$bed = '$_GET['bed-no'];
     $book_in = $_GET['book-in'];
     $book_out = $_GET['book-out'];
 
@@ -55,6 +65,7 @@ if ($submit == "add-block"){
         $update = "UPDATE `hostel_detail` SET  `roomID`='$room', `book_in`='$book_in' WHERE (`userID`='$rowID') LIMIT 1";
       $result = $conn->query($update);
     }
+    $error_no = "2";
 
 }elseif ($submit == "add-rental"){
 
@@ -74,6 +85,8 @@ if ($submit == "add-block"){
   echo  $add = "INSERT INTO `hostel_rental` (`refNo`, `tranDate`, `church_name`, `people`,`start_date`,`end_date`,`amount`,`discount`,`mobile1`,`mobile2`,`rental_typeID`,`contact_address`)
      VALUES ('$ref', '$date', '$group', '$population','$start_date','$end_date','$amount','$discount','$mobile1','$mobile2','$rental_type','$address')";
     $result = $conn->query($add);
+
+    $error_no = "2";
 
 }elseif ($submit == "edit-rental"){
 
@@ -96,12 +109,16 @@ if ($submit == "add-block"){
     `end_date`='$end_date', `statusID`='$status', `contact_address`='$address',`mobile1`='$mobile1',`mobile2`='$mobile2',`rental_typeID`='$rental_type' WHERE (`rentalID`='$id')";
     $result = $conn->query($update);
 
+    $error_no = "2";
+
 
 }elseif ($submit == "del-rental"){
 
     $id = $_GET['id'];
     $del = "DELETE FROM `hostel_rental` WHERE (`rentalID`='$id')";
     $result = $conn->query($del);
+
+    $error_no = "2";
 
 }elseif($submit == 'status-rental'){
 
@@ -110,9 +127,16 @@ if ($submit == "add-block"){
 
     $sql ="UPDATE `hostel_rental` SET `NoOfdays`='$days', `statusID`='2' WHERE (`rentalID`='$rental')";
     $result = $conn->query($sql);
+
+    $error_no = "2";
 }
 
-if ($result == TRUE){
-
-    header("location: ".  $_SERVER['HTTP_REFERER']);
+if (!isset($result)){
+    header("location: hostel.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        header("location: hostel.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}&id={$id}");
+    }else{
+        header("location: hostel.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+    }
 }

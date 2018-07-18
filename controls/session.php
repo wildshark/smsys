@@ -6,16 +6,16 @@
  * Time: 7:44 PM
  */
 
-session_start();
+//get the academic year
 
-/**
-if (isset($_SESSION[''])){
+$a_year = "SELECT academic_yr FROM get_academic_session ORDER BY yearID DESC";
+$result = $conn->query($a_year);
+$y = $result->fetch_assoc();
 
-} else{
-
-    session_unset();
-    session_destroy();
-
-    header('location: index.php');
+ $acad_yr = $y['academic_yr'];
+if (!empty($acad_yr)){
+   $_SESSION['academic-year'] = $acad_yr;
+}else{
+    exit(0);
 }
- * */
+

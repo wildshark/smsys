@@ -25,3 +25,7 @@ $template->google ="#";
 $template->body ="";
 $template->username ="";
 
+$template->dashboard ="template/default.php";
+$template->table = "template/table.default.php";
+$template->form = "template/form.default.php"; 
+

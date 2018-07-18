@@ -6,6 +6,75 @@
  * Time: 12:03 PM
  */
 ?>
+
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">New Booking</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="GET" action="model.php">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="ui" value="hostel">
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Date:</label>
+                        <input type="date" name="date" placeholder="Name of Rooom / Room Number"class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Academic Year:</label>
+                        <select name="academic-year" class="form-control" id="recipient-name">
+                            <?php cmb_academic_session($conn);?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Room Label:</label>
+                        <select name="room" class="form-control" id="recipient-name">
+                            <?php cmb_room_list($conn);?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Student:</label>
+                        <select name="student" class="form-control" id="recipient-name">
+                            <?php student_index_list($conn);?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Receipt/Ref. No#:</label>
+                        <input type="text" name="ref-no" placeholder="Receipt/Ref. No#"class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Bed Serial Number:</label>
+                        <input type="text" name="bed-no" placeholder="Receipt/Ref. No#"class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Arrived Date:</label>
+                        <input type="date" name="book-in" placeholder="0" class="form-control" id="recipient-name">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" value="add-booking" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-xs-12">
 
