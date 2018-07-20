@@ -586,6 +586,8 @@ if ($access == 1){
     leaturer($token);
 }elseif ($access == 4){
     estate_mgs($token);
+}elseif($access == 5){
+    store_keeper($token);
 }
 
 include_once 'dialog.box.php';

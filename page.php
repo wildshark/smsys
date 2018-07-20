@@ -56,7 +56,10 @@ if ($user_token == $token){
                     }elseif($user_access == 4){
                         $body = "views/dashboard/dashboard.php";
                         include_once "template/default.php";
-                    }   
+                    }elseif($user_access == 5){
+                        $body = "views/dashboard/dashboard.php";
+                        include_once "template/default.php";
+                    }      
                 break;    
 
                 case"student.admission-list" ;

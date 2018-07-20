@@ -15,11 +15,26 @@ if (isset($_GET['submit'])){
     $submit = $_POST['submit'];
 }
 
-if( $submit == "create-stock"){
-    $stock = $_GET['stock-name'];
+if( $submit === "add-new-item"){
 
-    $add = "INSERT INTO `stock_main` (`stock`) VALUES ('$stock')";
+    $category = $_GET['category'];
+    $item = $_GET['item-name'];
+    $item_code = $_GET['item-code'];
+
+    $add = "INSERT INTO `stock_main` (`categoryID`, `code_no`, `stock`) VALUES ('$category', '$item', '$item_code')";
     $result = $conn->query($add);
+
+}elseif($submit ==="edit-item-name"){
+
+    $id = $_SESSION['item-id'];
+    $category = $_GET['category'];
+    $item = $_GET['item-name'];
+    $item_code = $_GET['item-code'];
+    $status = $_GET['status'];
+
+    $edit = "UPDATE `stock_main` SET `categoryID`='$category', `code_no`='$item_code', `stock`='$item', `status`='$status' WHERE (`stockID`='$id')";
+    $result = $conn->query($edit);
+    $edit="1";
 
 }elseif($submit == "add-order"){
 
@@ -54,38 +69,89 @@ if( $submit == "create-stock"){
 }elseif ($submit == "add-purchase"){
 
     $date = $_GET['date'];
-    $purchase = $_GET['purchase'];
+    $suppyID = $_GET['supplier'];
+    $item = $_GET['item'];
     $ref = $_GET['ref'];
+    $price = $_GET['price'];
     $qty = $_GET['qty'];
+
     $status = "2";
 
-    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `purchase_qty`,`status`) VALUES ('$now', '$date', '$purchase', '$ref','$qty','$status')";
+    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `purchase_qty`,`status`,`supplyID`,`unit_price`) 
+    VALUES ('$now', '$date', '$item', '$ref','$qty','$status','$supplyID','$price')";
     $result = $conn->query($add);
 
-}elseif ($submit == "add-issue"){
+}elseif ($submit == "add-issused"){
 
     $date = $_GET['date'];
-    $issue = $_GET['issue'];
+    $staff = $_GET['staff'];
+    $item = $_GET['item'];
     $ref = $_GET['ref'];
     $qty = $_GET['qty'];
+    $comment = $_GET['comment'];
 
-    $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `issue_qty`) VALUES ('$now', '$date', '$issue', '$ref','$qty')";
+    $stock_qty ="SELECT * FROM `get_total_issused` WHERE stockID = '$item'";
+    $qty_result = $conn->query($stock_qty);
+    $qty_bal =$qty_result->fetch_assoc();
+
+     $qty_available = $qty_bal['bal'];
+
+      if ($qty_available > $qty){
+        $add ="INSERT INTO `stock_details` (`sys_date`, `tran_date`, `stockID`,`ref_no`, `issue_qty`,`staffID`,`details`,`status`) 
+   VALUES ('$now', '$date', '$item', '$ref','$qty','$staff','$comment','3')";
     $result = $conn->query($add);
+
+    }else{
+
+         header("location: store.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=15");
+         exit(0);
+    }
+
+      
+
+}elseif($submit === 'add-category'){
+
+    $category = $_GET['category-name'];
+    $add = "INSERT INTO `stock_category` (`category_name`, `stateID`) VALUES ('$category', '1')";
+    $result = $conn->query($add);
+
+}elseif($submit ==='add-supplier-contact'){
+    
+    $supplier = $_GET['supplier-name'];
+    $address = $_GET['address'];
+    $mobile1 = $_GET['mobile1'];
+    $mobile2 = $_GET['mobile2'];
+    $email = $_GET['email'];
+
+    $add = "INSERT INTO `supplier_contact` (`supplier_name`, `address`, `mobile1`, `mobile2`, `email`) 
+    VALUES ('$supplier', '$address', '$mobile1', '$mobile2', '$email')";
+    $result = $conn->query($add);
+
+}elseif($submit ==="edit-supplier-contact"){
+
+    $id = $_SESSION['supplier-id'];
+    $supplier = $_GET['supplier-name'];
+    $address = $_GET['address'];
+    $mobile1 = $_GET['mobile1'];
+    $mobile2 = $_GET['mobile2'];
+    $email = $_GET['email'];
+
+   $edit = "UPDATE `get_supplier_contact` SET `supplier_name`='$supplier', `address`='$address', `mobile1`='$mobile1', `mobile2`='$mobile2', `email`='$email' WHERE (`supplyID`='$id')";
+    $result = $conn->query($edit);
+
 }
 
-/**
 if (!isset($result)){
-    header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+    header("location: store.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
 }else{
     if ($result === TRUE){
         if (isset($edit)){
-            header("location: page.php?page={$url_page}&token={$_SESSION['user-token']}&detail={$id}&box=2&msg={$error_no}");
+            header("location: store.php?page={$url_page}&token={$_SESSION['user-token']}&detail={$id}&box=2&msg={$error_no}");
         }else{
-            header("location: page.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
+            header("location: store.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
         }
 
     }else{
-        header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+        header("location: store.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }
-**/

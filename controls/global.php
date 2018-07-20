@@ -235,9 +235,39 @@ function stock_list($conn){
     $sql="SELECT * from get_stock_list";
     $result = $conn->query($sql);
     while($r=$result->fetch_assoc()){
-        echo"<option value='{$r['stockID']}'>{$r['stock']}</option>";
+        echo"<option value='{$r['stockID']}'>{$r['stock']}->{$r['category_name']}</option>";
     }
 
+}
+
+function cmb_stock_issused_list($conn){
+    //get_stock_list
+
+    $sql="SELECT * from get_total_issused";
+    $result = $conn->query($sql);
+    while($r=$result->fetch_assoc()){
+        echo"<option value='{$r['stockID']}'>{$r['stock']}->{$r['category_name']}</option>";
+    }
+
+}
+
+
+function cmb_stock_category($conn){
+
+    $sql="SELECT * from get_stock_category";
+    $result = $conn->query($sql);
+    while($r=$result->fetch_assoc()){
+        echo"<option value='{$r['categoryID']}'>{$r['category_name']}</option>";
+    }
+}
+
+function cmb_supplier_name_list($conn){
+
+    $sql="SELECT * FROM get_supplier_contact";
+    $result = $conn->query($sql);
+    while($r=$result->fetch_assoc()){
+        echo"<option value='{$r['supplyID']}'>{$r['supplier_name']}</option>";
+    }
 }
 
 function student_index_list($conn){

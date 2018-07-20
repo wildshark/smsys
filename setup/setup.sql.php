@@ -8,9 +8,9 @@
 
 ?>
 
-
 <form class="form-horizontal" role="form" method="post" action="model.php" enctype="multipart/form-data">
     <input type="hidden" name="ui" value="sql-setup-text">
+    <input type="hidden" name="token" value="<?php echo $_GET['token'];?>">
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">SQL Code </label>
         <div class="col-sm-12">

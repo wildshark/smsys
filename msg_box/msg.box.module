@@ -61,6 +61,9 @@ if (empty($error) || empty($alert)){
         case 14:
             $msg="You can not upload files of this type";
             break;
+        case 15:
+            $msg="The qty requested is greater than the qty available";
+            break;    
         case 100:
             $msg="Terminal Script Error 100. Contact system administrator.";
             break;

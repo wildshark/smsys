@@ -27,6 +27,8 @@ if ($user_token == $token){
         $page = $_POST['page'];
     }
 
+$_SESSION['url-page'] = $page;
+
     switch ($page){
 
         case"login";
@@ -39,10 +41,17 @@ if ($user_token == $token){
         break;
 
         case "add-stock";
-            $page_title="Add New Stock";
-            $body="views/student/list.student.php";
+            $page_title="Add New Item";
+            $body="store_keeper/setup/add.item.name.php";
             include_once "template/table.default.php";
         break;
+
+        case"edit-item";
+            $page_title="Edit Item";
+            $body="store_keeper/setup/edit.item.name.php";
+            include_once "template/form.element.php";
+        break;
+
 
         case"stock-list";
             $page_title="Stack List";
@@ -50,15 +59,15 @@ if ($user_token == $token){
             include_once "template/table.default.php";
         break;
 
-        case"stock-order";
-            $page_title="Stock Order";
-            $body="store_keeper/stock/list.order.stock.php";
+        case "stock-purchase";
+            $page_title="Stock Purchase";
+            $body="store_keeper/stock/list.purchase.stock.php";
             include_once "template/table.default.php";
         break;
 
-        case "stock-purchase";
-            $page_title="Stock Purchase";
-            $body="store_keeper/stock/purchase.stock.php";
+        case"stock-issue";
+            $page_title="Issused Stock";
+            $body="store_keeper/stock/list.issused.stock.php";
             include_once "template/table.default.php";
         break;
 
@@ -72,6 +81,18 @@ if ($user_token == $token){
         $page_title="Item Request";
         $body="store_keeper/stock/list.item.request.php";
         include_once "template/table.default.php";
+        break;
+
+        case"supplier-contact";
+            $page_title="Supplier's Contact Address";
+            $body="store_keeper/setup/supplier.contact.php";
+            include_once "template/table.default.php";
+        break;
+
+        case"edit-supplier-contact";
+            $page_title="Supplier's Contact Address";
+            $body="store_keeper/setup/edit.supplier.contact.php";
+            include_once "template/table.default.php";
         break;
 
         default;

@@ -11,8 +11,8 @@ $result = $conn->query($sql);
 
 if ($result == TRUE){
     //echo "done";
-    header("location: page.php?page=create.sql&box=2&msg=101");
+    header("location: page.php?page=create.sql$token={$_SESSION['user-token']}&box=2&msg=101");
 }else {
     //echo "failed";
-    header("location: page.php?page=create.sql&box=3&msg=102");
+    header("location: page.php?page=create.sql$token={$_SESSION['user-token']}&box=3&msg=102");
 }

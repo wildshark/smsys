@@ -51,6 +51,30 @@
 </div>
 <!--End Create Stock-->
 
+<!--Start Create category-->
+<div class="modal fade" id="create-catagory" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <form method="get" action="model.php" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New category</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="ui" value="store-keeper">
+                    <input type="text" class='form-control' id="form-field-1" name="category-name" placeholder="Category Name" />
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" name="submit" value="add-category" class="btn btn-primary" >Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End Create cataegory-->
+
 <!--New Order Start-->
 <div class='modal fade' id='add-new-order' tabindex='-1' role='dialog' aria-labelledby='create-school' aria-hidden='true'>
     <div class='modal-dialog' role='document'>
