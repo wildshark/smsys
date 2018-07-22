@@ -316,6 +316,16 @@ function get_staff_lecturer($conn){
     }
 }
 
+function cmb_all_staff_name_list($conn){
+    //get_staff_name_list
+
+    $sql="SELECT * from get_staff_name_list";
+    $result = $conn->query($sql);
+    while($r=$result->fetch_assoc()){
+        echo"<option value='{$r['staff_profile_ID']}'>{$r['f_name']} {$r['l_name']}</option>";
+    }
+}
+
 function get_rental_list($conn){
 
     $sql="SELECT * FROM list_rental";

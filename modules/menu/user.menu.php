@@ -576,9 +576,9 @@ function admin($token){
 function  estate_mgs($token){
     echo"
     <li class=''>
-        <a href='page.php?page=create.sql&token={$token}&box=1&msg=1'>
+        <a href='hostel.php?page=dashboard&token={$token}&box=1&msg=1'>
             <i class='menu-icon fa fa-tachometer'></i>
-            <span class='menu-text'> Create SQL </span>
+            <span class='menu-text'> Dashboard </span>
         </a>
 
         <b class='arrow'></b>
@@ -668,42 +668,22 @@ function  estate_mgs($token){
 
         <ul class='submenu'>
             <li class=''>
-                <a href='page.php?page=dir-list&token={$token}&box=1&msg=1'>
+                <a href='hostel.php?page=backup-file&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
-                    Dir
+                    Backup File
                 </a>
 
                 <b class='arrow'></b>
             </li>
 
             <li class=''>
-                <a href='page.php?page=add-file&token={$token}&box=1&msg=1'>
+                <a href='hostel.php?page=send-file&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
-                    Upload File
+                    Send File
                 </a>
 
                 <b class='arrow'></b>
             </li>
-
-            <!--li class=''>
-                <a href='result.php?page=add-assessment'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Add Assessment
-                </a>
-
-                <b class='arrow'></b>
-            </li-->
-
-            <li class=''>
-                <a href='result.php?page=assessment-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Assessment List
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-            
-
         </ul>
     </li>
 
@@ -713,16 +693,7 @@ function  estate_mgs($token){
 function store_keeper($token){
     echo"
     <li class=''>
-        <a href='page.php?page=create.sql&token={$token}&box=1&msg=1'>
-            <i class='menu-icon fa fa-tachometer'></i>
-            <span class='menu-text'> Create SQL </span>
-        </a>
-
-        <b class='arrow'></b>
-    </li>
-
-    <li class=''>
-        <a href='page.php?page=dashboard&token={$token}&box=1&msg=1'>
+        <a href='store.php?page=dashboard&token={$token}&box=1&msg=1'>
             <i class='menu-icon fa fa-tachometer'></i>
             <span class='menu-text'> Dashboard </span>
         </a>
@@ -735,15 +706,6 @@ function store_keeper($token){
             <i class='menu-icon fa fa-caret-right'></i>
             <span class='menu-text'> Stock Summary </span>
                 
-        </a>
-
-        <b class='arrow'></b>
-    </li>
-
-    <li class=''>
-        <a href='store.php?page=stock-order&token={$token}&box=1&msg=1'>
-            <i class='menu-icon fa fa-caret-right'></i>
-                    Order
         </a>
 
         <b class='arrow'></b>
@@ -831,41 +793,22 @@ function store_keeper($token){
 
         <ul class='submenu'>
             <li class=''>
-                <a href='page.php?page=dir-list&token={$token}&box=1&msg=1'>
+                <a href='store.php?page=backup-file&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
-                    Dir
+                    Backup File
                 </a>
 
                 <b class='arrow'></b>
             </li>
 
             <li class=''>
-                <a href='page.php?page=add-file&token={$token}&box=1&msg=1'>
+                <a href='store.php?page=send-file&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
-                    Upload File
+                    Send File
                 </a>
 
                 <b class='arrow'></b>
             </li>
-
-            <!--li class=''>
-                <a href='result.php?page=add-assessment'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Add Assessment
-                </a>
-
-                <b class='arrow'></b>
-            </li-->
-
-            <li class=''>
-                <a href='result.php?page=assessment-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Assessment List
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
         </ul>
     </li>
 ";

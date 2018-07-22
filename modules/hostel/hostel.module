@@ -140,3 +140,4 @@ if (!isset($result)){
         header("location: hostel.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }
+

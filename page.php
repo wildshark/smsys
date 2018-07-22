@@ -311,7 +311,18 @@ if ($user_token == $token){
                     include_once "print/admission.letter.php";
                 break;
 
+                case"backup-file";
+                    $page_title="File Backup";
+                    $body="cloud_hdd/backup.file.php";
+                    include_once "template/table.default.php";
+                break;
 
+                case"send-file";
+                    $page_title="File Backup";
+                    $body="cloud_hdd/send.file.php";
+                    include_once "template/table.default.php";
+                break;
+                
                 case"table";
                     include_once "template/table.default.php";
                     break;

@@ -13,7 +13,7 @@ include_once "controls/db.connection.php";
 include_once "controls/global.php";
 include_once "controls/control.php";
 include_once "controls/session.php";
-include_once "modules/menu/admin.user.php";
+include_once "modules/menu/user.menu.php";
 include_once "modules/datasheet/datasheet.module";
 include_once "modules/datasheet/profile.datasheet.module";
 include_once "msg_box/msg.box.module";
@@ -36,8 +36,8 @@ if ($user_token == $token){
             break;
 
         case"dashboard";
-            $body = "views/form/form.php";
-            include_once "template/default.php";
+            $body = "hostel/dashboard/dashboard.php";
+             include_once "template/default.php";
         break;
 
         case"hostel-list";
@@ -86,6 +86,18 @@ if ($user_token == $token){
             $page_title="User(s) Hostel Report";
             $body="hostel/total.number.per.room.php";
             include_once $template->table;
+        break;
+
+        case"backup-file";
+            $page_title="File Backup";
+            $body="cloud_hdd/backup.file.php";
+            include_once "template/table.default.php";
+        break;
+
+        case"send-file";
+            $page_title="File Backup";
+            $body="cloud_hdd/send.file.php";
+            include_once "template/table.default.php";
         break;
 
         default;

@@ -89,6 +89,11 @@
                         <input type="text" name="school-attended" class="form-control" id="recipient-name">
                     </div>
 
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Year:</label>
+                        <input type="text" name="school-year" class="form-control" id="recipient-name">
+                    </div>
+
                      <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Exam Index ID:</label>
                         <input type="text" name="exam-index-id" class="form-control" id="recipient-name">

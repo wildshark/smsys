@@ -26,7 +26,7 @@ $stream = $r['streaID'];
 $schoolID = $r['attended'];
 $examID = $r['exam_index_id'];
 $result = $r['exam_result'];
-
+$attend_year = $r['attended_year'];
 
 if ($category == 1){
     $category_type = "Local Student";
@@ -194,6 +194,16 @@ if($campus == 1){
 
         <div class="col-sm-9">
             <input type="text" name="exam-index-id" id="form-field-1" value="<?php echo $examID;?>" placeholder="Exam Index ID" class="col-xs-10 col-sm-5" />
+        </div>
+    </div>
+
+    <div class="space-4"></div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Year  </label>
+
+        <div class="col-sm-9">
+            <input type="text" name="exam-index-id" id="form-field-1" value="<?php echo $attend_year;?>" placeholder="Exam Index ID" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 

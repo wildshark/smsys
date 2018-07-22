@@ -6,11 +6,14 @@
  * Time: 12:37 AM
  */
 
-include_once "controls/db.connection.php";
-include_once "controls/config.php";
-include_once "controls/control.php";
-
 session_start();
+
+include_once "controls/config.php";
+include_once "controls/db.connection.php";
+include_once "controls/global.php";
+include_once "controls/control.php";
+include_once "controls/session.php";
+
 
 if (isset($_GET['ui'])){
     $page = $_GET['ui'];
@@ -96,7 +99,7 @@ switch ($page){
         require_once "modules/result/result.marking.sheet.module";
     break;
 
-    case"file-share";
+    case"cloud-file";
         require_once "file_share/model/file.share.module";
     break;
 

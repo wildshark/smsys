@@ -6,18 +6,64 @@
  * Time: 10:16 AM
  */
 
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
 if (isset($_POST['submit'])){
     $submit = $_POST['submit'];
 }else{
     $submit = $_GET['submit'];
 }
 
-if($submit == "submit"){
+if($submit == "send-file"){
 
-    $date = $_POST['date'];
-    $department = $_POST['department'];
+    $id = $_SESSION['user-id'];
+    $date = date("Y-m-d H-i-s");
+    $send = $_POST['send-to'];
     $title = $_POST['title'];
-    $note = $_POST['note'];
+    $note = $_POST['comment'];
+    
+    $file_name = $_FILES['file']['name'];
+    $file_tmp_name = $_FILES['file']['tmp_name'];
+    $file_size = $_FILES['file']['size'];
+    $file_error = $_FILES['file']['error'];
+    $file_type = $_FILES['file']['type'];
+
+    $fileExt = explode('.', $file_name);
+    $file_actualExt = strtolower(end($fileExt));
+    $allowed =  array ('jpg','jpeg', 'png','bmp','doc','docx','pdf','zip','txt','xlsx','vsdx','rar','pptx','ppt');
+
+    if (in_array($file_actualExt, $allowed)){
+        if($file_error === 0){
+            if ($file_size < 204800000000 ){
+                $file_new_name = uniqid('',true).".".$file_actualExt;
+                $file_destination = "uploads/document/".$file_new_name;
+                move_uploaded_file($file_tmp_name,$file_destination);
+
+                $sql="INSERT INTO `file_backup` (`f_userID`, `f_date`, `title`, `f_note`, `path`, `f_receiverID`,`file_type`) 
+                VALUES ('$id', '$date', '$title', '$note', '$file_destination', '$send','$file_size')";
+                $result = $conn->query($sql);
+               // $error_no = "2";
+            }else{
+                //echo"file is to large to upload";
+                header("location:".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=2");
+            }
+        }else{
+            //echo"there was an error uploading the file";
+            header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=6");
+        }
+    }else{
+        //echo"you can nout upload this kind of file";
+        header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=7");
+    }
+
+}elseif($submit == "backup-file"){
+    
+    $id = $_SESSION['user-id'];
+    $date = date("Y-m-d H-i-s");
+    $send = "0";
+    $title = $_POST['title'];
+    $note = $_POST['comment'];
 
     $file_name = $_FILES['file']['name'];
     $file_tmp_name = $_FILES['file']['tmp_name'];
@@ -36,30 +82,53 @@ if($submit == "submit"){
                 $file_destination = "uploads/document/".$file_new_name;
                 move_uploaded_file($file_tmp_name,$file_destination);
 
-                echo $sql="INSERT INTO `file_storage` (`departID`, `date`, `title`, `note`, `file_path`, `file_seize`, `file_type`) VALUES ('$department', '$date', '$title', '$note', '$file_destination', '$file_size', '$file_type')";
+                $sql="INSERT INTO `file_backup` (`f_userID`, `f_date`, `title`, `f_note`, `path`, `f_receiverID`,`file_type`) 
+                VALUES ('$id', '$date', '$title', '$note', '$file_destination', '$send','$file_size')";
                 $result = $conn->query($sql);
+            
                // $error_no = "2";
             }else{
                 //echo"file is to large to upload";
-                header("location: page.php?page=".$url_page."&box=3&msg=2");
+                header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=2");
             }
         }else{
             //echo"there was an error uploading the file";
-            header("location: page.php?page=".$url_page."&box=3&msg=6");
+            header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=6");
         }
     }else{
         //echo"you can nout upload this kind of file";
-        header("location: page.php?page=".$url_page."&box=3&msg=7");
+        header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=7");
     }
 
-}elseif($submit == "del.file-share"){
+}elseif($submit === "del.file-share"){
 
-    $id = $_GET['file'];
-    $sql ="DELETE FROM `file_storage` WHERE (`shareID`='$id')";
+    $id = $_GET['detail'];
+    $sql = "DELETE FROM `file_backup` WHERE (`fileID`='$id')";
     $result = $conn->query($sql);
-    if ($result == TRUE){
-        header("location: page.php?page=dir-list&box=2&msg=4");
+
+}
+
+
+if($submit === "download"){
+
+    $id = $_GET['detail'];
+
+    $sql = "SELECT * FROM get_backup_file WHERE fileID = '$id'";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    $download = $r['path'];
+
+    header("location: ". $download);
+
+}elseif (!isset($result)){
+  
+    header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+}else{
+   
+    if ($result === TRUE){
+        header("location: ".$pg."?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
     }else{
-        header("location: page.php?page=dir-list&box=1&msg=1");
+        header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }

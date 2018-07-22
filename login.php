@@ -40,6 +40,7 @@ if (isset($_POST)){
 }
 
 session_start();
+
 $_SESSION['username'] = $username;
 
     $sql = "SELECT * FROM get_admin WHERE username = '$username' AND  password = '$password'";
@@ -47,14 +48,28 @@ $_SESSION['username'] = $username;
     $admin = $result->fetch_assoc();
 
     if ($admin > 0){
-         $user_access = $admin['access'];
+        $user_id = $admin['userID'];
+        $user_access = $admin['access'];
         $token = uniqid();
         $token = md5($user_access."".date('h-i-s')."".$token);
 
         $_SESSION['user-token'] = $token;
         $_SESSION['user-access'] = $user_access;
+        $_SESSION['user-id'] = $user_id;
 
-        header("location: page.php?page=dashboard&token={$token}&box=1&msg=1");
+        if ($user_access == 1){
+            $pg = "page.php";
+        }elseif($user_access == 2){
+             $pg = "page.php";
+        }elseif($user_access == 3){
+            $pg = "user.php";
+        }elseif($user_access == 4){
+            $pg = "hostel.php";
+        }elseif($user_access == 5){
+            $pg = "store.php";
+        }
+
+        header("location: {$pg}?page=dashboard&token={$token}&box=1&msg=1");
 
     }else{
         header("location: ".  $_SERVER['HTTP_REFERER']);
