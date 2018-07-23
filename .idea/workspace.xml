@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a9e2915-c42d-426d-b6a2-275f7d793e72" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8ff8557e-b057-4fd9-a074-f490de6a55ae.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8ff8557e-b057-4fd9-a074-f490de6a55ae.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8ff8557e-b057-4fd9-a074-f490de6a55ae/storage_v2/_src_/schema/school_data.lVUbTw.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8ff8557e-b057-4fd9-a074-f490de6a55ae/storage_v2/_src_/schema/school_data.lVUbTw.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controls/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/controls/global.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controls/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/controls/session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_share/model/file.share.module" beforeDir="false" afterPath="$PROJECT_DIR$/file_share/model/file.share.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hostel.php" beforeDir="false" afterPath="$PROJECT_DIR$/hostel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/form/student.admission.entry.module" beforeDir="false" afterPath="$PROJECT_DIR$/modules/form/student.admission.entry.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/hostel/hostel.module" beforeDir="false" afterPath="$PROJECT_DIR$/modules/hostel/hostel.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/menu/admin.user.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store.php" beforeDir="false" afterPath="$PROJECT_DIR$/store.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/entry/edit.student.index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/student/entry/edit.student.index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/entry/list.student.index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/student/entry/list.student.index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,7 +53,7 @@
       <file leaf-file-name="hostel.module" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/hostel/hostel.module">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
+            <state relative-caret-position="268">
               <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
             </state>
           </provider>
@@ -465,12 +450,12 @@
       <workItem from="1530957819515" duration="590000" />
       <workItem from="1530960061636" duration="21000" />
       <workItem from="1532208338523" duration="1919000" />
-      <workItem from="1532264263870" duration="920000" />
+      <workItem from="1532264263870" duration="1027000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="575632000" />
+    <option name="totallyTimeSpent" value="575739000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -483,7 +468,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.32876712" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50378215" side_tool="true" weight="0.3361921" />
@@ -891,7 +875,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/hostel/hostel.module">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
+        <state relative-caret-position="268">
           <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
         </state>
       </provider>

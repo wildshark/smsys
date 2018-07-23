@@ -12,7 +12,9 @@ if (isset($_GET['submit'])){
     $submit = $_POST['submit'];
 }
 
-If ($submit == "add"){
+$url_page = $_SESSION['url-page'];
+
+If ($submit === "add-result-master-sheet"){
 
     $date = $_GET['date'];
     $year = $_GET['year'];
@@ -25,13 +27,15 @@ If ($submit == "add"){
     $add = "INSERT INTO `result_main` (`result_date`, `schoolID`, `staffID`, `levelID`, `yearID`, `semesterID`, `courseID`) VALUES ('$date', '$school', '$lecture', '$level', '$year', $semester, '$course')";
     $result = $conn->query($add);
 
-}elseif($submit =="add-marks"){
+    $error_no = "2";
 
-    $id = $_GET['result'];
-    $year = $_GET['year'];
-    $semester = $_GET['semester'];
-    $course = $_GET['course'];
-    $level = $_GET['level'];
+}elseif($submit =="add-exam-result"){
+
+    $id = $_SESSION['result-sem-id'];
+    $year = $_SESSION['year-id'];
+    $semester = $_SESSION['semester-id'];
+    $course = $_SESSION['course-id'];
+    $level = $_SESSION['level-id'];
 
     $student = $_GET['student'];
     $case_study = $_GET['case-study'];
@@ -41,6 +45,8 @@ If ($submit == "add"){
 
     $add="INSERT INTO `result_details` (`result_semID`, `yearID`, `semesterID`, `courseID`,`levelID`, `studentID`, `case_study`, `group_work`, `presentation`, `exam`) VALUES ('$id', '$year', '$semester', '$course','$level', '$student', '$case_study', '$group_work', '$presentation', '$examination')";
     $result = $conn->query($add);
+
+    $p = "2";
 
 }elseif ($submit == 'update-marks'){
 
@@ -76,7 +82,17 @@ If ($submit == "add"){
 
 }
 
-if ($result === TRUE){
-
-    header("location: ".  $_SERVER['HTTP_REFERER']);
+if (!isset($result)){
+    header("location: register.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        if ($p == 2){
+           header("location: register.php?page={$url_page}&detail={$id}&year={$year}&semester={$semester}&course={$course}&level={$level}&token={$_SESSION['user-token']}&box=1&msg=1");
+        }else{
+            header("location: register.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}&id={$id}");
+        }
+        
+    }else{
+        header("location: register.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+    }
 }

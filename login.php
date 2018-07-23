@@ -62,7 +62,7 @@ $_SESSION['username'] = $username;
         }elseif($user_access == 2){
              $pg = "page.php";
         }elseif($user_access == 3){
-            $pg = "user.php";
+            $pg = "register.php";
         }elseif($user_access == 4){
             $pg = "hostel.php";
         }elseif($user_access == 5){

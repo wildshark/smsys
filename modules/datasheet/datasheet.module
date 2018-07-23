@@ -1167,12 +1167,12 @@ function marking_sheet_data($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='#'>
-                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
+                            <a class='blue' href='register.php?page=edit-mark-sheet&detail={$r['result_semID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
-                            <a class='green' href='result.php?page=add-assessment&detail={$r['result_semID']}&year={$r['yearID']}&semester={$r['semesterID']}&course={$r['courseID']}&level={$r['levelID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
-                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            <a class='green' href='register.php?page=add-result.processing&detail={$r['result_semID']}&year={$r['yearID']}&semester={$r['semesterID']}&course={$r['courseID']}&level={$r['levelID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                                <i class='ace-icon fa  fa-folder-o bigger-130'></i>
                             </a>
 
                             <a class='red' href='model.php?ui=result&submit=delete-marking-sheet&detail={$r['result_semID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
@@ -1314,4 +1314,42 @@ function get_assessment_data($conn){
     }
 }
 
+function get_result_details($conn){
+    //get_result_main
+    $id = $_GET['detail'];
+    $sql = "select * from get_result_details WHERE result_semID = '".$id."'";
+    $result = $conn->query($sql);
+    while ($r = $result->fetch_assoc()) {
+        echo"
+                <tr>
+                    <td class='center'>
+                        <label class='pos-rel'>
+                            <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                        </label>
+                    </td>
+
+                    <td>
+                        {$r['first_name']} {$r['surname']} - {$r['admissionNo']}</a>
+                    </td>
+                    <td>{$r['yearID']}</td>
+                    <td class='hidden-480'>{$r['semester']}</td>
+                    <td>{$r['levelID']}</td>
+                    <td class='hidden-480'>{$r['total']}</td>
+
+                    <td>
+                        <div class='hidden-sm hidden-xs action-buttons'>
+                            <a class='blue' href='register.php?page=edit-mark-sheet&detail={$r['result_semID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
+
+                            <a class='red' href='model.php?ui=result&submit=delete-marking-sheet&detail={$r['result_semID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}
 

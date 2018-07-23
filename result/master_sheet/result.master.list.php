@@ -9,7 +9,7 @@
 ?>
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">Add Position</button>
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">Add Exam</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -22,7 +22,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="ui" value="operation">
+                <input type="hidden" name="ui" value="result">
 
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Date:</label>
@@ -44,8 +44,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="recipient-name" class="form-control-label">Semester:</label>
-                        <select name="semester" id="form-field-1" class="form-control">
+                        <label for="recipient-name" class="form-control-label">Level:</label>
+                        <select name="level" id="form-field-1" class="form-control">
                             <option class="active" value="100">100</option>
                             <option value="200">200</option>
                             <option value="300">300</option>
@@ -62,14 +62,21 @@
 
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Course:</label>
-                        <select name="department" id="form-field-1" class="form-control">
+                        <select name="course" id="form-field-1" class="form-control">
                             <?php cmb_course($conn);?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Lecture:</label>
+                        <select name="lecture" id="form-field-1" class="form-control">
+                        <?php get_staff_lecturer($conn);?>
                         </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="submit" value="add-staff-position" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="submit" value="add-result-master-sheet" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>

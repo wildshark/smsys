@@ -1,27 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew Quaye
- * Date: 05-Mar-18
- * Time: 8:53 PM
- */
 
-//create.sql
-$token = $_SESSION['user-token'];
-$access = $_SESSION['user-access'];
-
-function super_admin($token){
-
+function admin($token){
     echo"
-    <li class=''>
-        <a href='page.php?page=create.sql&token={$token}&box=1&msg=1'>
-            <i class='menu-icon fa fa-tachometer'></i>
-            <span class='menu-text'> Create SQL </span>
-        </a>
-
-        <b class='arrow'></b>
-    </li>
-
     <li class=''>
         <a href='page.php?page=dashboard&token={$token}&box=1&msg=1'>
             <i class='menu-icon fa fa-tachometer'></i>
@@ -82,15 +62,6 @@ function super_admin($token){
                 <b class='arrow'></b>
             </li>
 
-            <!--li class=''>
-                <a href='page.php?page=add-enrollment'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Add Enrollment
-                </a>
-
-                <b class='arrow'></b>
-            <li-->
-
             <li class=''>
                 <a href='page.php?page=enrollment-list&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
@@ -106,8 +77,8 @@ function super_admin($token){
         <a href='#' class='dropdown-toggle'>
             <i class='menu-icon fa fa-desktop'></i>
             <span class='menu-text'>
-				Human Resource
-		    </span>
+                                    Human Resource
+                                </span>
 
             <b class='arrow fa fa-angle-down'></b>
         </a>
@@ -136,7 +107,7 @@ function super_admin($token){
 
             <li class=''>
                 <a href='elements.html'>
-                    <i class='menu-icon fa fa-caret-right&token={$token}&box=1&msg=1'></i>
+                    <i class='menu-icon fa fa-caret-right'></i>
                     Staff Leave
                 </a>
 
@@ -185,7 +156,7 @@ function super_admin($token){
                 <b class='arrow'></b>
             </li>
 
-         </ul>
+        </ul>
     </li>
 
     <li class=''>
@@ -292,192 +263,6 @@ function super_admin($token){
 
     <li class=''>
         <a href='#' class='dropdown-toggle'>
-            <i class='menu-icon fa fa-desktop'></i>
-            <span class='menu-text'>
-				Store & Stock
-			</span>
-
-            <b class='arrow fa fa-angle-down'></b>
-        </a>
-
-        <b class='arrow'></b>
-
-        <ul class='submenu'>
-
-            <li class=''>
-                <a href='store.php?page=stock-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Stock Summary
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='' data-toggle='modal' data-target='#create-stock'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Create Stock
-                </a>
-
-                <b class='arrow'></b>
-            </li> 
-
-            <li class=''>
-                <a href='store.php?page=stock-order&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Order
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='store.php?page=stock-request&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Request Form
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='store.php?page=stock-purchase&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Purchase
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='store.php?page=stock-issue&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Issue
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-        </ul>
-    </li>
-
-    <li class=''>
-        <a href='#' class='dropdown-toggle'>
-            <i class='menu-icon fa fa-desktop'></i>
-            <span class='menu-text'>
-								Hostel & Booking
-							</span>
-
-            <b class='arrow fa fa-angle-down'></b>
-        </a>
-
-        <b class='arrow'></b>
-
-        <ul class='submenu'>
-
-            <li class=''>
-                <a href='hostel.php?page=hostel-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Hostel List
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='' data-toggle='modal' data-target='#add-rental-modal'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Create Rentals
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='' data-toggle='modal' data-target='#create-block'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Create Block
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='hostel.php?page=hostel-room&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                     Create Room
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-
-
-            <li class=''>
-                <a href='hostel.php?page=hostel-booking&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Hostel Booking
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='hostel.php?page=hostel-rental-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Hostel Rental
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-        </ul>
-    </li>
-
-    <li class=''>
-        <a href='#' class='dropdown-toggle'>
-            <i class='menu-icon fa fa-desktop'></i>
-            <span class='menu-text'>
-                Lecture Note
-            </span>
-
-            <b class='arrow fa fa-angle-down'></b>
-        </a>
-
-        <b class='arrow'></b>
-
-        <ul class='submenu'>
-
-            <li class=''>
-                <a href='note.php?page=note-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Note List
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='note.php?page=add-note&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Create Lession note
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='note.php?page=create-assignment&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Create Assignment
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-        </ul>
-    </li>
-
-    <li class=''>
-        <a href='#' class='dropdown-toggle'>
             <i class='menu-icon fa fa-tag'></i>
             <span class='menu-text'> File Sharing </span>
 
@@ -504,25 +289,6 @@ function super_admin($token){
 
                 <b class='arrow'></b>
             </li>
-
-            <!--li class=''>
-                <a href='result.php?page=add-assessment'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Add Assessment
-                </a>
-
-                <b class='arrow'></b>
-            </li-->
-
-            <li class=''>
-                <a href='result.php?page=assessment-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Assessment List
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
         </ul>
     </li>
 
@@ -555,15 +321,6 @@ function super_admin($token){
                 <b class='arrow'></b>
             </li>
 
-            <!--li class=''>
-                <a href='result.php?page=add-assessment'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Add Assessment
-                </a>
-
-                <b class='arrow'></b>
-            </li-->
-
             <li class=''>
                 <a href='result.php?page=assessment-list&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
@@ -575,19 +332,5 @@ function super_admin($token){
 
         </ul>
     </li>
-";
+    ";
 }
-
-if ($access == 1){
-    super_admin($token);
-}elseif($access == 2){
-    admin($token);
-}elseif($access == 3){
-    register($token);
-}elseif ($access == 4){
-    estate_mgs($token);
-}elseif($access == 5){
-    store_keeper($token);
-}
-
-include_once 'dialog.box.php';
