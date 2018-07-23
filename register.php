@@ -44,7 +44,7 @@ if ($user_token == $token){
                 break;
 
                 case"dashboard";
-                    $body = "views/dashboard/dashboard.php";
+                    $body = "views/dashboard/dashboard.register.php";
                     include_once "template/default.php";
                 break;    
 

@@ -91,11 +91,11 @@
                         </label>
                     </th>
                     <th>Student</th>
-                    <th>Case Study</th>
-                    <th class="hidden-480">Group Work</th>
+                    <th>Academic Year</th>
+                    <th class="hidden-480">Semester</th>
 
                     <th>
-                        Presentation
+                        Lsevel
                     </th>
                     <th>Examination</th>
                     <th></th>

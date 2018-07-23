@@ -1144,6 +1144,7 @@ function administration_data($conn){
 }
 
 function marking_sheet_data($conn){
+    
     //get_result_main
     $sql = "select * from get_result_main";
     $result = $conn->query($sql);
@@ -1186,6 +1187,7 @@ function marking_sheet_data($conn){
 }
 
 function get_assessment_data($conn){
+
     //get_result_details
     $sql = "select * from get_result_details";
     $result = $conn->query($sql);

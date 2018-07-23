@@ -72,6 +72,9 @@ If ($submit === "add-result-master-sheet"){
     $delete = "DELETE FROM `result_main` WHERE (`result_semID`='$id')";
     $result = $conn->query($delete);
 
+    $delete = "DELETE FROM `result_details` WHERE (`result_semID`='$id')";
+    $result = $conn->query($delete);
+
     if ($result == TRUE){
 
         $delete = "DELETE FROM `result_details` WHERE (`result_semID`='$id')";
