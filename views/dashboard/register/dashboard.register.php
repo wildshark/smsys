@@ -79,13 +79,6 @@ include_once "global.dashboard.module";
 
         <div class="infobox infobox-red">
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php echo total_continuing_student($conn);?></span>
-                <div class="infobox-content">Continuing Student</div>
-            </div>
-        </div>
-
-        <div class="infobox infobox-red">
-            <div class="infobox-data">
                 <span class="infobox-data-number"><?php echo total_local_student_summary($conn);?></span>
                 <div class="infobox-content">Local Student</div>
             </div>
@@ -99,39 +92,29 @@ include_once "global.dashboard.module";
         </div>
 
         <div class="infobox infobox-red">
-            <div class="infobox-icon">
-                <i class="ace-icon fa fa-flask"></i>
-            </div>
-
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php //echo total_student_summary($conn);?></span>
-                <div class="infobox-content">Total Issued</div>
-            </div>
-        </div>
-
-        <div class="infobox infobox-orange2">
-            <div class="infobox-chart">
-                <span class="sparkline" data-values="196,128,202,177,154,94,100,170,224"></span>
-            </div>
-
-            <div class="infobox-data">
-                <span class="infobox-data-number">6,251</span>
-                <div class="infobox-content">pageviews</div>
-            </div>
-
-            <div class="badge badge-success">
-                7.2%
-                <i class="ace-icon fa fa-arrow-up"></i>
+                <span class="infobox-data-number"><?php echo total_continuing_student($conn);?></span>
+                <div class="infobox-content">Continuing Student</div>
             </div>
         </div>
 
         <div class="infobox infobox-red">
-            <div class="infobox-icon">
-                <i class="ace-icon fa fa-flask"></i>
-            </div>
-
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php //echo total_student_summary($conn);?></span>
+                <span class="infobox-data-number"><?php echo total_regular_student($conn);?></span>
+                <div class="infobox-content">Regular Student</div>
+            </div>
+        </div>
+
+        <div class="infobox infobox-red">
+            <div class="infobox-data">
+                <span class="infobox-data-number"><?php echo total_weekend_student($conn);?></span>
+                <div class="infobox-content">Weekend Student</div>
+            </div>
+        </div>
+
+        <div class="infobox infobox-red">
+            <div class="infobox-data">
+                <span class="infobox-data-number"><?php echo total_active_staff($conn);?></span>
                 <div class="infobox-content">Total Issued</div>
             </div>
         </div>

@@ -53,10 +53,6 @@ $_SESSION['username'] = $username;
         $token = uniqid();
         $token = md5($user_access."".date('h-i-s')."".$token);
 
-        $_SESSION['user-token'] = $token;
-        $_SESSION['user-access'] = $user_access;
-        $_SESSION['user-id'] = $user_id;
-
         if ($user_access == 1){
             $pg = "page.php";
         }elseif($user_access == 2){
@@ -68,6 +64,11 @@ $_SESSION['username'] = $username;
         }elseif($user_access == 5){
             $pg = "store.php";
         }
+
+        $_SESSION['user-token'] = $token;
+        $_SESSION['user-access'] = $user_access;
+        $_SESSION['user-id'] = $user_id;
+        $_SESSION['user-page-url'] = $pg;
 
         header("location: {$pg}?page=dashboard&token={$token}&box=1&msg=1");
 

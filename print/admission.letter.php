@@ -21,8 +21,6 @@ $nationality = $r['student_nationality'];
 $school = $r['school'];
 $year = $r['yearID'];
 
-
-
 ?>
 <!DOCTYPE html>
 <html >
@@ -72,29 +70,30 @@ Dear <?php echo  $f_name ." ". $l_name;?>.<br>
 
   </page>
 <page size="A4">
-    <h4>2.	Registration</h4>
-        <p>
-        We are expecting you to report on campus from (date of registration) to undergo the Registration processes and begin classes with following items:
-            <ul>
-                <li>Your admission letter</li>
-                <li>Evidence of Payment of your fees</li>
-            </ul>
-        </p>
-    <h4>3.	Lectures</h4>
-        <p>
-        Lectures commences on (date of commencement). We wish you a safe trip and arrival on our campus before lectures commence. Thank you
-        </p>
-        <p>
-        It is our sincere hope that you will enjoy your stay and studies in the University College. You are warmly welcome
-        </p>
-    <P>
-    Yours faithfully<br>
+    <div class="container">
+        <h4>2.	Registration</h4>
+            <p>
+            We are expecting you to report on campus from (date of registration) to undergo the Registration processes and begin classes with following items:
+                <ul>
+                    <li>Your admission letter</li>
+                    <li>Evidence of Payment of your fees</li>
+                </ul>
+            </p>
+        <h4>3.	Lectures</h4>
+            <p>
+            Lectures commences on (date of commencement). We wish you a safe trip and arrival on our campus before lectures commence. Thank you
+            </p>
+            <p>
+            It is our sincere hope that you will enjoy your stay and studies in the University College. You are warmly welcome
+            </p>
+        <P>
+        Yours faithfully<br>
 
 
-    Hanson K. Nyame<br>
-    Registrar
-    </P>
-
+        Hanson K. Nyame<br>
+        Registrar
+        </P>
+    </div>    
 </page>
 
 </body>

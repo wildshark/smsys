@@ -42,15 +42,15 @@ function student_admission_entry($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='page.php?page=print.admission.letter&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='blue' href='{$_SESSION['user-page-url']}?page=print.admission.letter&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-envelope-o bigger-130'></i>
                             </a>
 
-                            <a class='green' href='page.php?page=add-student-admission&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=add-student-admission&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-cogs bigger-130'></i>
                             </a>
 
-                            <a class='green' href='page.php?page=edit-student-admission&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-student-admission&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil-square-o bigger-130'></i>
                             </a>
 
@@ -100,7 +100,7 @@ function add_student_admission_index($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='page.php?page=view-student.admission.index&token={$_SESSION['user-token']}&box=1&msg=1&id={$r['admissionID'] }'>
+                            <a class='blue' href='{$_SESSION['user-page-url']}?page=view-student.admission.index&token={$_SESSION['user-token']}&box=1&msg=1&id={$r['admissionID'] }'>
                                 <i class='ace-icon fa fa-cogs  bigger-130'></i>
                             </a>
                             
@@ -141,11 +141,11 @@ function student_data($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='page.php?page=view-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='blue' href='{$_SESSION['user-page-url']}?page=view-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-search-plus bigger-130'></i>
                             </a>
 
-                            <a class='green' href='page.php?page=edit-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
@@ -393,7 +393,7 @@ function student_enrollment_data($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                             <a class='green' href='page.php?page=edit-enrollment&detail={$r['enrollID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                             <a class='green' href='{$_SESSION['user-page-url']}?page=edit-enrollment&detail={$r['enrollID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
                         
@@ -448,7 +448,7 @@ function programme_data($conn){
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
                           
-                            <a class='green' href='page.php?page=edit-programme&detail={$r['progID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-programme&detail={$r['progID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
@@ -492,7 +492,7 @@ function position_data($conn){
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
                           
-                            <a class='green' href='page.php?page=edit-position&detail={$r['positionID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-position&detail={$r['positionID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
@@ -534,11 +534,11 @@ function staff_profile_data($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='page.php?page=view-staff-profile&ui={$r['token']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='blue' href='{$_SESSION['user-page-url']}?page=view-staff-profile&ui={$r['token']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-search-plus bigger-130'></i>
                             </a>
 
-                            <a class='green' href='page.php?page=view-staff-profile&ui={$r['token']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=view-staff-profile&ui={$r['token']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
@@ -580,11 +580,11 @@ function staff_profile_terminated_data($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='page.php?page=view-staff-profile&ui={$r['token']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='blue' href='{$_SESSION['user-page-url']}?page=view-staff-profile&ui={$r['token']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-search-plus bigger-130'></i>
                             </a>
 
-                            <a class='green' href='page.php?page=view-staff-profile&ui={$r['token']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=view-staff-profile&ui={$r['token']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
@@ -633,7 +633,7 @@ function academic_calender($conn){
                                 <i class='ace-icon fa fa-search-plus bigger-130'></i>
                             </a>
 
-                            <a class='green' href='page.php?page=edit-academic-calendar&detail={$r['calendarID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-academic-calendar&detail={$r['calendarID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
@@ -885,7 +885,7 @@ function course_data($conn){
                     </td>
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='green' href='page.php?page=edit-course-profile&id={$r['courseID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-course-profile&id={$r['courseID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
@@ -948,7 +948,7 @@ function subject($conn){
 
                                 <ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
                                     <li>
-                                        <a href='page.php?page=&id={$r['subjectID']}&token={$_SESSION['user-token']}' class='tooltip-info' data-rel='tooltip' title='View'>
+                                        <a href='{$_SESSION['user-page-url']}?page=&id={$r['subjectID']}&token={$_SESSION['user-token']}' class='tooltip-info' data-rel='tooltip' title='View'>
 											<span class='blue'>
 												<i class='ace-icon fa fa-search-plus bigger-120'></i>
 											</span>
@@ -956,7 +956,7 @@ function subject($conn){
                                     </li>
 
                                     <li>
-                                        <a href='page.php?page=student-profile&id={$r['subjectID']}&token={$_SESSION['user-token']}&box=1&msg=1' class='tooltip-success' data-rel='tooltip' title='Edit'>
+                                        <a href='{$_SESSION['user-page-url']}?page=student-profile&id={$r['subjectID']}&token={$_SESSION['user-token']}&box=1&msg=1' class='tooltip-success' data-rel='tooltip' title='Edit'>
 											<span class='green'>
 												<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
 											</span>
@@ -964,7 +964,7 @@ function subject($conn){
                                     </li>
 
                                     <li>
-                                        <a href='page.php?page=student-profile&submit=delete&id={$r['subjectID']}&token={$_SESSION['user-token']}&box=1&msg=1' class='tooltip-error' data-rel='tooltip' title='Delete'>
+                                        <a href='{$_SESSION['user-page-url']}?page=student-profile&submit=delete&id={$r['subjectID']}&token={$_SESSION['user-token']}&box=1&msg=1' class='tooltip-error' data-rel='tooltip' title='Delete'>
 											<span class='red'>
 												<i class='ace-icon fa fa-trash-o bigger-120'></i>
 											</span>

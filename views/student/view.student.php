@@ -85,6 +85,16 @@ if (empty($r['picture'])){
     $image = $r['picture'];
 }
 
+//embed barcode code-39 using plugin/barcode.php
+$generator = new barcode_generator();
+$symbology ="code-39";
+$data = $r['admissionNo'];
+$options ="";
+//$svg = $generator->output_image($format, $symbology, $data, $options);
+$svg = $generator->render_svg($symbology, $data, $options);
+
+
+
 ?>
 <div>
     <div id="user-profile-1" class="user-profile row">
@@ -92,6 +102,7 @@ if (empty($r['picture'])){
             <div>
 				<span class="profile-picture">
                     <img id="avatar" class="editable img-responsive" alt="Alex's Avatar" src="<?php echo $image;?>" />
+                    <?php echo $svg;?>
 				</span>
 
                 <div class="space-4"></div>

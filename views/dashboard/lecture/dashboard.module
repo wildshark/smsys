@@ -115,13 +115,51 @@ function total_foreign_student_summary($conn){
     
 }
 
-function total_room_summary($conn){
+function total_regular_student($conn){
 
-    $sql = "SELECT Count(room) as total FROM get_hostel_room";
+    $yearID = $_SESSION['academic-year'];
+
+    $sql = "SELECT Count(studentID) as total, yearID, stream FROM get_student_profile_detail WHERE yearID='".$yearID."' AND stream = 1 GROUP BY yearID";
     $result = $conn->query($sql);
     $r = $result->fetch_assoc();
 
-    $total =  $r['total'];
-
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
     return $total;
+
+}
+
+function total_weekend_student($conn){
+
+    $yearID = $_SESSION['academic-year'];
+
+    $sql = "SELECT Count(studentID) as total, yearID, stream FROM get_student_profile_detail WHERE yearID='".$yearID."' AND stream = 2 GROUP BY yearID";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+
+}
+
+function total_active_staff($conn){
+
+    $sql = "SELECT Count(staff_profile_ID) as total FROM get_staff_profile WHERE statusID=1";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+
 }

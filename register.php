@@ -12,6 +12,7 @@ include_once "controls/db.connection.php";
 include_once "controls/global.php";
 include_once "controls/control.php";
 include_once "controls/session.php";
+include_once "modules/plugin/barcode.php";
 include_once "modules/menu/user.menu.php";
 include_once "modules/datasheet/datasheet.module";
 include_once "modules/datasheet/profile.datasheet.module";
@@ -38,14 +39,8 @@ if ($user_token == $token){
             $_SESSION['url-page'] = $page;
             switch ($page) {
 
-                case"create.sql";
-                    $page_title = "Run SQL Script";
-                    $body= "setup/setup.sql.php";
-                    include_once "template/form.element.php";
-                break;
-
                 case"dashboard";
-                    $body = "views/dashboard/dashboard.register.php";
+                    $body = "views/dashboard/register/dashboard.register.php";
                     include_once "template/default.php";
                 break;    
 

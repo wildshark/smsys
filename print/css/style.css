@@ -41,8 +41,11 @@ page[size="A5"][layout="portrait"] {
 }
 
 div.container {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  margin-right: 150px;
-  margin-left: 80px;
+    padding-top: 3cm;
+    padding-bottom: 3cm;
+    padding-right: 1cm;
+    padding-left: 1.5cm; 
+    border: 5px;
+    height: 256mm;
+    outline: 2cm;
 }
