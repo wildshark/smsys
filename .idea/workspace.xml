@@ -53,25 +53,6 @@
     </expand>
     <select />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="global.dashboard.module" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/views/dashboard/global.dashboard.module">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-766">
-                    <caret line="9" column="37" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="37" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
@@ -476,7 +457,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.32876712" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50378215" side_tool="true" weight="0.3361921" />

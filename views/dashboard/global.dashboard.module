@@ -6,12 +6,11 @@
  * Time: 6:54 PM
  */
 
-
-function total_student_summary($conn){
+function total_applicant($conn){
 
     $yearID = $_SESSION['academic-year'];
 
-    $sql = "SELECT Count(studentID) as total,yearID FROM get_student_index_list WHERE yearID = '".$yearID."' GROUP BY yearID";
+    $sql = "SELECT Count(admissionID) as total,yearID FROM get_new_student WHERE yearID = '".$yearID."' GROUP BY yearID";
     $result = $conn->query($sql);
     $r = $result->fetch_assoc();
 
@@ -23,26 +22,11 @@ function total_student_summary($conn){
     return $total;
 }
 
-function total_bed_summary($conn){
-
-    $sql = "SELECT Sum(bed) as total FROM get_hostel_room";
-    $result = $conn->query($sql);
-    $r = $result->fetch_assoc();
-
-    if (!isset($r['total'])){
-        $total = "0";
-    }else{
-        $total =  $r['total'];
-    }
-
-    return $total;
-}
-
-function total_available_summary($conn){
+function total_admission($conn){
 
     $yearID = $_SESSION['academic-year'];
 
-    $sql = "SELECT Sum(bal_user) as total FROM get_hostel_total_bed WHERE yearID = '".$yearID."' GROUP BY yearID";
+    $sql = "SELECT Count(studentID) as total,yearID FROM get_student_profile_detail WHERE yearID = '".$yearID."' GROUP BY yearID";
     $result = $conn->query($sql);
     $r = $result->fetch_assoc();
 
@@ -51,15 +35,14 @@ function total_available_summary($conn){
     }else{
         $total =  $r['total'];
     }
-
     return $total;
 }
 
-function total_used_summary($conn){
+function total_drop_out($conn){
 
     $yearID = $_SESSION['academic-year'];
 
-    $sql = "SELECT Sum(total_user) as total FROM get_hostel_total_bed  WHERE yearID = '".$yearID."' GROUP BY yearID";
+    $sql = "SELECT Count(studentID) as total,yearID FROM get_student_drop_out WHERE yearID = '".$yearID."'";
     $result = $conn->query($sql);
     $r = $result->fetch_assoc();
 
@@ -68,8 +51,68 @@ function total_used_summary($conn){
     }else{
         $total =  $r['total'];
     }
-
     return $total;
+}
+
+function total_continuing_student($conn){
+
+    $yearID = $_SESSION['academic-year'];
+
+    $sql = "SELECT Count(studentID) as total,yearID FROM get_student_profile_detail WHERE yearID = '".$yearID."' GROUP BY yearID";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total_admission = "0";
+    }else{
+        $total_admission =  $r['total'];
+    }
+
+    $sql = "SELECT Count(studentID) as total,yearID FROM get_student_drop_out WHERE yearID = '".$yearID."'";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total_drop_out = "0";
+    }else{
+        $total_drop_out =  $r['total'];
+    }
+
+    return $total_admission - $total_drop_out;
+}
+
+function total_local_student_summary($conn){
+    
+    $yearID = $_SESSION['academic-year'];
+
+    $sql = "SELECT Count(studentID) as total, yearID, categoryID, statusID FROM get_student_profile_detail WHERE categoryID = 1 And yearID='".$yearID."' AND statusID = 1 GROUP BY yearID, categoryID";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+    
+}
+
+function total_foreign_student_summary($conn){
+    
+    $yearID = $_SESSION['academic-year'];
+
+    $sql = "SELECT Count(studentID) as total, yearID, categoryID, statusID FROM get_student_profile_detail WHERE categoryID = 2 And yearID='".$yearID."' AND statusID = 1 GROUP BY yearID, categoryID";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+    
 }
 
 function total_room_summary($conn){

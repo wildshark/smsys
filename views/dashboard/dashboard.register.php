@@ -58,43 +58,43 @@ include_once "global.dashboard.module";
     <div class="col-xs-7 infobox-container">
         <div class="infobox infobox-red">
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php echo total_student_summary($conn);?></span>
-                <div class="infobox-content">Total Item</div>
+                <span class="infobox-data-number"><?php echo total_applicant($conn);?></span>
+                <div class="infobox-content">Total Applicant</div>
             </div>
         </div>
 
         <div class="infobox infobox-green">
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php echo total_student_summary($conn);?></span>
-                <div class="infobox-content">Total Item</div>
+                <span class="infobox-data-number"><?php echo total_admission($conn);?></span>
+                <div class="infobox-content">Total Admission</div>
             </div>
         </div>
 
         <div class="infobox infobox-red">
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php echo total_student_summary($conn);?></span>
-                <div class="infobox-content">Total Item</div>
+                <span class="infobox-data-number"><?php echo total_drop_out($conn);?></span>
+                <div class="infobox-content">Total Drop-out</div>
             </div>
         </div>
 
         <div class="infobox infobox-red">
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php echo total_student_summary($conn);?></span>
-                <div class="infobox-content">Total Item</div>
+                <span class="infobox-data-number"><?php echo total_continuing_student($conn);?></span>
+                <div class="infobox-content">Continuing Student</div>
             </div>
         </div>
 
         <div class="infobox infobox-red">
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php echo total_student_summary($conn);?></span>
-                <div class="infobox-content">Total Item</div>
+                <span class="infobox-data-number"><?php echo total_local_student_summary($conn);?></span>
+                <div class="infobox-content">Local Student</div>
             </div>
         </div>
 
         <div class="infobox infobox-red">
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php echo total_student_summary($conn);?></span>
-                <div class="infobox-content">Total Item</div>
+                <span class="infobox-data-number"><?php echo total_foreign_student_summary($conn);?></span>
+                <div class="infobox-content">Foreign Student</div>
             </div>
         </div>
 
@@ -104,7 +104,7 @@ include_once "global.dashboard.module";
             </div>
 
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php echo total_student_summary($conn);?></span>
+                <span class="infobox-data-number"><?php //echo total_student_summary($conn);?></span>
                 <div class="infobox-content">Total Issued</div>
             </div>
         </div>
@@ -131,7 +131,7 @@ include_once "global.dashboard.module";
             </div>
 
             <div class="infobox-data">
-                <span class="infobox-data-number"><?php echo total_student_summary($conn);?></span>
+                <span class="infobox-data-number"><?php //echo total_student_summary($conn);?></span>
                 <div class="infobox-content">Total Issued</div>
             </div>
         </div>

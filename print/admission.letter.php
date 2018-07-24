@@ -36,7 +36,8 @@ $year = $r['yearID'];
 
 <body>
   <page size="A4">
-    Date of Admission letter<br>
+      <div class="container">
+          Date of Admission letter<br>
     Address of Applicant<br>
 
 Dear <?php echo  $f_name ." ". $l_name;?>.<br>
@@ -66,6 +67,8 @@ Dear <?php echo  $f_name ." ". $l_name;?>.<br>
         <li>g)	Before the commencement of the course either you or the University shall reserve the right to change it depending on the prevailing circumstances at time.</li>
     </ul>
 </p>
+      </div>
+    
 
   </page>
 <page size="A4">
