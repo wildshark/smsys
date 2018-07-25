@@ -29,6 +29,13 @@
                         <input type="date" name="date" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Mode of Application:</label>
+                        <select name="application-mode" id="form-field-1" class="form-control">
+                            <option value="1">Direct Entry</option>
+                            <option value="2">Mature Entry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Academic Year:</label>
                         <select name="academic-year" id="form-field-1" class="form-control">
                             <?php cmb_academic_session($conn);?>

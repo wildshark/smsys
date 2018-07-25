@@ -28,6 +28,7 @@ if($submit === "add"){
     $school = $_POST['school-attended'];
     $examID = $_POST['exam-index-id'];
     $attend_year = $_POST['school-year'];
+    $application = $_POST['application-mode'];
 
     $exam_result= $_POST['result'];
 
@@ -67,8 +68,8 @@ if($submit === "add"){
 
     }
 
-    $sql ="INSERT INTO `new_student` (`date`, `f_name`,`l_name`, `mobile1`,`mobile2`, `yearID`, `progID`, `streaID`, `proofID`, `serial_no`,`nationality`,`categoryID`,`exam_result`,`email`,`attended`,`exam_index_id`,`attended_year`) 
-VALUES ('$date', '$f_name','$l_name','$mobile1', '$mobile2', '$academic_year', '$programme', '$stream', '1', '$serial','$nationality','$category','$exam_result','$email','$school', '$examID','$attend_year')";
+    $sql ="INSERT INTO `new_student` (`date`, `f_name`,`l_name`, `mobile1`,`mobile2`, `yearID`, `progID`, `streaID`, `proofID`, `serial_no`,`nationality`,`categoryID`,`exam_result`,`email`,`attended`,`exam_index_id`,`attended_year`,`applicationID`) 
+VALUES ('$date', '$f_name','$l_name','$mobile1', '$mobile2', '$academic_year', '$programme', '$stream', '1', '$serial','$nationality','$category','$exam_result','$email','$school', '$examID','$attend_year','$application')";
     $result = $conn->query($sql);
 
     $last_id = $conn->insert_id;
