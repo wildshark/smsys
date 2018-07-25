@@ -24,7 +24,8 @@ If ($submit === "add-result-master-sheet"){
     $school = $_GET['school'];
     $lecture = $_GET['lecture'];
 
-    $add = "INSERT INTO `result_main` (`result_date`, `schoolID`, `staffID`, `levelID`, `yearID`, `semesterID`, `courseID`) VALUES ('$date', '$school', '$lecture', '$level', '$year', $semester, '$course')";
+    $add = "INSERT INTO `result_main` (`result_date`, `schoolID`, `staffID`, `levelID`, `yearID`, `semesterID`, `courseID`) 
+    VALUES ('$date', '$school', '$lecture', '$level', '$year', $semester, '$course')";
     $result = $conn->query($add);
 
     $error_no = "2";
@@ -43,7 +44,22 @@ If ($submit === "add-result-master-sheet"){
     $presentation = $_GET['presentation'];
     $examination = $_GET['examination'];
 
-    $add="INSERT INTO `result_details` (`result_semID`, `yearID`, `semesterID`, `courseID`,`levelID`, `studentID`, `case_study`, `group_work`, `presentation`, `exam`) VALUES ('$id', '$year', '$semester', '$course','$level', '$student', '$case_study', '$group_work', '$presentation', '$examination')";
+    $sorce = $case_study + $group_work + $presentation + $examination;
+    if ($sorce >= 80 && $sorce <= 100){
+        $grade = "A+";
+    }elseif($sorce >= 75 && $sorce <= 79.99){
+        $grade = "A";
+    }elseif($sorce >= 60 && $sorce <= 64.99){
+        $grade = "B";
+    }elseif($sorce >= 50 && $sorce <= 59.99){
+        $grade = "D";
+    }elseif($sorce >= 0 && $sorce <= 49.99){
+        $grade ="F";
+    }else{
+        $grade = "I"; // meaning incomplete
+    }
+
+    $add="INSERT INTO `result_details` (`result_semID`, `yearID`, `semesterID`, `courseID`,`levelID`, `studentID`, `case_study`, `group_work`, `presentation`, `exam`, `score`) VALUES ('$id', '$year', '$semester', '$course','$level', '$student', '$case_study', '$group_work', '$presentation', '$examination','$grade')";
     $result = $conn->query($add);
 
     $p = "2";
@@ -84,7 +100,7 @@ If ($submit === "add-result-master-sheet"){
     }
 
 }
-
+/***
 if (!isset($result)){
     header("location: register.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
 }else{
@@ -99,3 +115,4 @@ if (!isset($result)){
         header("location: register.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }
+***/

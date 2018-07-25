@@ -1,4 +1,5 @@
 <?php
+include_once "modules/plugin/barcode.php";
 
 if(!isset($_GET['id'])){
      $id = "";
@@ -22,6 +23,7 @@ if(!isset($_GET['id'])){
     $application = $r['application']; 
 }
 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,6 +38,7 @@ if(!isset($_GET['id'])){
     <body>
         <page size="A4">
             <div class="container">
+        
             Date of Admission letter<br>
                 Address of Applicant<br>
 
@@ -88,7 +91,7 @@ if(!isset($_GET['id'])){
                     </p>
                 <P>
                 Yours faithfully<br>
-
+                    
 
                 Hanson K. Nyame<br>
                 Registrar

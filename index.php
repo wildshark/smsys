@@ -6,4 +6,7 @@
  * Time: 7:41 PM
  */
 
+session_start();
+session_destroy();
+
 include_once "template/login.php";

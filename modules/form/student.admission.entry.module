@@ -47,22 +47,22 @@ if($submit === "add"){
 
     if (!isset($student_total) || empty($student_total) || $student_total == 0){
         $student_total =  1;
-        $serial = "ST".$programme."".$year."".$stream."000".$student_total;
+        $serial = "ADM".$programme."".$year."".$stream."000".$student_total;
     }else{
         $student_total = $count_total['total_student'] + 1;
         $unit = strlen($student_total);
         switch ($unit){
             case 1:
-                $serial = "ST".$programme."".$year."".$stream."000".$student_total;
+                $serial = "ADM".$programme."".$year."".$stream."000".$student_total;
             break;
             case 2:
-                $serial = "ST".$programme."".$year."".$stream."00".$student_total;
+                $serial = "ADM".$programme."".$year."".$stream."00".$student_total;
                 break;
             case 3:
-                $serial = "ST".$programme."".$year."".$stream."0".$student_total;
+                $serial = "ADM".$programme."".$year."".$stream."0".$student_total;
                 break;
             case 1:
-                $serial = "ST".$programme."".$year."".$stream."".$student_total;
+                $serial = "ADM".$programme."".$year."".$stream."".$student_total;
                 break;
         }
 

@@ -117,8 +117,7 @@ function student_data($conn){
     $sql='SELECT * FROM get_student_profile_detail';
     $result=$conn->query($sql);
     while ($r=$result->fetch_assoc()){
-        $id = ($r['studentID'] * date('Y')) + 1204;
-        $id = "X0X".$id;
+        $id = $r['studentID'];
         echo "
             <tr>
                     <td class='center'>
