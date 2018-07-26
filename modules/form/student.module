@@ -6,11 +6,11 @@
  * Time: 12:25 AM
  */
 
-// echo $_SESSION['user-page-url'];
+//echo $_SESSION['user-page-url'];
 
-$url_page = $_SESSION['url-page'];
+echo $url_page = $_SESSION['url-page'];
 $error_no = "2";
-
+/***
 if (isset($_POST['submit'])){
     $submit = $_POST['submit'];
 }elseif (isset($_GET['submit'])){
@@ -196,6 +196,7 @@ if (isset($_POST['submit'])){
 VALUES ('$date', '$f_name', '$l_name', '$admission', '$mobile1', '$mobile2', '$email', '$programme', '$academic_year', '$category', '$stream', '$campus','$file_destination','$serial')";
                             $result = $conn->query($add_data);
                             $error_no = "2";
+                            $$url_page = "student-list";
                              $last_id = $conn->insert_id;
 
                         }else{
@@ -255,3 +256,4 @@ if (!isset($result)){
         header("location: {$_SESSION['user-page-url']}?page=" . $url_page . "&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }
+***/
