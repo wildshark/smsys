@@ -46,7 +46,7 @@ function student_admission_entry($conn){
                                 <i class='ace-icon fa fa-envelope-o bigger-130'></i>
                             </a>
 
-                            <a class='green' href='{$_SESSION['user-page-url']}?page=add-admission.index&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=add-student-admission&id={$r['admissionID'] }&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-cogs bigger-130'></i>
                             </a>
 

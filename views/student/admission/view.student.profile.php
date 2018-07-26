@@ -7,8 +7,8 @@
  */
 
 $id=$_GET['id'];
-$id = substr($id , 3);
-$id = ($id - 1204)/ date('Y');
+//$id = substr($id , 3);
+//$id = ($id - 1204)/ date('Y');
 $_SESSION['student-id'] = $id;
 
 $sql = "SELECT * FROM `get_student_profile_detail` WHERE studentID = '$id'";
@@ -88,12 +88,10 @@ if (empty($r['picture'])){
 //embed barcode code-39 using plugin/barcode.php
 $generator = new barcode_generator();
 $symbology ="code-39";
-$data = $r['admissionNo'];
+$data = $admission_no;
 $options ="";
 //$svg = $generator->output_image($format, $symbology, $data, $options);
 $svg = $generator->render_svg($symbology, $data, $options);
-
-
 
 ?>
 <div>

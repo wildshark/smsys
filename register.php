@@ -107,14 +107,8 @@ if ($user_token == $token){
                     break;
 
                 case "view-student-profile";
-
-                    $id = $_GET['id'];
-                    $id = substr($id, 3);
-                    $id = ($id - 1204) / date('Y');
-                    $_SESSION['student-id'] = $id;
-
                     $page_title = "View Student's Profile";
-                    $body = "views/student/view.student.php";
+                    $body = "views/student/admission/view.student.profile.php";
                     include_once "template/form.profile.php";
                     break;
 
