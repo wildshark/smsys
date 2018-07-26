@@ -224,7 +224,6 @@ function get_schools_department_data($conn){
                     </td>
                 </tr>
             
-            
                 <div class='modal fade' id='department-view-{$r['departID']}' tabindex='-1' role='dialog' aria-labelledby='create-school' aria-hidden='true'>
                     <div class='modal-dialog' role='document'>
                         <div class='modal-content'>
@@ -279,7 +278,7 @@ function get_administration_xxx_data($conn){
 
         /**
          * Total staff in a department
-         */
+        **/
         $total_staff="select * from get_total_department_staff WHERE departmentID ='$id'";
         $total_staff_result = $conn->query($total_staff);
         $t=$total_staff_result->fetch_assoc();
@@ -290,9 +289,8 @@ function get_administration_xxx_data($conn){
             $total_staff = $t['total'];
         }
 
-
         echo "
-            <tr>
+                <tr>
                     <td class='center'>
                         <label class='pos-rel'>
                             <input type='checkbox' class='ace' />
@@ -326,7 +324,6 @@ function get_administration_xxx_data($conn){
                         </div>                   
                     </td>
                 </tr>
-            
             
                 <div class='modal fade' id='department-view-{$r['departID']}' tabindex='-1' role='dialog' aria-labelledby='create-school' aria-hidden='true'>
                     <div class='modal-dialog' role='document'>
@@ -504,7 +501,6 @@ function position_data($conn){
         ";
     }
 }
-
 
 function staff_profile_data($conn){
     $sql='SELECT * FROM `get_staff_profile`';
@@ -1336,7 +1332,7 @@ function get_result_details($conn){
                     <td>{$r['yearID']}</td>
                     <td class='hidden-480'>{$r['semester']}</td>
                     <td>{$r['levelID']}</td>
-                    <td class='hidden-480'>{$r['total']}</td>
+                    <td class='hidden-480'>{$r['grade']} | {$r['total']}</td>
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>

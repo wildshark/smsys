@@ -6,6 +6,8 @@
  * Time: 5:13 PM
  */
 
+ //echo $_SESSION['user-page-url'];
+
 if (isset($_GET['submit'])){
     $submit = $_GET['submit'];
 }else{
@@ -30,7 +32,7 @@ If ($submit === "add-result-master-sheet"){
 
     $error_no = "2";
 
-}elseif($submit =="add-exam-result"){
+}elseif($submit === "add-exam-result"){
 
     $id = $_SESSION['result-sem-id'];
     $year = $_SESSION['year-id'];
@@ -59,10 +61,9 @@ If ($submit === "add-result-master-sheet"){
         $grade = "I"; // meaning incomplete
     }
 
-    $add="INSERT INTO `result_details` (`result_semID`, `yearID`, `semesterID`, `courseID`,`levelID`, `studentID`, `case_study`, `group_work`, `presentation`, `exam`, `score`) VALUES ('$id', '$year', '$semester', '$course','$level', '$student', '$case_study', '$group_work', '$presentation', '$examination','$grade')";
+    $add="INSERT INTO `result_details` (`result_semID`, `yearID`, `semesterID`, `courseID`,`levelID`, `studentID`, `case_study`, `group_work`, `presentation`, `exam`, `grade`) VALUES ('$id', '$year', '$semester', '$course','$level', '$student', '$case_study', '$group_work', '$presentation', '$examination','$grade')";
     $result = $conn->query($add);
-
-    $p = "2";
+      $p = "2";
 
 }elseif ($submit == 'update-marks'){
 
@@ -100,19 +101,20 @@ If ($submit === "add-result-master-sheet"){
     }
 
 }
-/***
+
+
 if (!isset($result)){
-    header("location: register.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+    header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
 }else{
     if ($result === TRUE){
-        if ($p == 2){
-           header("location: register.php?page={$url_page}&detail={$id}&year={$year}&semester={$semester}&course={$course}&level={$level}&token={$_SESSION['user-token']}&box=1&msg=1");
+        if ($p === 2){
+      
+           header("location: {$_SESSION['user-page-url']}?page={$url_page}&detail={$id}&year={$year}&semester={$semester}&course={$course}&level={$level}&token={$_SESSION['user-token']}&box=1&msg=1");
         }else{
-            header("location: register.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}&id={$id}");
+            header("location: {$_SESSION['user-page-url']}?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}&detail={$id}");
         }
         
     }else{
-        header("location: register.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+        header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&detail={$id}&year={$year}&semester={$semester}&course={$course}&level={$level}&box=4&msg=9");
     }
 }
-***/

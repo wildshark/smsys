@@ -46,15 +46,15 @@ if($submit == "send-file"){
                // $error_no = "2";
             }else{
                 //echo"file is to large to upload";
-                header("location:".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=2");
+                header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=2");
             }
         }else{
             //echo"there was an error uploading the file";
-            header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=6");
+            header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=6");
         }
     }else{
         //echo"you can nout upload this kind of file";
-        header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=7");
+        header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=7");
     }
 
 }elseif($submit == "backup-file"){
@@ -89,15 +89,15 @@ if($submit == "send-file"){
                // $error_no = "2";
             }else{
                 //echo"file is to large to upload";
-                header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=2");
+                header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=2");
             }
         }else{
             //echo"there was an error uploading the file";
-            header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=6");
+            header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=6");
         }
     }else{
         //echo"you can nout upload this kind of file";
-        header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=7");
+        header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=7");
     }
 
 }elseif($submit === "del.file-share"){
@@ -123,12 +123,12 @@ if($submit === "download"){
 
 }elseif (!isset($result)){
   
-    header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+    header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
 }else{
    
     if ($result === TRUE){
-        header("location: ".$pg."?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
+        header("location: {$_SESSION['user-page-url']}?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
     }else{
-        header("location: ".$pg."?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+        header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }

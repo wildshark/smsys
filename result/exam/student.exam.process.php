@@ -6,15 +6,43 @@
  * Time: 5:48 PM
  */
 
- $_SESSION['result-sem-id'] = $_GET['detail'];
- $_SESSION['year-id'] = $_GET['year'];
- $_SESSION['semester-id'] = $_GET['semester'];
- $_SESSION['course-id'] = $_GET['course'];
- $_SESSION['level-id'] = $_GET['level'];
+ if (!isset($_GET['detail'])){
+    $_SESSION['result-sem-id'] = "";
+    $bottom = "";
+ }else{
+    $_SESSION['result-sem-id'] = $_GET['detail']; 
+    $bottom = "<button type='button' class='btn btn-info btn-sm' data-toggle='modal' data-target='#exampleModal'>Add Result</button>";
+ }
+
+ if (!isset($_GET['year'])){
+    $_SESSION['year-id'] = "";
+ }else{
+    $_SESSION['year-id'] = $_GET['year'];
+ }
+
+ if (!isset($_GET['semester'])){
+    $_SESSION['semester-id'] = "";
+ }else{
+    $_SESSION['semester-id'] = $_GET['semester'];
+ }
+
+ if (!isset($_GET['course'])){
+    $_SESSION['course-id'] = "";
+ }else{
+    $_SESSION['course-id'] = $_GET['course'];
+ }
+
+ if (!isset($_GET['level'])){
+    $_SESSION['level-id'] = "";
+ }else{
+    $_SESSION['level-id'] = $_GET['level'];
+ }
+
 ?>
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">Add Result</button>
+
+<?php echo $bottom;?>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

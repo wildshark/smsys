@@ -256,6 +256,6 @@ if (!isset($result)){
         }
         
     } else {
-        header("location: {$_SESSION['user-page-url']}?page=" . $url_page . "&token={$_SESSION['user-token']}&box=4&msg=9");
+        header("location: {$_SESSION['user-page-url']}?page=" . $url_page . "&token={$_SESSION['user-token']}&box=4&msg=9&id={$_SESSION['student-id']}");
     }
 }
