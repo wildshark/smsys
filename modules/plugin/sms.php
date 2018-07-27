@@ -32,7 +32,6 @@ $sms = new sms_alert();
 
 $sms->sms_alert_sender($_to,$_from,$_msg);
 
-
 class sms_alert{
 
     if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
@@ -96,8 +95,6 @@ class sms_alert{
             header("Content-Type: application/json; charset=UTF-8");
             $my_json_output = json_encode($respone);
             echo $my_json_output;
-
-
     }
 }
 

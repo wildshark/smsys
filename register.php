@@ -325,13 +325,13 @@ if ($user_token == $token){
 
                 case"backup-file";
                     $page_title="File Backup";
-                    $body="cloud_hdd/backup.file.php";
+                    $body="data_storage/backup.file.php";
                     include_once "template/table.default.php";
                 break;
 
                 case"send-file";
                     $page_title="File Backup";
-                    $body="cloud_hdd/send.file.php";
+                    $body="data_storage/send.file.php";
                     include_once "template/table.default.php";
                 break;
                 

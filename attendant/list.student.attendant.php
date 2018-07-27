@@ -10,7 +10,7 @@ function get_backup_file($conn){
 
     $id = $_SESSION['user-id'];
 
-    $sql = "SELECT * FROM get_backup_file WHERE f_userID = '$id'";
+    $sql = "SELECT * FROM get_backup_file WHERE f_receiverID = '$id'";
     $result = $conn->query($sql);
     while ($r = $result->fetch_assoc()) {
         $file = md5($r['fileID']);
@@ -20,11 +20,11 @@ function get_backup_file($conn){
             $file_size = $r['file_type'];
         }
     
-        if ($r['f_receiverID'] == 0){
-            $receiverID = "Backup File";
+        if ($r['f_userID'] == 0){
+            $receiverID = "Unknow Sender";
         }else{
             //send file to 
-            $sendID = $r['f_receiverID'];
+            $sendID = $r['f_userID'];
             $send_sql ="SELECT * FROM `get_staff_name_list` WHERE staff_profile_ID = '$sendID'";
             $send_result = $conn->query($send_sql);
             $s = $send_result->fetch_assoc();

@@ -100,7 +100,7 @@ switch ($page){
     break;
 
     case"cloud-file";
-        require_once "file_share/model/file.share.module";
+        require_once "data_storage/model/file.share.module";
     break;
 
     case"administration";
