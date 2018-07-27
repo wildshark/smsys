@@ -103,11 +103,20 @@ if($submit == "send-file"){
 }elseif($submit === "del.file-share"){
 
     $id = $_GET['detail'];
-    $sql = "DELETE FROM `file_backup` WHERE (`fileID`='$id')";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM get_backup_file WHERE `fileID`='$id'";
+    $file_result = $conn->query($sql);
+    $file = $file_result->fetch_assoc();
+    $path = $file['path'];
+
+    if (isset($path)){
+
+        $sql = "DELETE FROM `file_backup` WHERE (`fileID`='$id')";
+        $result = $conn->query($sql);
+
+        unlink($path);
+    }
 
 }
-
 
 if($submit === "download"){
 

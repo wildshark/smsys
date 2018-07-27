@@ -6,7 +6,6 @@
  * Time: 7:55 PM
  */
 
-
 function student_admission_entry($conn){
 
     $sql='SELECT * FROM get_new_student';

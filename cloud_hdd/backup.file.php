@@ -14,6 +14,7 @@ function get_backup_file($conn){
     $result = $conn->query($sql);
     while ($r = $result->fetch_assoc()) {
         $file = md5($r['fileID']);
+
         if (!isset($r['file_type'])){
             $file_size = "Unknow Size";
         }else{
@@ -31,6 +32,7 @@ function get_backup_file($conn){
             $receiverID = "Send to ". $s['f_name']." ".$s['l_name'];
 
         }
+        
         echo"
             <tr>
                     <td class='center'>
