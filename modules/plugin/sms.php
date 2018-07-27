@@ -1,8 +1,18 @@
 <?php
 
-class sms{
+class sms_alert{
 
-    public function __set($to, $msg){
+    if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
+        if (isset($_POST['to']) && isset($_GET['msg']){
+            $_to = $_POST['to'];
+            $_msg = $_POST['msg'];
+        }else{
+            $_to = $_GET['to'];
+            $_msg = $_GET['msg'];
+        }
+    }
+   
+    public function sms_alert_sender($_to,$_from,$_msg){
 
         $respone = new stdClass();
         $bulksms = new stdClass();
@@ -11,11 +21,11 @@ class sms{
             //or 'password' => md5('open-text-password'),
             $bulksms->password = 'passwd82';
             //destination number
-            $request->to = $_GET['to'];
+            $request->to = $_to;
             //sender name has to be active
-            $request->from = $_GET['from'];
+            $request->from = $_from;
             //message content
-            $request->message = $_GET['msg'];
+            $request->message = $_msg;
             //API http
 
             $url = 'http://sms.bernsergsolutions.com:8080/bulksms/bulksms?';
