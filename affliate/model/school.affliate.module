@@ -1,0 +1,33 @@
+<?php
+
+If (isset($_POST['submit']){
+    $submit = $_POST['submit'];
+}else{
+    $submit = $_GET['submit'];
+}
+
+if ($submit === "ädd-affliate"){
+
+    $affliate = $_POST['university'];
+    $status = $_POST['status'];
+
+    $sql ="INSERT INTO `affliate_school` (`affliate`,`statusID`) VALUES ('$affliate','$status')";
+    $result = $conn->query($sql);
+        
+}elseif ($submit === "status"){
+
+    $id = $_SESSION['affliate-ID'];
+    $status = $_POST['status'];
+
+    $sql = "UPDATE `affliate_school` SET `statusID`='$status' WHERE (`affliateID`='$id')";
+    $result = $conn->query($sql);
+
+}elseif($submit === "delete"){
+
+    $id = $_GET['detail'];
+
+    $sql = "DELETE FROM `affliate_school` WHERE (`affliateID`='$id')";
+    $result = $conn->query($sql);
+
+}
+?>

@@ -80,10 +80,10 @@ function get_backup_file($conn){
                     </button>
                 </div>
                 <div class='modal-body'>
-                    <input type='hidden' name='ui' value='cloud-file'>
+                    <input type='hidden' name='ui' value='attendant'>
 
                     <div class='form-group'>
-                        <label for='recipient-name' class='form-control-label'> Send to </label>
+                        <label for='recipient-name' class='form-control-label'> Staff Name </label>
                         <select name='send-to' value='' class='form-control' id='recipient-name'>
                             <option></option>
                             <?php cmb_all_staff_name_list($conn);?>
@@ -91,24 +91,24 @@ function get_backup_file($conn){
                     </div>
 
                     <div class='form-group'>
-                        <label for='recipient-name' class='form-control-label'> Title </label>
-                        <input type='text' name='title' value='' placeholder="0" class='form-control' id='recipient-name'>
+                        <label for='recipient-name' class='form-control-label'> Date </label>
+                        <input type='date' name='data' value='' placeholder="0" class='form-control' id='recipient-name'>
                     </div>
 
                     <div class='form-group'>
-                        <label for='recipient-name' class='form-control-label'>Attach File </label>
-                        <input type='file' name='file' value='' placeholder="" class='form-control' id='recipient-name'>
+                        <label for='recipient-name' class='form-control-label'> Time In </label>
+                        <input type='time' name='time-in' value='' placeholder="0" class='form-control' id='recipient-name'>
                     </div>
-            
+
                     <div class='form-group'>
-                        <label for='recipient-name' class='form-control-label'>Comment </label>
-                        <input type='text' name='comment' value='' placeholder="0" class='form-control' id='recipient-name'>
+                        <label for='recipient-name' class='form-control-label'> Time Out </label>
+                        <input type='time' name='time-out' value='' placeholder="" class='form-control' id='recipient-name'>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="submit" value="send-file" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="submit" value="add-attendant-staff" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
@@ -139,13 +139,13 @@ function get_backup_file($conn){
                         </label>
                     </th>
                     <th>Date</th>
-                    <th class="hidden-480">Title</th>
+                    <th class="hidden-480">Staff Name</th>
 
                     <th>
-                        Status
+                        Time In
                     </th>
-                    <th>Size</th>
-                    <th>File SHA</th>
+                    <th>Time Out</th>
+                    <th></th>
                     <th></th>
                 </tr>
                 </thead>
