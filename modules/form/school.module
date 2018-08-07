@@ -11,11 +11,12 @@ $error_no = "2";
 if ($_GET['submit'] == "add"){
     $school = $_GET['school'];
     $prefix = $_GET['prefix'];
+    $affliate = $_GET['affliate']
     $catID = $_GET['cat'];
 
     if ($_GET['cat'] == 1){
 
-        $add = "INSERT INTO `school` (`school`, `prefix`,`statusID`,`catID`) VALUES ('$school', '$prefix','1','$catID')";
+        $add = "INSERT INTO `school` (`school`, `prefix`,`statusID`,`catID`,`affliate`) VALUES ('$school', '$prefix','1','$catID','affliate')";
         $result = $conn->query($add);
 
     }elseif($_GET['cat'] == 2){

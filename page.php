@@ -49,6 +49,12 @@ if ($user_token == $token){
                     include_once "template/default.php";
                 break;    
 
+                case"school.affliate-list" ;
+                    $page_title = "Affliate";
+                    $body = "affliate/list.affliate.php";
+                    include_once "template/table.default.php";
+                break;
+
                 case"student.admission-list" ;
                     $page_title = "Student Admission List";
                     $body = "views/student/entry/list.student.index.php";

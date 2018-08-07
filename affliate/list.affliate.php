@@ -1,30 +1,47 @@
 
 <?php
-function get_backup_file($conn){
+function get_affliate_school($conn){
 
-    $id = $_SESSION['user-id'];
+    //$id = $_SESSION['user-id'];
 
-    $sql = "SELECT * FROM get_backup_file WHERE f_receiverID = '$id'";
+    $sql = "SELECT * FROM get_affliate_school";
     $result = $conn->query($sql);
     while ($r = $result->fetch_assoc()) {
-        $file = md5($r['fileID']);
-        if (!isset($r['file_type'])){
-            $file_size = "Unknow Size";
+
+        $affliate_id = $r['affliateID'];
+        $serial = md5($r['affliateID']);
+        $prefix = $r['affliate_prefix'];
+
+        if ($r['statusID'] == 1){
+            $status = "Enable";
         }else{
-            $file_size = $r['file_type'];
+            $status = "Disable";
+        }
+        /**
+        $school_sql = "SELECT Count(get_school.schoolID) as total, get_school.affliateID FROM get_school
+        WHERE get_school.affliateID = '$affliate_id'";
+        $result_school = $conn->query($school_sql);
+        $row_school = $result->fetch_assoc();
+
+        if (isset($row_school['total'])){
+            $total = $row_school['total'];
+        }else{
+            $total = "0";
         }
 
-        if ($r['f_userID'] == 0){
-            $receiverID = "Unknow Sender";
-        }else{
-            //send file to 
-            $sendID = $r['f_userID'];
-            $send_sql ="SELECT * FROM `get_staff_name_list` WHERE staff_profile_ID = '$sendID'";
-            $send_result = $conn->query($send_sql);
-            $s = $send_result->fetch_assoc();
-            $receiverID = "Send to ". $s['f_name']." ".$s['l_name'];
+        $program_sql = "SELECT Count(get_programme.progID) AS total, get_programme.affliateID FROM get_programme
+        WHERE get_programme.affliateID ='$affliate_id'";
+        $result_program = $conn->query($program_sql);
+        $row_program = $result->fetch_assoc();
 
+        if (isset($row_program['total'])){
+            $total_programme = $row_school['total'];
+        }else{
+            $total_programme = "0";
         }
+
+        **/
+        
         echo"
             <tr>
                     <td class='center'>
@@ -35,25 +52,66 @@ function get_backup_file($conn){
                     </td>
 
                     <td>
-                        {$r['f_date']}</a>
+                       {$r['affliate']}
                     </td>
-                    <td>{$r['title']}</td>
-                    <td class='hidden-480'>{$receiverID}</td>
-                    <td> {$file_size}</td>
-                    <td class='hidden-480'>{$file}kb</td>
+                    <td>{$prefix}</td>
+                    <td class='hidden-480'>{$serial}</td>
+                    <td>{$status}</td>
+                    <td class='hidden-480'></td>
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='green' href='model.php?ui=cloud-file&submit=download&token={$_SESSION['user-token']}&detail={$r['fileID']}&box=1&msg=1'>
+                            <a class='green' href='#' data-toggle='modal' data-target='#view-school-{$serial}'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
 
-                            <a class='red' href='model.php?ui=cloud-file&submit=del.file-share&token={$_SESSION['user-token']}&detail={$r['fileID']}&box=1&msg=1'>
+                            <a class='red' href='model.php?ui=affliate&submit=delete&token={$_SESSION['user-token']}&detail={$r['affliateID']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-trash-o bigger-130'></i>
                             </a>
                         </div>
                     </td>
                 </tr>
+
+                <div class='modal fade' id='view-school-{$serial}' tabindex='-1' role='dialog' aria-labelledby='view-school-{$serial}' aria-hidden='true'>
+                    <div class='modal-dialog' role='document'>
+                        <div class='modal-content'>
+                            <form method='POST' action='model.php' enctype='multipart/form-data'>
+                                <div class='modal-header'>
+                                    <h5 class='modal-title' id='exampleModalLabel'>New message</h5>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                                <div class='modal-body'>
+                                    <input type='hidden' name='ui' value='affliate'>
+                                    <input type='hidden' name='affliate' value='{$affliate_id}'>
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'> University </label>
+                                        <input type='text' name='university' value='{$r['affliate']}' placeholder='Name of Affliate' class='form-control' id='recipient-name'>
+                                    </div>
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'> Prefix </label>
+                                        <input type='text' name='prefix' value='{$prefix}' placeholder='Prefix' class='form-control' id='recipient-name'>
+                                    </div>
+
+                                    <div class='form-group'>
+                                        <label for='recipient-name' class='form-control-label'> status</label>
+                                        <select name='status' value='' placeholder='0' class='form-control' id='recipient-name'>
+                                            <option class='active' value='{$r['statusID']}'>{$status}</option>
+                                            <option value='1'>Enable</option>
+                                            <option value='2'>Disable</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class='modal-footer'>
+                                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                                    <button type='submit' name='submit' value='edit-affliate' class='btn btn-primary'>Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
         ";
     }
 }
@@ -61,7 +119,7 @@ function get_backup_file($conn){
 ?>
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#create-school">New Issue </button>
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#create-school">Add Affliate </button>
 
 <div class="modal fade" id="create-school" tabindex="-1" role="dialog" aria-labelledby="create-school" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -78,12 +136,20 @@ function get_backup_file($conn){
 
                 <div class='form-group'>
                     <label for='recipient-name' class='form-control-label'> University </label>
-                    <input type='date' name='university' value='' placeholder="0" class='form-control' id='recipient-name'>
+                    <input type='text' name='university' value='' placeholder="Name of Affliate" class='form-control' id='recipient-name'>
+                </div>
+
+                <div class='form-group'>
+                    <label for='recipient-name' class='form-control-label'> Prefix </label>
+                    <input type='text' name='prefix' value='' placeholder="Prefix" class='form-control' id='recipient-name'>
                 </div>
 
                 <div class='form-group'>
                     <label for='recipient-name' class='form-control-label'> status</label>
-                    <input type='time' name='time-in' value='' placeholder="0" class='form-control' id='recipient-name'>
+                    <select name='status' value='' placeholder="0" class='form-control' id='recipient-name'>
+                        <option class="active" value="1">Enable</option>
+                        <option value="2">Disable</option>
+                    </select>
                 </div>
 
             </div>
@@ -119,20 +185,17 @@ function get_backup_file($conn){
                         <span class="lbl"></span>
                     </label>
                 </th>
-                <th>Date</th>
-                <th class="hidden-480">Staff Name</th>
-
-                <th>
-                    Time In
-                </th>
-                <th>Time Out</th>
-                <th></th>
+                <th>Affliate</th>
+                <th class="hidden-480">Prefix</th>
+                <th>Hash</th>
+                <th>Status</th>
+                <th>Programme</th>
                 <th></th>
             </tr>
             </thead>
 
             <tbody>
-            <?php get_backup_file($conn);?>
+            <?php get_affliate_school($conn);?>
             </tbody>
         </table>
     </div>

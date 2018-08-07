@@ -1,17 +1,24 @@
 <?php
 
-If (isset($_POST['submit']){
+//echo $_SESSION['user-page-url'];
+//echo $_SESSION['user-token'];
+
+$url_page = $_SESSION['url-page'];
+$error_no = "2";
+
+If (isset($_POST['submit'])){
     $submit = $_POST['submit'];
 }else{
     $submit = $_GET['submit'];
 }
 
-if ($submit === "ädd-affliate"){
+if ($submit === "add-affliate"){
 
     $affliate = $_POST['university'];
+    $prefix = $_POST['prefix'];
     $status = $_POST['status'];
 
-    $sql ="INSERT INTO `affliate_school` (`affliate`,`statusID`) VALUES ('$affliate','$status')";
+    echo $sql ="INSERT INTO `affliate_school` (`affliate`,`affliate_prefox`,`statusID`) VALUES ('$affliate','$prefix','$status')";
     $result = $conn->query($sql);
         
 }elseif ($submit === "status"){
@@ -29,5 +36,26 @@ if ($submit === "ädd-affliate"){
     $sql = "DELETE FROM `affliate_school` WHERE (`affliateID`='$id')";
     $result = $conn->query($sql);
 
+}elseif($submit === "edit-affliate"){
+
+    $affliateID = $_POST['affliate'];
+    $affliate = $_POST['university'];
+    $prefix = $_POST['prefix'];
+    $status = $_POST['status'];
+
+    $sql ="UPDATE `affliate_school` SET `affliate`='$affliate', `affliate_prefix`='$prefix', `statusID`='$status' WHERE (`affliateID`='$affliateID')";
+    $result = $conn->query($sql);
+
 }
+
+if (!isset($result)){
+    header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        header("location: page.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
+    }else{
+        header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+    }
+}
+
 ?>

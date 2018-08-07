@@ -63,7 +63,7 @@ $_SESSION['username'] = $username;
             $pg = "hostel.php";
         }elseif($user_access == 5){
             $pg = "store.php";
-        }
+        }elseif()
 
         $_SESSION['user-token'] = $token;
         $_SESSION['user-access'] = $user_access;

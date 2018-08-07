@@ -30,6 +30,12 @@
                         <label for="recipient-name" class="form-control-label">Prefix:</label>
                         <input type="text" name="prefix" class="form-control" id="recipient-name">
                     </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Affliate:</label>
+                        <select name="affliate" class="form-control" id="recipient-name">
+                            <?php cmb_affliate($conn);?>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -63,9 +69,9 @@
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th>Serial</th>
                     <th>School/faculty</th>
-                    <th class="hidden-480">Prefix</th>
+                    <th>Prefix</th>
+                    <th class="hidden-480">Affliate</th>
                     <th class="hidden-480">Total Student</th>
                     <th>Total Student</th>
                     <th></th>

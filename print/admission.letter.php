@@ -19,8 +19,18 @@ if(!isset($_GET['id'])){
     $mobile2 = $r['mobile2'];
     $nationality = $r['student_nationality'];
     $school = $r['school'];
+    $schoolID = $r['schoolID'];
     $year = $r['yearID'];
-    $application = $r['application']; 
+    $application = $r['application'];
+    $affliate = $r['affliate'];
+    $affliateID = $r['affliateID'];
+
+    if ($schoolID == 4){
+        $section ="<li>The admission is on condition that you successfully register with <b>{$affliate}</b> as its professional student and that you are in 
+        a position to financially support your studies at the College and consequently pay your fees as and when they are due.</li>";
+    }else{
+        $section ="<li>The admission is on condition that our Mentoring Institute <b>{$affliate}</b> confirms it and also that you are in a position to financially support your studies at the College and consequently pay your fees as and when they are due.</li>";
+    }
 }
 
 
@@ -61,8 +71,8 @@ if(!isset($_GET['id'])){
                 <p>
                     <ul>
                         <li>As part of your registration and orientation programme you will undergo a medical examination to determine your health status.</li>
-                        <li>Your Temporary reference number which is to facilitate your registration in is <b><?php echo $serial;?></b> and your mode of study is <b><?php echo $school;?></b></li>
-                        <li>The admission is on condition that our Mentoring University ( University for Development Management Studies, Tamale/Akrofi Christaller Institute, Akronpong) confirms it and also that you are in a position to financially support your studies at the College and consequently pay your fees as and when they are due.</li>
+                        <li>Your Temporary reference number which is to facilitate your registration in is <b><?php echo $serial;?></b> and your mode of study is <b><?php echo $school;?></b>.</li>
+                        <?php echo $section;?>
                         <li>The offer is also on condition that all  the academic  credentials given by you are true and can stand any verification that may be conducted by the College in  the course of your studies and that should they turn to be untrue, you will accept to be dealt with in accordance with the College’s Statutes, regulations etc.</li>
                         <li>You will be on probation for the full duration of your studies and may be withdrawn at any time for non-payment of fees, unsatisfactory academic work or any misconduct. The calls for strict adherence to the College’s rules and regulations.</li>
                         <li>You will abide by the Academic Covenant to be given and Student’s undertaking to be completed on the day of Registration.</li>

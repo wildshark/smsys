@@ -812,6 +812,15 @@ function admin($token){
             </li>
 
             <li class=''>
+                <a href='page.php?page=school.affliate-list&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Affliation
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+
+            <li class=''>
                 <a href='page.php?page=school-list&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
                     School

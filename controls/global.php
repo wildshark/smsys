@@ -343,3 +343,11 @@ function cmb_room_list($conn){
         echo"<option value='{$r['roomID']}'>{$r['room']}->{$r['block_name']}</option>";
     }
 }
+
+function cmb_affliate($conn){
+    $sql="SELECT * FROM get_affliate_school";
+    $result = $conn->query($sql);
+    while($r=$result->fetch_assoc()){
+        echo"<option value='{$r['affliateID']}'>{$r['affliate']}</option>";
+    }
+}

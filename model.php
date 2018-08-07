@@ -107,6 +107,10 @@ switch ($page){
         require_once "modules/form/administration.php";
     break;
 
+    case"affliate";
+        require_once "affliate/model/school.affliate.module";
+    break;
+
     default;
         $body="views/error/404.php";
         include_once "template/default.php";
