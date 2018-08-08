@@ -1,0 +1,80 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 23-May-18
+ * Time: 5:13 PM
+ */
+
+ //echo $_SESSION['user-page-url'];
+
+if (isset($_GET['submit'])){
+    $submit = $_GET['submit'];
+}else{
+    $submit = $_POST['submit'];
+}
+
+$url_page = $_SESSION['url-page'];
+
+If ($submit === "add-book"){
+
+    $call_no = $_GET['call-no'];
+    $accession_no = $_GET['accession-no'];
+    $catalog = $_GET['catalog'];
+    $isbn = $_GET['isbn'];
+    $book_title = $_GET['book-title'];
+    $subject = $_GET['subject'];
+    $author1 = $_GET['author1'];
+    $author2 = $_GET['author2'];
+    $author3 = $_GET['author3'];
+    $publication = $_GET['publication'];
+    $edition = $_GET['edition'];
+    $no_of_copies = $_GET['no-of-copies'];
+    $isbn = $_GET['isbn'];
+
+    $sql="INSERT INTO `lib_book_details` (`Call_No`, `Book_Title`, `Subject`, `Author1`, `Author2`, `Author3`, `Publication`, `Edition`, `No_Of_copies`, `ISBN`, `AccessionNo`,`CategoryID`) 
+    VALUES ('$call_no', '$book_title', '$subject', '$author1', '$author2', '$author3', '$publication', '$edition', '$no_of_copies', '$isbn', '$accession_no','$catalog')";
+    $result=$conn->query($sql);
+
+    $error_no = "2";
+
+}elseif ($submit === "edit-book"){
+
+    $id=$_SESSION['book-id'];
+    $call_no=$_GET['call-no'];
+    $accession_no=$_GET['accession-no'];
+    $catalog = $_GET['catalog'];
+    $book_title=$_GET['book-title'];
+    $subject=$_GET['subject'];
+    $author1=$_GET['author1'];
+    $author2=$_GET['author2'];
+    $author3=$_GET['author3'];
+    $isbn= $_GET['isbn'];
+    $publication=$_GET['publication'];
+    $edition=$_GET['edition'];
+    $no_of_copies=$_GET['no-of-copies'];
+
+    $sql="UPDATE `lib_book_details` SET `Call_No`='$call_no',`AccessionNo`='$accession_no',`CategoryID`='$catalog',  `Book_Title`='$book_title', `Subject`='$subject', `Author1`='$author1', `Author2`='$author2', `Author3`='$author3', `ISBN`='$isbn',`Publication`='$publication', `Edition`='$edition', `No_Of_copies`='$no_of_copies' WHERE (`BookID`='$id') LIMIT 1";
+   $result=$conn->query($sql);
+
+   $error_no="2";
+
+}elseif($submit === "delete"){
+
+    $id = $_GET['detail'];
+    $sql="DELETE FROM `lib_book_details` WHERE (`BookID`='$id')";
+    $result=$conn->query($sql);
+    header("Location: " . $_SERVER["HTTP_REFERER"]);
+    exit();
+    
+}  
+
+if (!isset($result)){
+    header("location: library.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+}else{
+    if ($result === TRUE){
+        header("location: library.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
+    }else{
+        header("location: library.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+    }
+}

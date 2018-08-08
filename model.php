@@ -111,6 +111,10 @@ switch ($page){
         require_once "affliate/model/school.affliate.module";
     break;
 
+    case"library";
+        require_once "library/model/library.modules";
+    break;
+
     default;
         $body="views/error/404.php";
         include_once "template/default.php";

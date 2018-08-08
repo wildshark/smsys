@@ -1,4 +1,4 @@
-
+<?php
 function get_library_book($conn){
 
   $sql="select * from get_lib_book";
@@ -24,61 +24,22 @@ function get_library_book($conn){
 
                 <td>
                     <div class='hidden-sm hidden-xs action-buttons'>
-                        <a class='green' href='model.php?ui=cloud-file&submit=download&token={$_SESSION['user-token']}&detail={$r['fileID']}&box=1&msg=1'>
+                        <a class='green' href='library.php?page=edit-book&token={$_SESSION['user-token']}&detail={$r['BookID']}&box=1&msg=1'>
                             <i class='ace-icon fa fa-pencil bigger-130'></i>
                         </a>
 
-                        <a class='red' href='model.php?ui=cloud-file&submit=del.file-share&token={$_SESSION['user-token']}&detail={$r['fileID']}&box=1&msg=1'>
+                        <a class='red' href='model.php?ui=library&submit=delete&token={$_SESSION['user-token']}&detail={$r['BookID']}&box=1&msg=1'>
                             <i class='ace-icon fa fa-trash-o bigger-130'></i>
                         </a>
                     </div>
                 </td>
             </tr>
     ";
+    }
+
 }
 
 ?>
-
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#create-school">Upload File </button>
-
-<div class="modal fade" id="create-school" tabindex="-1" role="dialog" aria-labelledby="create-school" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <form method="POST" action="model.php" enctype="multipart/form-data">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class='modal-body'>
-                <input type='hidden' name='ui' value='cloud-file'>
-
-                <div class='form-group'>
-                    <label for='recipient-name' class='form-control-label'> Title </label>
-                    <input type='text' name='title' value='' placeholder="0" class='form-control' id='recipient-name'>
-                </div>
-
-                <div class='form-group'>
-                    <label for='recipient-name' class='form-control-label'>Attach File </label>
-                    <input type='file' name='file' value='' placeholder="" class='form-control' id='recipient-name'>
-                </div>
-        
-                <div class='form-group'>
-                    <label for='recipient-name' class='form-control-label'>Comment </label>
-                    <input type='text' name='comment' value='' placeholder="0" class='form-control' id='recipient-name'>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" value="backup-file" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-    </div>
-</div>
-</div>
 
 <div class="row">
 <div class="col-xs-12">

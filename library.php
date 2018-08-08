@@ -4,6 +4,7 @@ session_start();
 include_once "controls/config.php";
 include_once "controls/db.connection.php";
 include_once "controls/global.php";
+include_once "controls/global.library.php";
 include_once "controls/control.php";
 include_once "controls/session.php";
 include_once "modules/plugin/barcode.php";
@@ -42,6 +43,18 @@ if ($user_token == $token){
                     $page_title = "Book List";
                     $body = "library/book/list.book.php";
                     include_once "template/table.default.php";
+                break;
+
+                case"add-book";
+                    $page_title = "Add Book";
+                    $body = "library/book/add.book.php";
+                    include_once "template/form.element.php";
+                break;
+
+                case"edit-book";
+                    $page_title = "Edit Book";
+                    $body = "library/book/edit.book.php";
+                    include_once "template/form.element.php";
                 break;
                 
                 case"table";
