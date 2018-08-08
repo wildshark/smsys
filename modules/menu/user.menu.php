@@ -788,7 +788,7 @@ function library_side_bar_menu($token){
             </li>
 
             <li class=''>
-                <a href='store.php?page=supplier-contact&token={$token}&box=1&msg=1'>
+                <a href='library.php?page=issue-book&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
                     Issue Book
                 </a>
@@ -797,6 +797,16 @@ function library_side_bar_menu($token){
             </li>
         </ul>
     </li>
+
+    <li class=''>
+        <a href='library.php?page=classification&token={$token}&box=1&msg=1'>
+            <i class='menu-icon fa fa-tachometer'></i>
+            <span class='menu-text'> Classification </span>
+        </a>
+
+        <b class='arrow'></b>
+    </li>
+
     
     <li class=''>
         <a href='#' class='dropdown-toggle'>

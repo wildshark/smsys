@@ -67,7 +67,21 @@ If ($submit === "add-book"){
     header("Location: " . $_SERVER["HTTP_REFERER"]);
     exit();
     
-}  
+}elseif($submit === "add-issue-book"){
+
+    $ddate = date("Y-m-d H:i:s");
+    $date = $_GET['issue-date'];
+    $bookID = $_GET['book'];
+    $studentID = $_GET['student'];
+    $return = $_GET['return-date'];
+
+    echo $sql ="INSERT INTO `lib_book_issue` (`StudentAcctID`, `BookID`, `Issuse_Date`, `Return_Date`, `StatusID`, `CreateDate`) 
+    VALUES ('$studentID', '$bookID', '$date', '$return',  '1', '$ddate')";
+    $result = $conn->query($sql);
+
+    $error_no="2";
+
+}
 
 if (!isset($result)){
     header("location: library.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
@@ -78,3 +92,4 @@ if (!isset($result)){
         header("location: library.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }
+

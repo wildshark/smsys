@@ -45,7 +45,7 @@ $_SESSION['book-id'] = $id;
             <div class="clearfix">
                 <select id="form-field-1" name="catalog" class="col-xs-12 col-sm-5">
                     <option class="active" value=<?php echo $r['CategoryID'];?><?php echo $r['cateno']."-".$r['details'];?></option>
-                        <?php get_book_category($conn);?>
+                    <?php get_book_category($conn);?>
                 </select>
             </div>
         </div>

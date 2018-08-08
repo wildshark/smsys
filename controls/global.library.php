@@ -69,6 +69,22 @@ function get_book_details($conn){
     echo $totalNum =$row['book_ID'];
 }
 
+function get_book_isbn_details($conn){
+
+    $sql="SELECT * FROM get_lib_book";
+    $result=$conn->query($sql);
+    while($row=$result->fetch_assoc()){
+
+        $bookID = $row['BookID'];
+        $call_no = $row['Call_No'];
+        $book = $row['Book_Title'];
+        $isbn = $row['ISBN'];
+
+        echo "<option value='{$bookID}'>{$call_no}-{$book}</option>"; 
+    }
+   
+}
+
 function get_total_book_issue($conn){
 
     $sql="SELECT * FROM get_total_book_issue";

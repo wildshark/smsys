@@ -56,6 +56,18 @@ if ($user_token == $token){
                     $body = "library/book/edit.book.php";
                     include_once "template/form.element.php";
                 break;
+
+                case"issue-book";
+                    $page_title = "Issue Book";
+                    $body = "library/book/issue.book.php";
+                    include_once "template/table.default.php";
+                break;
+
+                case"classification";
+                    $page_title = "Issue Book";
+                    $body = "library/classification/classification.php";
+                    include_once "template/table.default.php";
+                break;
                 
                 case"table";
                     include_once "template/table.default.php";
