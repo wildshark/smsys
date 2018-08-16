@@ -61,7 +61,7 @@ if($submit === "add"){
             case 3:
                 $serial = "ADM".$programme."".$year."".$stream."0".$student_total;
                 break;
-            case 1:
+            case 4:
                 $serial = "ADM".$programme."".$year."".$stream."".$student_total;
                 break;
         }

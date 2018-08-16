@@ -8,7 +8,7 @@
 
 function student_admission_entry($conn){
 
-    $sql='SELECT * FROM get_new_student';
+    $sql='SELECT * FROM get_new_student WHERE proofID = 1';
     $result=$conn->query($sql);
     while ($r=$result->fetch_assoc()){
         if ($r['proofID'] == 1){

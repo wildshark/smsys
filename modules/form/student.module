@@ -21,87 +21,13 @@ if (isset($_POST['submit'])){
     echo "submit error";
 }
 
-    if ( $submit == 'add'){
-
-        //$user_toke = uniqid();
-        $date= date("Y-m-d");
-        $f_name = ucfirst($_POST['first-name']);
-        $l_name = ucfirst($_POST['surname']);
-        $admission = ucwords($_POST['admission-number']);
-        $email = $_POST['email'];
-        $mobile1 = $_POST['mobile-1'];
-        $mobile2 = $_POST['mobile-2'];
-        $programme = $_POST['programme'];
-        $year = $_POST['year'];
-        $category = $_POST['category'];
-        $stream = $_POST['stream'];
-        $campus = $_POST['campus-status'];
-
-        $check_student = "SELECT * FROM get_student_index_list WHERE admissionNo = '\"$admission\"'";
-        $check = $conn->query($check_student);
-        $check_result = $check->fetch_assoc();
-
-        if ($check_result['admissionNo'] == $admission){
-            $_SESSION['admission-no'] = $admission;
-            $data = "first-name=".$f_name.
-                    "&surname=".$l_name.
-                    "&admission-number=".$admission.
-                    "&email=".$email.
-                    "&mobile-1=".$mobile1.
-                    "&mobile-2=".$mobile2.
-                    "&programme=".$programme.
-                    "&year=".$year.
-                    "&category=".$category.
-                    "&stream=".$stream.
-                    "&campus-status=".$campus;
-            header("location: page.php?page={$url_page}&box=4&msg=10&{$data}");
-            exit();
-        }else{
-            //if picture inserted
-            $file= $_FILES['image'];
-            $file_name = $_FILES['image']['name'];
-            $file_tmp_name = $_FILES['image']['tmp_name'];
-            $file_size = $_FILES['image']['size'];
-            $file_error = $_FILES['image']['error'];
-            $file_type = $_FILES['image']['type'];
-
-            $fileExt = explode('.', $file_name);
-            $file_actualExt = strtolower(end($fileExt));
-            $allowed =  array ('jpg','jpeg', 'png','bmp');
-            if (in_array($file_actualExt, $allowed)){
-                if($file_error === 0){
-                    if ($file_size < 1000000 ){
-                        $file_new_name = uniqid('',true).".".$file_actualExt;
-                        $file_destination = "uploads/student/".$file_new_name;
-                        move_uploaded_file($file_tmp_name,$file_destination);
-
-                        $add_data = "INSERT INTO `student_profile` (`admissionDate`, `first_name`, `surname`, `admissionNo`, `mobile1`, `mobile2`, `email`, `progID`, `yearID`, `categoryID`, `stream`, `campus_status`,`picture`) VALUES ('$date', '$f_name', '$l_name', '$admission', '$mobile1', '$mobile2', '$email', '$programme', '$year', '$category', '$stream', '$campus','$file_destination')";
-                        $result = $conn->query($add_data);
-                        $error_no = "2";
-                        $last_id = $conn->insert_id;
-                    }else{
-                        //echo"file is to large to upload";
-                        header("location: page.php?page=".$url_page."&box=3&msg=2");
-                    }
-                }else{
-                    //echo"there was an error uploading the file";
-                    header("location: page.php?page=".$url_page."&box=3&msg=6");
-                }
-            }else{
-                //echo"you can nout upload this kind of file";
-                header("location: page.php?page=".$url_page."&box=3&msg=7");
-            }
-            //check student index
-        }
-
-    }elseif ($submit === "add-admission.index"){
+    if ($submit === "add-admission.index"){
        
         $date= date("Y-m-d");
 
         $serial = $_POST['admission-number'];
         $f_name = ucfirst($_POST['first-name']);
         $l_name = ucfirst($_POST['surname']);
-        //$admission = ucwords($_POST['admission-number']);
         $email = $_POST['email'];
         $mobile1 = $_POST['mobile-1'];
         $mobile2 = $_POST['mobile-2'];
@@ -117,8 +43,6 @@ if (isset($_POST['submit'])){
         $check = $conn->query($check_student);
         $check_result = $check->fetch_assoc();
 
-        //echo $check_result['picture'];
-
         if ($check_result > 0){
             //echo"data exit in database";
             header("location: {$_SESSION['user-page-url']}?page={$url_page}&id={$_SESSION['student-id']}&token={$_SESSION['user-token']}&box=4&msg=10");
@@ -132,7 +56,7 @@ if (isset($_POST['submit'])){
             $prefix = $prefix_result->fetch_assoc();
             $prefix_index = $prefix['prog_prefix'];
 
-            if (!isset($prefix_index) Or empty($prefix_index)){
+            if (!isset($prefix_index)){
                 
                 $data ="id=".$_SESSION['student-id']. 
                     "&first-name=".$f_name.
@@ -146,20 +70,21 @@ if (isset($_POST['submit'])){
                     "&stream=".$stream.
                     "&campus-status=".$campus.
                     "&serial=".$serial;
-                header("location: {$_SESSION['user-page-url']}?page={$url_page}&token={$_SESSION['user-token']}&box=4&msg=10&{$data}");
+                header("location: {$_SESSION['user-page-url']}?page={$url_page}&token={$_SESSION['user-token']}&box=4&msg=16&{$data}");
 
             }else{
-                $count_student = "SELECT * FROM get_total_student WHERE yearID = '\"$academic_year\"' AND progID='$programme'";
-                $result_count = $conn->query($count_student);
-                $count_total = $result_count->fetch_assoc();
 
-                $student_total = $count_total['total_student'];
+                $total_student = "SELECT total FROM get_total_student WHERE yearID = '".$academic_year."' AND progID='$programme'";
+                $total_student_result = $conn->query($total_student);
+                $total_admission = $total_student_result ->fetch_assoc();
+
+                $student_total = $total_admission['total'];
 
                 if (!isset($student_total) || empty($student_total) || $student_total == 0){
                     $student_total =  1;
                     $admission = $prefix_index."".$programme."".$year."".$stream."000".$student_total;
                 }else{
-                    $student_total = $count_total['total_student'] + 1;
+                    $student_total = $student_total + 1;
                     $unit = strlen($student_total);
                     switch ($unit){
                         case 1:
@@ -171,7 +96,7 @@ if (isset($_POST['submit'])){
                         case 3:
                             $admission = $prefix_index."".$programme."".$year."".$stream."0".$student_total;
                             break;
-                        case 1:
+                        case 4:
                             $admission = $prefix_index."".$programme."".$year."".$stream."".$student_total;
                             break;
                     }
@@ -191,7 +116,7 @@ if (isset($_POST['submit'])){
                 $allowed =  array ('jpg','jpeg', 'png','bmp');
                 if (in_array($file_actualExt, $allowed)){
                     if($file_error === 0){
-                        if ($file_size < 1000000 ){
+                        if ($file_size < 1000000000 ){
                             $file_new_name = uniqid('',true).".".$file_actualExt;
                             $file_destination = "uploads/student/".$file_new_name;
                             move_uploaded_file($file_tmp_name,$file_destination);
@@ -200,7 +125,13 @@ if (isset($_POST['submit'])){
 VALUES ('$date', '$f_name', '$l_name', '$admission', '$mobile1', '$mobile2', '$email', '$programme', '$academic_year', '$category', '$stream', '$campus','$file_destination','$serial')";
                             $result = $conn->query($add_data);
                             $error_no = "2";
-                             $last_id = $conn->insert_id;
+                            $last_id = $conn->insert_id;
+
+                            if (isset($last_id)){
+                                $admissionID = $_SESSION['student-id'];
+                                $update_new_student_status ="UPDATE `new_student` SET `proofID`='2' WHERE (`admissionID`='$admissionID')";
+                                $new_student_status_result = $conn->query($update_new_student_status);
+                            }
 
                         }else{
                             //echo"file is to large to upload";
@@ -256,6 +187,7 @@ if (!isset($result)){
         }
         
     } else {
-        header("location: {$_SESSION['user-page-url']}?page=" . $url_page . "&token={$_SESSION['user-token']}&box=4&msg=9&id={$_SESSION['student-id']}");
+        echo "wrong";
+       /// header("location: {$_SESSION['user-page-url']}?page=" . $url_page . "&token={$_SESSION['user-token']}&box=4&msg=9&id={$_SESSION['student-id']}");
     }
 }
