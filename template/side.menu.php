@@ -34,9 +34,7 @@ function super_admin($token){
     <li class=''>
         <a href='#' class='dropdown-toggle'>
             <i class='menu-icon fa fa-desktop'></i>
-            <span class='menu-text'>
-								Student Data
-							</span>
+            <span class='menu-text'>Student Data</span>
 
             <b class='arrow fa fa-angle-down'></b>
         </a>
@@ -65,9 +63,9 @@ function super_admin($token){
             </li>
 
             <li class=''>
-                <a href='page.php?page=student-admission-index&token={$token}&box=1&msg=1'>
+                <a href='page.php?page=studnet-enrollment&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
-                    **Add Student Profile
+                    Enrollment
                 </a>
 
                 <b class='arrow'></b>

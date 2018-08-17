@@ -51,7 +51,7 @@ If (empty($r['admissionNo'])){
 
         <div class="col-sm-9">
             <select name="semester" id="form-field-1" class="col-xs-10 col-sm-5">
-                <option class="active" value="<?php echo $r['semesterID'];?>"><?php echo $r['calendar']?></option>
+                <option class="active" value="<?php echo $r['semesterID'];?>"><?php echo $r['semester']?></option>
                 <?php get_list_semester($conn);?>
             </select>
         </div>

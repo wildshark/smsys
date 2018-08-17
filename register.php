@@ -132,13 +132,13 @@ if ($user_token == $token){
 
                 case "edit-enrollment";
                     $page_title = "Edit Enrollment";
-                    $body = "views/student/edit.student.enroll.php";
+                    $body = "views/student/enrollment/edit.student.enroll.php";
                     include_once "template/form.element.php";
                     break;
 
                 case"enrollment-list";
                     $page_title = "Enrollment List";
-                    $body = "views/student/list.student.enroll.php";
+                    $body = "views/student/enrollment/list.student.enroll.php";
                     include_once "template/table.default.php";
                     break;
 
@@ -332,6 +332,12 @@ if ($user_token == $token){
                 case"send-file";
                     $page_title="File Backup";
                     $body="data_storage/send.file.php";
+                    include_once "template/table.default.php";
+                break;
+
+                case"studnet-enrollment";
+                    $page_title="Student Enrollment";
+                    $body="student/enrollment/enrollment.php";
                     include_once "template/table.default.php";
                 break;
                 
