@@ -9,39 +9,40 @@
 include_once 'controls/config.php';
 include_once 'controls/db.connection.php';
 
-if (isset($_POST)){
-    if(empty($_POST['username'])){
-        header("location: ".  $_SERVER['HTTP_REFERER']);
-        exit();
-    }else{
-        $username =$_POST['username'];
-    }
-
-    if(empty($_POST['password'])){
-        header("location: ".  $_SERVER['HTTP_REFERER']);
-        exit(0);
-    }else{
-        $password = $_POST['password'];
-    }
-}elseif (isset($_GET)){
-    if(empty($_GET['username'])){
-        header("location: ".  $_SERVER['HTTP_REFERER']);
-        exit(0);
-    }else{
-        $username =$_GET['username'] ;
-    }
-
-    if(empty($_GET['password'])){
-        header("location: ".  $_SERVER['HTTP_REFERER']);
-        exit(0);
-    }else{
-        $password =$_GET['password'];
-    }
-}
-
 session_start();
 
-$_SESSION['username'] = $username;
+if ($_POST['submit'] ==="login"){
+   
+    if (isset($_POST)){
+        if(empty($_POST['username'])){
+            header("location: ".  $_SERVER['HTTP_REFERER']);
+            exit();
+        }else{
+            $username =$_POST['username'];
+        }
+
+        if(empty($_POST['password'])){
+            header("location: ".  $_SERVER['HTTP_REFERER']);
+            exit(0);
+        }else{
+            $password = $_POST['password'];
+        }
+    }elseif (isset($_GET)){
+        if(empty($_GET['username'])){
+            header("location: ".  $_SERVER['HTTP_REFERER']);
+            exit(0);
+        }else{
+            $username =$_GET['username'] ;
+        }
+
+        if(empty($_GET['password'])){
+            header("location: ".  $_SERVER['HTTP_REFERER']);
+            exit(0);
+        }else{
+            $password =$_GET['password'];
+        }
+    }
+    $_SESSION['username'] = $username;
 
     $sql = "SELECT * FROM get_admin WHERE username = '$username' AND  password = '$password'";
     $result = $conn->query($sql);
@@ -78,3 +79,77 @@ $_SESSION['username'] = $username;
         header("location: ".  $_SERVER['HTTP_REFERER']);
         exit(0);
     }
+
+}elseif($_POST['submit'] === "register"){
+
+    if (isset($_POST['username'])){
+         $sernuame = $_POST['username'];
+    }else{
+        header("location: ".  $_SERVER['HTTP_REFERER']);
+        exit(0); 
+    }
+   
+    if (isset($_POST['email'])){
+        $email = $_POST['email'];
+    }else{
+        header("location: ".  $_SERVER['HTTP_REFERER']);
+        exit(0);
+    }
+
+    if(isset($_POST['password'])){
+        $password = $_POST['password'];
+    }else{
+        header("location: ".  $_SERVER['HTTP_REFERER']);
+        exit(0);
+    }
+    
+    $check = "SELECT * FROM `get_admin` WHERE email ='".$email."'";
+    $check_result = $conn->query($check);
+    //$chk = $check_result->fetch_assoc();
+
+    if ($check_result->num_rows > 0){
+        echo "user email already exist";
+    }else{
+        
+        if ($_POST['agreement'] === "user-agreement" && $password === $_POST['password1']){
+            $sql ="INSERT INTO `get_admin` (`username`, `password`, `email`,`access`,`status`) VALUES ('$username', '$password', '$email','0','0')";
+            $result=$conn->query($sql);
+            //$record = $result->fetch_assoc();
+            header("location: ".  $_SERVER['HTTP_REFERER']);
+            exit(0);
+        }else{
+            echo"check password and agreement policy";
+        }
+    }
+    
+}elseif($_POST['submit'] === "email-recovery"){
+    
+    if (isset()){
+        $email = $_POST['email'];
+    }else{
+        header("location: ".  $_SERVER['HTTP_REFERER']);
+        exit(0);
+    }
+   
+
+    $sql ="SELECT * FROM `get_admin` WHERE email ='".$email."'";
+    $result=$conn->query($sql);
+    $record = $result->fetch_assoc();
+    
+    if($record > 0){
+
+        $username = $record['username'];
+        $password = $record['password'];
+        
+        $subject = "GhanaCUC Portal Login";
+        $message = "Your login Detail<br> Username :".$username."<br> Password :".$password."<p>";
+        
+        mail($email,$subject,$message);
+
+    }else{
+        echo"Username Email do not exist";
+    }
+
+   
+}
+
