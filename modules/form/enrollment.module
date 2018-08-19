@@ -6,6 +6,7 @@
  * Time: 10:16 PM
  */
 
+//$pg = $_SESSION['user-page-url'];
 $url_page = $_SESSION['url-page'];
 $error_no = "2";
 
@@ -17,9 +18,11 @@ if ($_GET['submit'] == 'add') {
     $semester = $_GET['semester'];
     $academic = $_GET['academic-year'];
     $course = $_GET['course'];
+    $level = $_GET['programme-level'];
 
-    $add = "INSERT INTO `enrollment` (`enroll_date`, `studentID`, `semesterID`, `yearID`, `progID`) VALUES ('$date', '$student','$semester', '$academic', '$course')";
+    $add = "INSERT INTO `enrollment` (`enroll_date`, `studentID`, `semesterID`, `yearID`, `progID`,`s_level`) VALUES ('$date', '$student','$semester', '$academic', '$course','$level')";
     $result = $conn->query($add);
+    $id = $conn->insert_id;
 
 }elseif ($_GET['submit'] == 'update'){
     $id = $_SESSION['enroll-id'];
@@ -28,8 +31,9 @@ if ($_GET['submit'] == 'add') {
     $semester = $_GET['semester'];
     $academic = $_GET['academic-year'];
     $course = $_GET['course'];
+    $level = $_GET['programme-level'];
 
-    $add = "UPDATE `enrollment` SET `enroll_date`='$date', `studentID`='$student', `semesterID`='$semester', `yearID`='$academic', `progID`='$course' WHERE (`enrollID`='$id') LIMIT 1";
+    $add = "UPDATE `enrollment` SET `enroll_date`='$date', `studentID`='$student', `semesterID`='$semester', `yearID`='$academic', `progID`='$course', `s_level`='$level' WHERE (`enrollID`='$id') LIMIT 1";
     $result = $conn->query($add);
 
 }elseif ($_GET['submit'] == 'delete'){
@@ -41,11 +45,12 @@ if ($_GET['submit'] == 'add') {
 }
 
 if (!isset($result)){
-    header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+    header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
 }else{
     if ($result === TRUE){
-        header("location: page.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
+        header("location: {$_SESSION['user-page-url']}?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}&detail={$id}");
     }else{
-        header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+        header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }
+

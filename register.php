@@ -340,6 +340,10 @@ if ($user_token == $token){
                     $body="student/enrollment/enrollment.php";
                     include_once "template/table.default.php";
                 break;
+
+                case"print-enrollment-form";
+                    include_once "print/enrollment.form.php";
+                break;
                 
                 case"table";
                     include_once "template/table.default.php";

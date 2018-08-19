@@ -388,10 +388,13 @@ function student_enrollment_data($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                             <a class='green' href='{$_SESSION['user-page-url']}?page=edit-enrollment&detail={$r['enrollID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-enrollment&detail={$r['enrollID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
-                        
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=print-enrollment-form&detail={$r['enrollID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-credit-card bigger-130'></i>
+                            </a>
+            
                             <a class='red' href='model.php?ui=enrollment&submit=delete&detail={$r['enrollID']}&token={$_SESSION['user-token']}'>
                                 <i class='ace-icon fa fa-trash-o bigger-130'></i>
                             </a>

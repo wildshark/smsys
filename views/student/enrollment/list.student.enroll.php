@@ -52,6 +52,16 @@
                             <?php cmb_programme_data($conn);?>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Level:</label>
+                        <select name="programme-level" id="form-field-1" class="form-control">
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                            <option value="300">300</option>
+                            <option value="400">400</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

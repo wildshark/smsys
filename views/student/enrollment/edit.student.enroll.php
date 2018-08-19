@@ -84,6 +84,19 @@ If (empty($r['admissionNo'])){
     </div>
 
     <div class="space-4"></div>
+    
+    <div class="form-group">
+        <label for="recipient-name" class="form-control-label">Level:</label>
+        <select name="programme-level" id="form-field-1" class="form-control">
+            <option class="active" value="<?php echo $r['s_level']?>"><?php echo $r['s_level']?></option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+        </select>
+    </div>
+
+    <div class="space-4"></div>
 
     <div class="clearfix form-actions">
         <div class="col-md-offset-3 col-md-9">

@@ -124,14 +124,13 @@ if ($_POST['submit'] ==="login"){
     
 }elseif($_POST['submit'] === "email-recovery"){
     
-    if (isset()){
+    if (isset($_POST['email'])){
         $email = $_POST['email'];
     }else{
         header("location: ".  $_SERVER['HTTP_REFERER']);
         exit(0);
     }
    
-
     $sql ="SELECT * FROM `get_admin` WHERE email ='".$email."'";
     $result=$conn->query($sql);
     $record = $result->fetch_assoc();
