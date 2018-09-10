@@ -33,6 +33,10 @@ page[size="A5"][layout="portrait"] {
   height: 14.8cm;  
 }
 
+page[size="ID-1"][layout="portrait"]{
+    width: 8.5cm;
+    height: 5.39cm;
+}
 @media print {
   body, page {
     margin: 0;

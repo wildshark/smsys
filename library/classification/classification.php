@@ -4,7 +4,29 @@ function get_library_classification($conn){
   $sql="select * from get_lib_classification";
     $result=$conn->query($sql);
   while ($r=$result->fetch_assoc()) {
-         
+
+      $cata = $r['cataID'];
+
+      $total_copies ="SELECT lib_book_details.CategoryID, Sum(lib_book_details.No_Of_copies) as total
+FROM lib_book_details WHERE lib_book_details.CategoryID = '$cata' GROUP BY lib_book_details.CategoryID";
+      $copies_result = $conn->query($total_copies);
+      $copies_r = $copies_result->fetch_assoc();
+      if (isset($copies_r['total'])){
+          $copies = $copies_r['total'];
+      }else{
+          $copies = "0";
+      }
+
+      $total_book ="SELECT Count(lib_book_details.BookID) as total, lib_book_details.CategoryID FROM
+lib_book_details WHERE lib_book_details.CategoryID = '$cata' GROUP BY lib_book_details.CategoryID";
+      $book_result = $conn->query($total_book);
+      $book_r = $book_result->fetch_assoc();
+      if (isset($book_r['total'])){
+          $book = $book_r['total'];
+      }else{
+          $book = "0";
+      }
+
     echo"
         <tr>
                 <td class='center'>
@@ -18,8 +40,8 @@ function get_library_classification($conn){
                 {$r['cata_no']}
                 </td>
                 <td>{$r['details']}</td>
-                <td class='hidden-480'>{$r['total_book']}</td>
-                <td> {$r['total_copies']}</td>
+                <td class='hidden-480'>{$book}</td>
+                <td>{$copies}</td>
                 <td class='hidden-480'></td>
 
                 <td>

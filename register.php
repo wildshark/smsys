@@ -344,6 +344,10 @@ if ($user_token == $token){
                 case"print-enrollment-form";
                     include_once "print/enrollment.form.php";
                 break;
+
+                case"print-id-card";
+                    include_once "print/student.idcard.php";
+                break;
                 
                 case"table";
                     include_once "template/table.default.php";

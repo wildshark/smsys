@@ -146,6 +146,10 @@ function student_data($conn){
                             <a class='green' href='{$_SESSION['user-page-url']}?page=edit-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
+                           
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=print-id-card&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            </a>
 
                             <a class='red' href='model.php?ui=student&submit=delete&id={$id}&token={$_SESSION['user-token']}'>
                                 <i class='ace-icon fa fa-trash-o bigger-130'></i>

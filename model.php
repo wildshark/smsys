@@ -33,7 +33,11 @@ switch ($page){
 
     case"student";
        // echo"student admission and indexing";
-        include_once "modules/form/student.module";
+        if ($_POST['stamp'] == 1){
+            include_once "modules/form/student.no.picture.module";
+        }elseif($_POST['stamp'] == 2){
+             include_once "modules/form/student.module";
+        }
     break;
 
     case "programme";

@@ -182,6 +182,19 @@ if($campus == 1){
     <div class="hr hr-dotted"></div>
 
     <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Campus Status </label>
+
+        <div class="col-sm-9">
+            <select name="stamp" id="form-field-1" class="col-xs-10 col-sm-5">
+                <option value="1">No picture</option>
+                <option value="2">Picture</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="space-4"></div>
+
+    <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="passport">Add Passport Picture</label>
 
         <div class="col-xs-12 col-sm-9">
@@ -192,6 +205,7 @@ if($campus == 1){
     </div>
 
     <div class="space-4"></div>
+
 
     <div class="clearfix form-actions">
         <div class="col-md-offset-3 col-md-9">

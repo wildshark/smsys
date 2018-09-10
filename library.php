@@ -64,8 +64,14 @@ if ($user_token == $token){
                 break;
 
                 case"classification";
-                    $page_title = "Issue Book";
+                    $page_title = "Book Classification";
                     $body = "library/classification/classification.php";
+                    include_once "template/table.default.php";
+                break;
+
+                case"return-due";
+                    $page_title = "Book Due For Return(s)";
+                    $body = "library/book/list.return.due.php";
                     include_once "template/table.default.php";
                 break;
                 

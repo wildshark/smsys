@@ -75,11 +75,21 @@ If ($submit === "add-book"){
     $studentID = $_GET['student'];
     $return = $_GET['return-date'];
 
-    echo $sql ="INSERT INTO `lib_book_issue` (`StudentAcctID`, `BookID`, `Issuse_Date`, `Return_Date`, `StatusID`, `CreateDate`) 
+    $sql ="INSERT INTO `lib_book_issue` (`StudentAcctID`, `BookID`, `Issuse_Date`, `Return_Date`, `StatusID`, `CreateDate`) 
     VALUES ('$studentID', '$bookID', '$date', '$return',  '1', '$ddate')";
     $result = $conn->query($sql);
 
     $error_no="2";
+
+}elseif($submit === "add-location"){
+
+    $location = $_GET['location'];
+    $prefix = $_GET['prefix'];
+
+    $sql = "INSERT INTO `lib_location` (`location`, `prefix`) VALUES ('$location', '$prefix')";
+    $result = $conn->query($sql);
+
+    $error_no ="2";
 
 }
 

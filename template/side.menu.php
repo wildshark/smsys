@@ -6,6 +6,11 @@
  * Time: 8:53 PM
  */
 
+include_once "hostel/menu.php";
+include_once "lecture/menu.php";
+include_once "store_keeper/menu.php";
+include_once "library/menu.php";
+
 //create.sql
 $token = $_SESSION['user-token'];
 $access = $_SESSION['user-access'];

@@ -49,7 +49,7 @@ if (isset($_POST['submit'])){
         }else{
             //echo"data dont exit in database";
 
-            $year = substr($academic_year,0,4);
+            $year = date("y");//substr($academic_yea,-2);
 
             $program_prefix = "SELECT * FROM get_programme where progID = '$programme'";
             $prefix_result = $conn->query($program_prefix);
@@ -57,8 +57,8 @@ if (isset($_POST['submit'])){
             $prefix_index = $prefix['prog_prefix'];
 
             if (!isset($prefix_index)){
-                
-                $data ="id=".$_SESSION['student-id']. 
+
+                $data ="id=".$_SESSION['student-id'].
                     "&first-name=".$f_name.
                     "&surname=".$l_name.
                     "&email=".$email.
@@ -82,28 +82,28 @@ if (isset($_POST['submit'])){
 
                 if (!isset($student_total) || empty($student_total) || $student_total == 0){
                     $student_total =  1;
-                    $admission = $prefix_index."".$programme."".$year."".$stream."000".$student_total;
+                    $admission = $prefix_index."0".$stream."".$year."00".$student_total;
                 }else{
                     $student_total = $student_total + 1;
                     $unit = strlen($student_total);
                     switch ($unit){
                         case 1:
-                            $admission = $prefix_index."".$programme."".$year."".$stream."000".$student_total;
+                            $admission = $prefix_index."0".$stream."".$year."00".$student_total;
                             break;
                         case 2:
-                            $admission = $prefix_index."".$programme."".$year."".$stream."00".$student_total;
+                            $admission = $prefix_index."0".$stream."".$year."00".$student_total;
                             break;
                         case 3:
-                            $admission = $prefix_index."".$programme."".$year."".$stream."0".$student_total;
+                            $admission = $prefix_index."0".$stream."".$year."0".$student_total;
                             break;
                         case 4:
-                            $admission = $prefix_index."".$programme."".$year."".$stream."".$student_total;
+                            $admission = $prefix_index."0".$stream."".$year."".$student_total;
                             break;
                     }
 
                 }
-                //echo $admission;
 
+                //echo $admission;
                 $file= $_FILES['image'];
                 $file_name = $_FILES['image']['name'];
                 $file_tmp_name = $_FILES['image']['tmp_name'];
@@ -121,16 +121,43 @@ if (isset($_POST['submit'])){
                             $file_destination = "uploads/student/".$file_new_name;
                             move_uploaded_file($file_tmp_name,$file_destination);
 
-                            $add_data = "INSERT INTO `student_profile` (`admissionDate`, `first_name`, `surname`, `admissionNo`, `mobile1`, `mobile2`, `email`, `progID`, `yearID`, `categoryID`, `stream`, `campus_status`,`picture`,`serial_no`) 
-VALUES ('$date', '$f_name', '$l_name', '$admission', '$mobile1', '$mobile2', '$email', '$programme', '$academic_year', '$category', '$stream', '$campus','$file_destination','$serial')";
+                            $add_data = "INSERT INTO `student_profile` (`admissionDate`, `first_name`, `surname`, `admissionNo`, `mobile1`, `mobile2`, `email`, `progID`, `yearID`, `categoryID`, `stream`, `campus_status`,`picture`,`serial_no`) VALUES ('$date', '$f_name', '$l_name', '$admission', '$mobile1', '$mobile2', '$email', '$programme', '$academic_year', '$category', '$stream', '$campus','$file_destination','$serial')";
                             $result = $conn->query($add_data);
                             $error_no = "2";
                             $last_id = $conn->insert_id;
 
                             if (isset($last_id)){
+
                                 $admissionID = $_SESSION['student-id'];
                                 $update_new_student_status ="UPDATE `new_student` SET `proofID`='2' WHERE (`admissionID`='$admissionID')";
                                 $new_student_status_result = $conn->query($update_new_student_status);
+                                /***
+                                $bulksms = new stdClass();
+                                $request = new stdClass();
+                                //username from SMSAPI
+
+                                $bulksms->username = 'bsgh-iquipe';
+                                //or 'password' => md5('open-text-password'),
+                                $bulksms->password = 'passwd82';
+                                //destination number
+                                $request->to = $mobile1;
+                                //sender name has to be active
+                                $request->from = "ghanacuc";
+                                //message content
+                                $request->message = "Welcome to GhanaCUC, Your studentID is ".$admission."\n Have a wonderful stay.";
+                                //API http
+
+                                $url = 'http://sms.bernsergsolutions.com:8080/bulksms/bulksms?';
+
+                                $c = curl_init();
+                                curl_setopt($c,CURLOPT_URL,$url);
+                                curl_setopt($c,CURLOPT_POST,true);
+                                curl_setopt($c,CURLOPT_POSTFIELDS, 'username='.$bulksms->username.'&password='.$bulksms->password.
+                                    '&type=0&dlr=1&destination='.$request->to.'&source='.$request->from.'&message='.$request->message);
+                                curl_setopt($c,CURLOPT_RETURNTRANSFER,true);
+                                $content = curl_exec($c);
+                                curl_close($c);
+                                **/
                             }
 
                         }else{
@@ -145,7 +172,7 @@ VALUES ('$date', '$f_name', '$l_name', '$admission', '$mobile1', '$mobile2', '$e
                     //echo"you can nout upload this kind of file";
                     header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=3&msg=7");
                 }
-            
+
             }
 
         }
@@ -190,4 +217,5 @@ if (!isset($result)){
         echo "wrong";
        /// header("location: {$_SESSION['user-page-url']}?page=" . $url_page . "&token={$_SESSION['user-token']}&box=4&msg=9&id={$_SESSION['student-id']}");
     }
+
 }
