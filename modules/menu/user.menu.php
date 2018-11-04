@@ -38,7 +38,16 @@ function register($token){
             <li class=''>
                 <a href='register.php?page=student.admission-list&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
-                    Student Admission
+                    Admission & Enrollment 
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+            
+            <li class=''>
+                <a href='register.php?page=enrollment-list&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Registration
                 </a>
 
                 <b class='arrow'></b>
@@ -48,6 +57,15 @@ function register($token){
                 <a href='register.php?page=add-student&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
                      Student Profile
+                </a>
+
+                <b class='arrow'></b>
+            </li>
+            
+            <li class=''>
+                <a href='register.php?page=student-list&token={$token}&box=1&msg=1'>
+                    <i class='menu-icon fa fa-caret-right'></i>
+                    Change Programme
                 </a>
 
                 <b class='arrow'></b>
@@ -62,23 +80,6 @@ function register($token){
                 <b class='arrow'></b>
             </li>
 
-            <li class=''>
-                <a href='register.php?page=student-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Student List
-                </a>
-
-                <b class='arrow'></b>
-            </li>
-
-            <li class=''>
-                <a href='register.php?page=enrollment-list&token={$token}&box=1&msg=1'>
-                    <i class='menu-icon fa fa-caret-right'></i>
-                    Enrollment List
-                </a>
-
-                <b class='arrow'></b>
-            </li>
         </ul>
     </li>
 
