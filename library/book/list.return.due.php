@@ -1,12 +1,12 @@
 <?php
 function get_library_book($conn){
 
-    $sql="select * from lib_book_return_due";
-    $result=$conn->query($sql);
-    while ($r=$result->fetch_assoc()) {
+    $sql="SELECT * FROM `get_lib_book_return_due` LIMIT 0, 1000";
+    $result = $conn->query($sql);
+    while ($r= $result->fetch_assoc()) {
 
         echo"
-        <tr>
+            <tr>
                 <td class='center'>
                     <label class='pos-rel'>
                         <input type='checkbox' class='ace' />
@@ -37,58 +37,9 @@ function get_library_book($conn){
                         </a>
                     </div>
                 </td>
-            </tr>
-            
-            
-            <div class='modal fade' id='create-school' tabindex='-1' role='dialog' aria-labelledby='create-school' aria-hidden='true'>
-                <div class='modal-dialog' role='document'>
-                    <div class='modal-content'>
-                        <form method='GET' action='model.php' enctype='multipart/form-data'>
-                            <div class='modal-header'>
-                                <h5 class='modal-title' id='exampleModalLabel'>New message</h5>
-                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                    <span aria-hidden='true'>&times;</span>
-                                </button>
-                            </div>
-                            <div class='modal-body'>
-                                <input type='hidden' name='ui' value='library'>
-                
-                                <div class='form-group'>
-                                    <label for='recipient-name' class='form-control-label'> Issue Date </label>
-                                    <input type='date' name='issue-date' value='' placeholder='Date' class='form-control' id='recipient-name'>
-                                </div>
-                
-                                <div class='form-group'>
-                                    <label for='recipient-name' class='form-control-label'> Book Title</label>
-                                    <select name='book' value='' placeholder='0' class='form-control' id='recipient-name'>
-                                        <?php get_book_isbn_details($conn);?>
-                                    </select>
-                                </div>
-                
-                                <div class='form-group'>
-                                    <label for='recipient-name' class='form-control-label'> Student</label>
-                                    <select name='student' value='' placeholder='0' class='form-control' id='recipient-name'>
-                                        <?php  student_index_list($conn);?>
-                                    </select>
-                                </div>
-                
-                                <div class='form-group'>
-                                    <label for='recipient-name' class='form-control-label'> Return Date </label>
-                                    <input type='date' name='return-date' value='' placeholder='Date' class='form-control' id='recipient-name'>
-                                </div>
-                
-                            </div>
-                            <div class='modal-footer'>
-                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-                                <button type='submit' name='submit' value='add-issue-book' class='btn btn-primary'>Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    ";
+            </tr>    
+        ";
     }
-
 }
 
 ?>
@@ -132,6 +83,53 @@ function get_library_book($conn){
                 <?php get_library_book($conn);?>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<div class='modal fade' id='create-school' tabindex='-1' role='dialog' aria-labelledby='create-school' aria-hidden='true'>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <form method='GET' action='model.php' enctype='multipart/form-data'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>New message</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>
+                <div class='modal-body'>
+                    <input type='hidden' name='ui' value='library'>
+
+                    <div class='form-group'>
+                        <label for='recipient-name' class='form-control-label'> Issue Date </label>
+                        <input type='date' name='issue-date' value='' placeholder='Date' class='form-control' id='recipient-name'>
+                    </div>
+
+                    <div class='form-group'>
+                        <label for='recipient-name' class='form-control-label'> Book Title</label>
+                        <select name='book' value='' placeholder='0' class='form-control' id='recipient-name'>
+                            <?php //get_book_isbn_details($conn);?>
+                        </select>
+                    </div>
+
+                    <div class='form-group'>
+                        <label for='recipient-name' class='form-control-label'> Student</label>
+                        <select name='student' value='' placeholder='0' class='form-control' id='recipient-name'>
+                            <?php //student_index_list($conn);?>
+                        </select>
+                    </div>
+
+                    <div class='form-group'>
+                        <label for='recipient-name' class='form-control-label'> Return Date </label>
+                        <input type='date' name='return-date' value='' placeholder='Date' class='form-control' id='recipient-name'>
+                    </div>
+
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                    <button type='submit' name='submit' value='add-issue-book' class='btn btn-primary'>Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

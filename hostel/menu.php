@@ -6,7 +6,7 @@
  * Time: 12:16 AM
  */
 
-function  estate_mgs($token){
+function  hostel_menu($token){
     echo"
     <li class=''>
         <a href='hostel.php?page=dashboard&token={$token}&box=1&msg=1'>

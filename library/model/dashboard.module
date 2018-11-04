@@ -1,0 +1,203 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew Quaye
+ * Date: 01/11/2018
+ * Time: 7:20 PM
+ */
+
+function total_student_admission($conn){
+
+    $yearID = $_SESSION['academic-year'];
+
+    $sql = "SELECT Count(studentID) as total,yearID FROM get_student_profile_detail WHERE yearID = '".$yearID."' GROUP BY yearID";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+}
+function total_book($conn){
+
+    $sql ="SELECT Count(get_lib_book.BookID) as total FROM get_lib_book";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+}
+
+function total_book_issued($conn){
+
+    $sql = "SELECT Count(lib_book_issue.IssueID) as total FROM lib_book_issue WHERE lib_book_issue.StatusID = 1 GROUP BY lib_book_issue.StatusID";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+
+}
+
+function total_book_return($conn){
+
+    $sql = "SELECT Count(lib_book_issue.IssueID) as total FROM lib_book_issue WHERE lib_book_issue.StatusID = 2 GROUP BY lib_book_issue.StatusID";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+}
+
+function due_for_return($conn){
+
+    $date = date("d/m/Y");
+    $sql = "SELECT Count(lib_book_issue.IssueID) AS total FROM lib_book_issue WHERE lib_book_issue.StatusID = 1 AND lib_book_issue.Return_Date = '".$date."' GROUP BY lib_book_issue.StatusID";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+}
+
+function over_due_for_return($conn){
+
+    $date = date("d/m/Y");
+    $sql = "SELECT Count(lib_book_issue.IssueID) AS total FROM lib_book_issue WHERE lib_book_issue.StatusID = 1 AND lib_book_issue.Return_Date > '".$date."' GROUP BY lib_book_issue.StatusID";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+}
+
+function total_categories($conn){
+
+    $sql ="SELECT Count(lib_classification.cataID) as total FROM lib_classification";
+    $result = $conn->query($sql);
+    $r = $result->fetch_assoc();
+
+    if (!isset($r['total'])){
+        $total = "0";
+    }else{
+        $total =  $r['total'];
+    }
+    return $total;
+}
+
+function dashboard_list_issued_book($conn){
+
+    $date = date("d/m/y");
+    $sql="SELECT * FROM `get_lib_issue_book` LIMIT 0, 1000";
+    $result=$conn->query($sql);
+    while ($r=$result->fetch_assoc()){
+
+        echo "
+            <tr>
+                <td class='center'>
+                    <label class='pos-rel'>
+                        <input type='checkbox' class='ace' />
+                            <span class='lbl'></span>
+                    </label>
+                </td>
+
+                <td class='center'>
+                    <div class='action-buttons'>
+                        <a href='#' class='green bigger-140 show-details-btn' title='Show Details'>
+                            <i class='ace-icon fa fa-angle-double-down'></i>
+                                <span class='sr-only'>Details</span>
+                        </a>
+                    </div>
+                </td>
+
+                <td>
+                    {$r['admissionNo']} - {$r['first_name']} {$r['surname']}
+                </td>
+                <td>$45</td>
+                <td class='hidden-480'>3,330</td>
+                <td>Feb 12</td>
+
+                <td class='hidden-480'>
+                    <span class='label label-sm label-warning'>Expiring</span>
+                </td>
+
+                <td>
+                    <div class='hidden-sm hidden-xs btn-group'>
+                        <button class='btn btn-xs btn-success'>
+                            <i class='ace-icon fa fa-check bigger-120'></i>
+                        </button>
+
+                        <button class='btn btn-xs btn-info'>
+                            <i class='ace-icon fa fa-pencil bigger-120'></i>
+                        </button>
+
+                        <button class='btn btn-xs btn-danger'>
+                            <i class='ace-icon fa fa-trash-o bigger-120'></i>
+                        </button>
+
+                        <button class='btn btn-xs btn-warning'>
+                            <i class='ace-icon fa fa-flag bigger-120'></i>
+                        </button>
+                    </div>
+
+                    <div class='hidden-md hidden-lg'>
+                        <div class='inline pos-rel'>
+                            <button class='btn btn-minier btn-primary dropdown-toggle' data-toggle='dropdown' data-position='auto'>
+                                <i class='ace-icon fa fa-cog icon-only bigger-110'></i>
+                            </button>
+
+                                <ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
+                                    <li>
+                                        <a href='#' class='tooltip-info' data-rel='tooltip' title='View'>
+										    <span class='blue'>
+											    <i class='ace-icon fa fa-search-plus bigger-120'></i>
+											</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'>
+										    <span class='green'>
+											    <i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
+											</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href='#' class='tooltip-error' data-rel='tooltip' title='Delete'>
+										    <span class='red'>
+											    <i class='ace-icon fa fa-trash-o bigger-120'></i>
+											</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+        ";
+    }
+}

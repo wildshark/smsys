@@ -139,19 +139,19 @@ function student_data($conn){
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='{$_SESSION['user-page-url']}?page=view-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='blue' href='{$_SESSION['user-page-url']}?page=view-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1' data-toggle='tooltip' data-placement='bottom' title='View Profile'>
                                 <i class='ace-icon fa fa-search-plus bigger-130'></i>
                             </a>
 
-                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1'>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1' data-toggle='tooltip' data-placement='bottom' title='Edit Profile'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
                            
-                            <a class='green' href='{$_SESSION['user-page-url']}?page=print-id-card&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1'>
-                                <i class='ace-icon fa fa-pencil bigger-130'></i>
+                            <a class='green' href='{$_SESSION['user-page-url']}?page=programme-change&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1' data-toggle='tooltip' data-placement='bottom' title='Change Programme'>
+                                <i class='ace-icon fa fa-bolt bigger-130'></i>
                             </a>
 
-                            <a class='red' href='model.php?ui=student&submit=delete&id={$id}&token={$_SESSION['user-token']}'>
+                            <a class='red' href='model.php?ui=student&submit=delete&id={$id}&token={$_SESSION['user-token']}' data-toggle='tooltip' data-placement='bottom' title='Delete'>
                                 <i class='ace-icon fa fa-trash-o bigger-130'></i>
                             </a>
                         </div>                   

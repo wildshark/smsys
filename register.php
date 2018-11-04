@@ -112,6 +112,12 @@ if ($user_token == $token){
                     include_once "template/form.profile.php";
                     break;
 
+                case"programme-change";
+                    $page_title = "Programme Change";
+                    $body = "views/student/change.programme.php";
+                    include_once "template/form.default.php";
+                break;
+
                 case"student-admission-index";
                     $page_title = "Add Student Admission Index";
                     $body = "views/student/admission/list.student.admission.php";

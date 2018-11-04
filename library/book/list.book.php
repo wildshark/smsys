@@ -77,7 +77,7 @@ function get_library_book($conn){
             </thead>
 
             <tbody>
-            <?php get_library_book($conn);?>
+                <?php get_library_book($conn);?>
             </tbody>
         </table>
     </div>
