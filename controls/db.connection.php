@@ -7,13 +7,14 @@
  */
 
 if ($_SERVER['HTTP_HOST'] === "localhost"){
-    $servername = "localhost";
+
+    $server = "localhost";
     $username = "root";
     $password = "";
     $database = "school_data";
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
+    $conn = new mysqli($server, $username, $password, $database);
 
     // Check connection
     if ($conn->connect_error) {
@@ -21,17 +22,16 @@ if ($_SERVER['HTTP_HOST'] === "localhost"){
     }
 }else{
 
-    $servername = "localhost";
+    $server = "localhost";
     $username = "ghanacucom";
     $password = "ghanacu@50";
     $database = "ghanacu_portal";
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
+    $conn = new mysqli($server, $username, $password, $database);
 
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
 }
