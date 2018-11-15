@@ -67,6 +67,15 @@ function library_side_bar_menu($token){
             </li>
         </ul>
     </li>
+    
+    <li class=''>
+        <a href='library.php?page=e-books&token={$token}&box=1&msg=1'>
+            <i class='menu-icon fa fa-tachometer'></i>
+            <span class='menu-text'> eBook </span>
+        </a>
+
+        <b class='arrow'></b>
+    </li>
 
     <li class=''>
         <a href='library.php?page=classification&token={$token}&box=1&msg=1'>

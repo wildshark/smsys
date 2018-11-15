@@ -63,6 +63,10 @@ if ($user_token == $token){
                     include_once "template/table.default.php";
                 break;
 
+                case"e-books";
+
+                break;
+
                 case"classification";
                     $page_title = "Book Classification";
                     $body = "library/classification/classification.php";

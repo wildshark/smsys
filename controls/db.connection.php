@@ -6,10 +6,16 @@
  * Time: 7:44 PM
  */
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "school_data";
+
+if (file_exists("db.server.php")){
+    include_once "db.server.php";
+
+}else{
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "school_data";
+}
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
