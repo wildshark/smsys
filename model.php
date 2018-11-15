@@ -116,7 +116,7 @@ switch ($page){
     break;
 
     case"library";
-        require_once "library/model/library.modules";
+        require_once "library/model/library.module";
     break;
 
     default;

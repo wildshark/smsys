@@ -31,9 +31,10 @@ If ($submit === "add-book"){
     $edition = $_GET['edition'];
     $no_of_copies = $_GET['no-of-copies'];
     $isbn = $_GET['isbn'];
+    $collection = $_GET['collection'];
 
-    $sql="INSERT INTO `lib_book_details` (`Call_No`, `Book_Title`, `Subject`, `Author1`, `Author2`, `Author3`, `Publication`, `Edition`, `No_Of_copies`, `ISBN`, `AccessionNo`,`CategoryID`) 
-    VALUES ('$call_no', '$book_title', '$subject', '$author1', '$author2', '$author3', '$publication', '$edition', '$no_of_copies', '$isbn', '$accession_no','$catalog')";
+    $sql="INSERT INTO `lib_book_details` (`Call_No`, `Book_Title`, `Subject`, `Author1`, `Author2`, `Author3`, `Publication`, `Edition`, `No_Of_copies`, `ISBN`, `AccessionNo`,`CategoryID`,`collectionID`)
+    VALUES ('$call_no', '$book_title', '$subject', '$author1', '$author2', '$author3', '$publication', '$edition', '$no_of_copies', '$isbn', '$accession_no','$catalog','$collection')";
     $result=$conn->query($sql);
 
     $error_no = "2";
@@ -53,8 +54,9 @@ If ($submit === "add-book"){
     $publication=$_GET['publication'];
     $edition=$_GET['edition'];
     $no_of_copies=$_GET['no-of-copies'];
+    $collection = $_GET['collection'];
 
-    $sql="UPDATE `lib_book_details` SET `Call_No`='$call_no',`AccessionNo`='$accession_no',`CategoryID`='$catalog',  `Book_Title`='$book_title', `Subject`='$subject', `Author1`='$author1', `Author2`='$author2', `Author3`='$author3', `ISBN`='$isbn',`Publication`='$publication', `Edition`='$edition', `No_Of_copies`='$no_of_copies' WHERE (`BookID`='$id') LIMIT 1";
+    $sql="UPDATE `lib_book_details` SET `Call_No`='$call_no',`AccessionNo`='$accession_no',`CategoryID`='$catalog',  `Book_Title`='$book_title', `Subject`='$subject', `Author1`='$author1', `Author2`='$author2', `Author3`='$author3', `ISBN`='$isbn',`Publication`='$publication', `Edition`='$edition', `No_Of_copies`='$no_of_copies',`collection` = '$collection' WHERE (`BookID`='$id') LIMIT 1";
    $result=$conn->query($sql);
 
    $error_no="2";

@@ -127,6 +127,17 @@
             </div>
         </div>
     </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="name">Collection:</label>
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <select id="form-field-1" name="collection" class="col-xs-12 col-sm-5">
+                    <?php cmb_library_collection($conn);?>
+                </select>
+            </div>
+        </div>
+    </div>
 
     
     <hr />

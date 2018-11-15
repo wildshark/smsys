@@ -351,3 +351,11 @@ function cmb_affliate($conn){
         echo"<option value='{$r['affliateID']}'>{$r['affliate']}</option>";
     }
 }
+
+function cmb_library_collection($conn){
+    $sql="SELECT * FROM get_lib_collection";
+    $result = $conn->query($sql);
+    while($r=$result->fetch_assoc()){
+        echo"<option value='{$r['collectionID']}'>{$r['collection']}</option>";
+    }
+}
