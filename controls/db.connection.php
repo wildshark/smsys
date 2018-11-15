@@ -13,25 +13,25 @@ if ($_SERVER['HTTP_HOST'] === "localhost"){
     $password = "";
     $database = "school_data";
 
-    // Create connection
-    $conn = new mysqli($server, $username, $password, $database);
+}elseif ($_SERVER['HTTP_HOST'] === "11.1.1.250"){
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    $server = "localhost";
+    $username = "root";
+    $password = "ghanacu@50";
+    $database = "school_data";
+
 }else{
 
     $server = "localhost";
     $username = "ghanacucom";
     $password = "ghanacu@50";
     $database = "ghanacu_portal";
+}
 
-    // Create connection
-    $conn = new mysqli($server, $username, $password, $database);
+// Create connection
+$conn = new mysqli($server, $username, $password, $database);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
