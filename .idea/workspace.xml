@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a9e2915-c42d-426d-b6a2-275f7d793e72" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/controls/db.connection.php" beforeDir="false" />
-    </list>
+    <list default="true" id="6a9e2915-c42d-426d-b6a2-275f7d793e72" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +143,11 @@
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controls/db.connection.php">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="1304" lean-forward="true" selection-end-column="1389" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -549,12 +551,12 @@
       <workItem from="1541321898118" duration="4301000" />
       <workItem from="1542043398801" duration="874000" />
       <workItem from="1542190336224" duration="1311000" />
-      <workItem from="1542266992679" duration="10539000" />
+      <workItem from="1542266992679" duration="11144000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="674253000" />
+    <option name="totallyTimeSpent" value="674858000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -981,7 +983,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controls/db.connection.php">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1304" lean-forward="true" selection-end-column="1389" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
