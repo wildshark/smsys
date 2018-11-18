@@ -2,58 +2,49 @@
 /**
  * Created by PhpStorm.
  * User: Andrew Quaye
- * Date: 06-Mar-18
- * Time: 6:12 AM
+ * Date: 10-May-18
+ * Time: 8:32 PM
  */
 
-function student_list($conn){
+function get_stock_details($conn){
+    //get_calendar
+    $id = $_GET['detail'];
 
-    $sql='SELECT * FROM get_student_profile_detail WHERE statusID <> 4';
+    $sql="SELECT * FROM `get_stock_details` WHERE  stockID ='$id'";
     $result=$conn->query($sql);
     while ($r=$result->fetch_assoc()){
-        $id = $r['studentID'];
         echo "
-            <tr>
+                <tr>
                     <td class='center'>
                         <label class='pos-rel'>
                             <input type='checkbox' class='ace' />
                             <span class='lbl'></span>
                         </label>
                     </td>
-
-                    <td>
-                        {$r['first_name']} {$r['surname']}
-                    </td>
-                    <td>{$r['admissionNo']}</td>
-                    <td class='hidden-480'>{$r['yearID']}</td>
-                    <td>{$r['programme']}</td>
-
-                    <td class='hidden-480'>
-                        {$r['prefix']}
-                    </td>
-
+                    <td>{$r['stock']}</td>
+                    <td>{$r['ref_no']}</td>
+                    <td>{$r['order_qty']}</td>
+                    <td>{$r['purchase_qty']}</td>
+                    <td>{$r['issue_qty']}</td>
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='{$_SESSION['user-page-url']}?page=view-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1' data-toggle='tooltip' data-placement='bottom' title='View Profile'>
+                            <a class='blue' href='store.php?ui=view-stock-list&&detail={$r['stockID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
                                 <i class='ace-icon fa fa-search-plus bigger-130'></i>
                             </a>
 
-                            <a class='green' href='{$_SESSION['user-page-url']}?page=edit-student-profile&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1' data-toggle='tooltip' data-placement='bottom' title='Edit Profile'>
+                            <a class='green' href='#'>
                                 <i class='ace-icon fa fa-pencil bigger-130'></i>
                             </a>
-                           
-                            <a class='green' href='{$_SESSION['user-page-url']}?page=programme-change&id={$id}&token={$_SESSION['user-token']}&box=1&msg=1' data-toggle='tooltip' data-placement='bottom' title='Change Programme'>
-                                <i class='ace-icon fa fa-bolt bigger-130'></i>
-                            </a>
 
-                            <a class='red' href='model.php?ui=student&submit=delete&id={$id}&token={$_SESSION['user-token']}' data-toggle='tooltip' data-placement='bottom' title='Delete'>
+                            <a class='red' href='#'>
                                 <i class='ace-icon fa fa-trash-o bigger-130'></i>
                             </a>
-                        </div>                   
+                        </div>
                     </td>
                 </tr>
         ";
     }
+
 }
 
 ?>
@@ -80,26 +71,23 @@ function student_list($conn){
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th>Student</th>
-                    <th>Admission No</th>
-                    <th class="hidden-480">Year</th>
+                    <th>Item Details</th>
+                    <th>Qty Request</th>
+                    <th>Qty Purchased</th>
+                    <th class="hidden-480">Qty Issued</th>
 
                     <th>
                         <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                        Programme
+                        Available Qty
                     </th>
-                    <th class="hidden-480">School</th>
-
                     <th></th>
                 </tr>
                 </thead>
 
                 <tbody>
-                    <?php student_list($conn);?>
+                <?php get_stock_details($conn);?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-

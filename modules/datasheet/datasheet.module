@@ -692,46 +692,7 @@ function stock_balance($conn){
 
 }
 
-function get_stock_details($conn){
-    //get_calendar
-    $id = $_GET['detail'];
 
-    $sql="SELECT * FROM `get_stock_details` WHERE  stockID ='$id'";
-    $result=$conn->query($sql);
-    while ($r=$result->fetch_assoc()){
-        echo "
-                <tr>
-                    <td class='center'>
-                        <label class='pos-rel'>
-                            <input type='checkbox' class='ace' />
-                            <span class='lbl'></span>
-                        </label>
-                    </td>
-                    <td>{$r['stock']}</td>
-                    <td>{$r['ref_no']}</td>
-                    <td>{$r['order_qty']}</td>
-                    <td>{$r['purchase_qty']}</td>
-                    <td>{$r['issue_qty']}</td>
-                    <td>
-                        <div class='hidden-sm hidden-xs action-buttons'>
-                            <a class='blue' href='store.php?ui=view-stock-list&&detail={$r['stockID']}&token={$_SESSION['user-token']}&box=1&msg=1'>
-                                <i class='ace-icon fa fa-search-plus bigger-130'></i>
-                            </a>
-
-                            <a class='green' href='#'>
-                                <i class='ace-icon fa fa-pencil bigger-130'></i>
-                            </a>
-
-                            <a class='red' href='#'>
-                                <i class='ace-icon fa fa-trash-o bigger-130'></i>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-        ";
-    }
-
-}
 
 function get_hostel_book_details($conn){
     //get_calendar

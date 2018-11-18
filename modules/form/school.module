@@ -11,7 +11,7 @@ $error_no = "2";
 if ($_GET['submit'] == "add"){
     $school = $_GET['school'];
     $prefix = $_GET['prefix'];
-    $affliate = $_GET['affliate']
+    $affliate = $_GET['affliate'];
     $catID = $_GET['cat'];
 
     if ($_GET['cat'] == 1){

@@ -12,7 +12,6 @@ include_once "controls/config.php";
 include_once "controls/db.connection.php";
 include_once "controls/global.php";
 include_once "controls/control.php";
-include_once "modules/menu/user.menu.php";
 include_once "modules/datasheet/datasheet.module";
 include_once "modules/datasheet/profile.datasheet.module";
 include_once "msg_box/msg.box.module";

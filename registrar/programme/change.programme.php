@@ -14,6 +14,7 @@ $result=$conn->query($sql);
 $r=$result->fetch_assoc();
 
 $id = $r['studentID'];
+$serial = $r['serial_no'];
 $f_name = $r['first_name'];
 $l_name = $r['surname'];
 $admission = $r['admissionNo'];
@@ -26,6 +27,7 @@ $year = $r['yearID'];
 $category = $r['categoryID'];
 $stream = $r['stream'];
 $campus = $r['campus_status'];
+$picture = $r['picture'];
 
 if ($category == 1){
 $category_type = "Local Student";
@@ -49,6 +51,8 @@ $campus_type = "Off Campus";
 <form class="form-horizontal" role="form" method="POST" action="model.php" enctype="multipart/form-data">
     <input type="hidden" name="ui" value="student">
     <input type="hidden" name="student" value="<?php echo $id;?>">
+    <input type="hidden" name="serial" value="<?php echo $serial;?>">
+    <input type="hidden" name="picture" value="<?php echo $picture;?>">
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">First Name </label>
 

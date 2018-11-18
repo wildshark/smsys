@@ -224,107 +224,108 @@ if (isset($_POST['submit'])){
 
     }elseif ($submit =='programme-change'){
 
-        $date= date("Y-m-d");
+            $date = date("Y-m-d");
 
-        $date= date("Y-m-d");
-        $id = $_SESSION['student-id'];
-        $f_name = $_POST['first-name'];
-        $l_name = $_POST['surname'];
-        $admission = $_POST['admission-number'];
-        $email = $_POST['email'];
-        $mobile1 = $_POST['mobile-1'];
-        $mobile2 = $_POST['mobile-2'];
-        $programme = $_POST['programme'];
-        $year = $_POST['year'];
-        $category = $_POST['category'];
-        $stream = $_POST['stream'];
-        $campus = $_POST['campus-status'];
+            $date = date("Y-m-d");
+            $id = $_SESSION['student-id'];
+            $serial = $_POST['serial'];
+            $f_name = $_POST['first-name'];
+            $l_name = $_POST['surname'];
+            $admission = $_POST['admission-number'];
+            $email = $_POST['email'];
+            $mobile1 = $_POST['mobile-1'];
+            $mobile2 = $_POST['mobile-2'];
+            $programme = $_POST['programme'];
+            $academic_year = $_POST['year'];
+            $category = $_POST['category'];
+            $stream = $_POST['stream'];
+            $campus = $_POST['campus-status'];
+            $file_destination = $_POST['picture'];
 
-        $check_student = "SELECT * FROM get_student_profile_detail WHERE serial_no = '$serial'";
-        $check = $conn->query($check_student);
-        $check_result = $check->fetch_assoc();
-
-        if ($check_result > 0){
-            //echo"data exit in database";
-            header("location: {$_SESSION['user-page-url']}?page={$url_page}&id={$_SESSION['student-id']}&token={$_SESSION['user-token']}&box=4&msg=10");
-        }else{
-            //echo"data dont exit in database";
-
-            $year = date("y");//substr($academic_yea,-2);
+            $year = date("y");//substr($year,-2);
 
             $program_prefix = "SELECT * FROM get_programme where progID = '$programme'";
             $prefix_result = $conn->query($program_prefix);
             $prefix = $prefix_result->fetch_assoc();
             $prefix_index = $prefix['prog_prefix'];
 
-            if (!isset($prefix_index)){
+            if (!isset($prefix_index)) {
 
-                $data ="id=".$_SESSION['student-id'].
-                    "&first-name=".$f_name.
-                    "&surname=".$l_name.
-                    "&email=".$email.
-                    "&mobile-1=".$mobile1.
-                    "&mobile-2=".$mobile2.
-                    "&programme=".$programme.
-                    "&year=".$year.
-                    "&category=".$category.
-                    "&stream=".$stream.
-                    "&campus-status=".$campus.
-                    "&serial=".$serial;
+                $data = "id=" . $_SESSION['student-id'] .
+                    "&first-name=" . $f_name .
+                    "&surname=" . $l_name .
+                    "&email=" . $email .
+                    "&mobile-1=" . $mobile1 .
+                    "&mobile-2=" . $mobile2 .
+                    "&programme=" . $programme .
+                    "&year=" . $year .
+                    "&category=" . $category .
+                    "&stream=" . $stream .
+                    "&campus-status=" . $campus .
+                    "&serial=" . $serial;
                 header("location: {$_SESSION['user-page-url']}?page={$url_page}&token={$_SESSION['user-token']}&box=4&msg=16&{$data}");
 
-            }else{
+            } else {
 
-                if ($stream == 1){
-                    $total_student = "SELECT total FROM get_total_student_regular WHERE yearID = '".$academic_year."' AND progID='$programme'";
+                if ($stream == 1) {
+                    $total_student = "SELECT total FROM get_total_student_regular WHERE yearID = '" . $academic_year . "' AND progID='$programme'";
                     $total_student_result = $conn->query($total_student);
-                    $total_admission = $total_student_result ->fetch_assoc();
+                    $total_admission = $total_student_result->fetch_assoc();
 
-                    $student_total = $total_admission['total'];
-                }elseif ($stream == 2){
+                    if (is_null($total_admission['total'])) {
+                        $student_total = 0;
+                    }else{
+                        $student_total = $total_admission['total'];
+                    }
+                } elseif ($stream == 2) {
 
-                    $total_student = "SELECT total FROM get_total_student_weekend WHERE yearID = '".$academic_year."' AND progID='$programme'";
+                    $total_student = "SELECT total FROM get_total_student_weekend WHERE yearID = '" . $academic_year . "' AND progID='$programme'";
                     $total_student_result = $conn->query($total_student);
-                    $total_admission = $total_student_result ->fetch_assoc();
+                    $total_admission = $total_student_result->fetch_assoc();
 
-                    $student_total = $total_admission['total'];
-                }else{
+                    if (is_null($total_admission['total'])) {
+                        $student_total = 0;
+                    }else{
+                        $student_total = $total_admission['total'];
+                    }
 
-                    $data ="id=".$_SESSION['student-id'].
-                        "&first-name=".$f_name.
-                        "&surname=".$l_name.
-                        "&email=".$email.
-                        "&mobile-1=".$mobile1.
-                        "&mobile-2=".$mobile2.
-                        "&programme=".$programme.
-                        "&year=".$year.
-                        "&category=".$category.
-                        "&stream=".$stream.
-                        "&campus-status=".$campus.
-                        "&serial=".$serial;
+                } else {
+
+                    $data = "id=" . $_SESSION['student-id'] .
+                        "&first-name=" . $f_name .
+                        "&surname=" . $l_name .
+                        "&email=" . $email .
+                        "&mobile-1=" . $mobile1 .
+                        "&mobile-2=" . $mobile2 .
+                        "&programme=" . $programme .
+                        "&year=" . $year .
+                        "&category=" . $category .
+                        "&stream=" . $stream .
+                        "&campus-status=" . $campus .
+                        "&serial=" . $serial;
                     header("location: {$_SESSION['user-page-url']}?page={$url_page}&token={$_SESSION['user-token']}&box=4&msg=16&{$data}");
                     exit(0);
                 }
 
 
-                if (!isset($student_total) || empty($student_total) || $student_total == 0){
-                    $student_total =  1;
-                    $new_admission = $prefix_index."0".$stream."".$year."00".$student_total;
-                }else{
+                if (!isset($student_total) or $student_total === 0) {
+                    $student_total = 1;
+                    $new_admission = $prefix_index . "0" . $stream . "" . $year . "00" . $student_total;
+                } else {
                     $student_total = $student_total + 1;
                     $unit = strlen($student_total);
-                    switch ($unit){
+                    switch ($unit) {
                         case 1:
-                            $new_admission = $prefix_index."0".$stream."".$year."0".$student_total;
+                            $new_admission = $prefix_index . "0" . $stream . "" . $year . "0" . $student_total;
                             break;
                         case 2:
-                            $new_admission = $prefix_index."0".$stream."".$year."".$student_total;
+                            $new_admission = $prefix_index . "0" . $stream . "" . $year . "" . $student_total;
                             break;
                         case 3:
-                            $new_admission = $prefix_index."0".$stream."".$year."".$student_total;
+                            $new_admission = $prefix_index . "0" . $stream . "" . $year . "" . $student_total;
                             break;
                         case 4:
-                            $new_admission = $prefix_index."0".$stream."".$year."".$student_total;
+                            $new_admission = $prefix_index . "0" . $stream . "" . $year . "" . $student_total;
                             break;
                     }
 
@@ -402,7 +403,6 @@ if (isset($_POST['submit'])){
 
             }
 
-        }
 
     }elseif ($submit =='delete'){
 

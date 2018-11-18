@@ -69,11 +69,11 @@ if( $submit === "add-new-item"){
 }elseif ($submit == "add-purchase"){
 
     $date = $_GET['date'];
-    $suppyID = $_GET['supplier'];
+    $supplyID = $_GET['supplier'];
     $item = $_GET['item'];
+    $qty = $_GET['qty'];
     $ref = $_GET['ref'];
     $price = $_GET['price'];
-    $qty = $_GET['qty'];
 
     $status = "2";
 

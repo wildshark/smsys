@@ -13,8 +13,9 @@ $access = $_SESSION['user-access'];
 
 include_once "hostel/menu.php";
 include_once "lecture/menu.php";
-include_once "store_keeper/menu.php";
+include_once "stocks/menu.php";
 include_once "library/menu.php";
+include_once "registrar/menu.php";
 
 function super_admin($token){
 

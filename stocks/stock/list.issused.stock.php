@@ -6,12 +6,17 @@
  * Time: 9:18 PM
  */
 
-function get_purchase_new_stock($conn){
+function get_issued_stock($conn){
 
-    $sql = "SELECT * FROM get_stock_purchase";
+    $sql = "SELECT * FROM get_stock_issused";
     $result = $conn->query($sql);
     while ($r = $result->fetch_assoc()) {
-            
+        if (isset($r['details'])){
+            $issued_detail = $r['f_name']." ". $r['l_name']." * ".$r['details'];
+        }else{
+            $issued_detail = $r['f_name']." ".$r['l_name'];
+        }
+       
         echo"
             <tr>
                     <td class='center'>
@@ -24,10 +29,10 @@ function get_purchase_new_stock($conn){
                     <td>
                         {$r['tran_date']}</a>
                     </td>
-                    <td>{$r['supplier_name']}</td>
-                    <td class='hidden-480'>{$r['stock']}</td>
-                    <td>{$r['unit_price']}</td>
-                    <td class='hidden-480'>{$r['purchase_qty']}</td>
+                    <td>{$r['ref_no']}</td>
+                    <td class='hidden-480'>{$r['stock']} - {$r['stock_category']}</td>
+                    <td>{$issued_detail} </td>
+                    <td class='hidden-480'>{$r['issue_qty']}</td>
 
                     <td>
                         <div class='hidden-sm hidden-xs action-buttons'>
@@ -48,7 +53,7 @@ function get_purchase_new_stock($conn){
 ?>
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#create-school">New Item </button>
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#create-school">New Issue </button>
 
 <div class="modal fade" id="create-school" tabindex="-1" role="dialog" aria-labelledby="create-school" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -65,19 +70,19 @@ function get_purchase_new_stock($conn){
 
                     <div class='form-group'>
                         <label for='recipient-name' class='form-control-label'>Date </label>
-                        <input type='text' name='date' value='' placeholder="" class='form-control' id='recipient-name'>
+                        <input type='date' name='date' value='' placeholder="" class='form-control' id='recipient-name'>
                     </div>
-                
+            
                     <div class='form-group'>
-                        <label for='recipient-name' class='form-control-label'>Supplier Name </label>
-                        <select name='supplier' value='' class='form-control' id='recipient-name'>
-                            <?php cmb_supplier_name_list($conn);?>
+                        <label for='recipient-name' class='form-control-label'> Staff Name </label>
+                        <select name='staff' value='' class='form-control' id='recipient-name'>
+                            <?php get_staff_lecturer($conn);?>
                         </select>
                     </div>
                     <div class='form-group'>
                         <label for='recipient-name' class='form-control-label'>Item Name </label>
                         <select name='item' value='' class='form-control' id='recipient-name'>
-                            <?php stock_list($conn);?>
+                            <?php cmb_stock_issused_list($conn);?>
                         </select>
                     </div>
                     <div class='form-group'>
@@ -85,17 +90,17 @@ function get_purchase_new_stock($conn){
                         <input type='text' name='qty' value='' placeholder="0" class='form-control' id='recipient-name'>
                     </div>
                     <div class='form-group'>
-                        <label for='recipient-name' class='form-control-label'>Invoice/Ref. No# </label>
-                        <input type='text' name='ref' value='' placeholder="Invoice/Ref. No#" class='form-control' id='recipient-name'>
+                        <label for='recipient-name' class='form-control-label'>Ref. No# </label>
+                        <input type='text' name='ref' value='<?php echo "IS".date("ymdis")?>' placeholder="Invoice/Ref. No#" class='form-control' id='recipient-name'>
                     </div>
                     <div class='form-group'>
-                        <label for='recipient-name' class='form-control-label'>Unit Price </label>
-                        <input type='text' name='price' value='' placeholder="0" class='form-control' id='recipient-name'>
+                        <label for='recipient-name' class='form-control-label'>Comment </label>
+                        <input type='text' name='comment' value='' placeholder="0" class='form-control' id='recipient-name'>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="submit" value="add-purchase" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="submit" value="add-issused" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
@@ -126,19 +131,19 @@ function get_purchase_new_stock($conn){
                         </label>
                     </th>
                     <th>Date</th>
-                    <th class="hidden-480">Supplier</th>
+                    <th class="hidden-480">Ref No.</th>
 
                     <th>
-                        Item Name
+                        Item
                     </th>
-                    <th>Unit Price</th>
+                    <th>Issued to</th>
                     <th>Qty</th>
                     <th></th>
                 </tr>
                 </thead>
 
                 <tbody>
-                <?php get_purchase_new_stock($conn);?>
+                <?php get_issued_stock($conn);?>
                 </tbody>
             </table>
         </div>

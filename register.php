@@ -12,8 +12,8 @@ include_once "controls/db.connection.php";
 include_once "controls/global.php";
 include_once "controls/control.php";
 include_once "controls/session.php";
+include_once "global/global.dashboard.module";
 include_once "modules/plugin/barcode.php";
-include_once "modules/menu/user.menu.php";
 include_once "modules/datasheet/datasheet.module";
 include_once "modules/datasheet/profile.datasheet.module";
 include_once "msg_box/msg.box.module";
@@ -40,37 +40,37 @@ if ($user_token == $token){
             switch ($page) {
 
                 case"dashboard";
-                    $body = "views/dashboard/register/dashboard.register.php";
+                    $body = "registrar/dashboard.php";
                     include_once "template/default.php";
-                break;    
+                break;
 
                 case"student.admission-list" ;
                     $page_title = "Student Admission List";
-                    $body = "views/student/entry/list.student.index.php";
+                    $body = "registrar/admission/list.student.index.php";
                     include_once "template/table.default.php";
                 break;
 
                 case"add-student-admission";
                     $page_title = "Student Admission";
-                    $body = "views/student/entry/add.student.index.php";
+                    $body = "registrar/admission/add.student.index.php";
                     include_once "template/form.element.php";
                 break;
 
                 case"edit-student-admission";
                     $page_title = "Edit Student Admission";
-                    $body = "views/student/entry/edit.student.index.php";
+                    $body = "registrar/admission/edit.student.index.php";
                     include_once "template/form.element.php";
                 break;
 
                 case"student-confirmation";
                 //echo "student-confirmation";
-                    include_once "confirmation/new.student.confirmation.php";
+                    include_once "registrar/admission/confirmation/new.student.confirmation.php";
                 break;
 
                 case"view-student-admission";
                 //echo"view-student-admission";
                     $page_title = "Student Admission Profile";
-                    $body = "views/student/entry/index.admission.student.php";
+                    $body = "registrar/admission/index.admission.student.php";
                     include_once "template/table.default.php";
                 break;
 
@@ -108,44 +108,44 @@ if ($user_token == $token){
 
                 case "view-student-profile";
                     $page_title = "View Student's Profile";
-                    $body = "views/student/admission/view.student.profile.php";
+                    $body = "registrar/admission/view.student.profile.php";
                     include_once "template/form.profile.php";
                     break;
 
                 case"programme-change";
                     $page_title = "Programme Change";
-                    $body = "views/student/change.programme.php";
+                    $body = "registrar/programme/change.programme.php";
                     include_once "template/form.default.php";
                 break;
 
                 case"student-admission-index";
                     $page_title = "Add Student Admission Index";
-                    $body = "views/student/admission/list.student.admission.php";
+                    $body = "registrar/admission/list.student.admission.php";
                     include_once "template/table.default.php";
                 break;
 
                 case"view-student.admission.index";
                     $page_title = "View Student's Profile";
-                    $body = "views/student/admission/view.student.admission.index.php";
+                    $body = "registrar/admission/view.student.admission.index.php";
                     include_once "template/form.profile.php";
                 break;
 
+                case"enrollment-list";
+                    $page_title = "Enrollment List";
+                    $body = "registrar/registration/enrollment/list.student.enroll.php";
+                    include_once "template/table.default.php";
+                    break;
+
                 case"add-enrollment";
                     $page_title = "Add Enrollment";
-                    $body = "views/student/add.student.enroll.php";
+                    $body = "registrar/registration/enrollment/add.student.enroll.php";
                     include_once "template/form.element.php";
                     break;
 
                 case "edit-enrollment";
                     $page_title = "Edit Enrollment";
-                    $body = "views/student/enrollment/edit.student.enroll.php";
+                    $body = "registrar/registration/enrollment/edit.student.enroll.php";
                     include_once "template/form.element.php";
-                    break;
-
-                case"enrollment-list";
-                    $page_title = "Enrollment List";
-                    $body = "views/student/enrollment/list.student.enroll.php";
-                    include_once "template/table.default.php";
                     break;
 
                 case"programme-list";

@@ -28,15 +28,15 @@ switch ($page){
     break;
 
     case "student-admission-entry";
-        include_once "modules/form/student.admission.entry.module";
+        include_once "registrar/modules/student.admission.entry.module";
     break;
 
     case"student";
        // echo"student admission and indexing";
         if ($_POST['stamp'] == 1){
-            include_once "modules/form/student.no.picture.module";
+            include_once "registrar/modules/student.no.picture.module";
         }elseif($_POST['stamp'] == 2){
-             include_once "modules/form/student.module";
+             include_once "registrar/modules/student.module";
         }
     break;
 
@@ -76,7 +76,7 @@ switch ($page){
 
     case "store-keeper";
         //echo "store-keeper";
-        include_once "modules/stock/stock.module";
+        include_once "stocks/modules/stock.module";
     break;
 
     case "hostel";

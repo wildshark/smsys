@@ -8,7 +8,6 @@ include_once "controls/global.library.php";
 include_once "controls/control.php";
 include_once "controls/session.php";
 include_once "modules/plugin/barcode.php";
-include_once "modules/menu/user.menu.php";
 include_once "modules/datasheet/datasheet.module";
 include_once "modules/datasheet/profile.datasheet.module";
 include_once "msg_box/msg.box.module";

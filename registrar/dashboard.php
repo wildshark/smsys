@@ -2,10 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: Andrew Quaye
- * Date: 07-Jun-18
- * Time: 7:38 PM
+ * Date: 16/11/2018
+ * Time: 2:23 PM
  */
-include_once "global.dashboard.module";
+
 ?>
 <h3 class="header smaller lighter green">Dashboard </h3>
 

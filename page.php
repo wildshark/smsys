@@ -75,7 +75,7 @@ if ($user_token == $token){
 
                 case"student-confirmation";
                 //echo "student-confirmation";
-                    include_once "confirmation/new.student.confirmation.php";
+                    include_once "registrar/admission/confirmation/new.student.confirmation.php";
                 break;
 
                 case"view-student-admission";
