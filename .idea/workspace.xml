@@ -1,68 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a9e2915-c42d-426d-b6a2-275f7d793e72" name="Default" comment="ok">
-      <change afterPath="$PROJECT_DIR$/registrar/admission/add.student.index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registrar/admission/edit.student.index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registrar/admission/list.student.index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registrar/menu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registrar/registration/enrollment/edit.student.enroll.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registrar/registration/enrollment/enrollment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registrar/registration/enrollment/list.student.enroll.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stocks/modules/stock.module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stocks/stock/list.department.stock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/confirmation/admission.letter.php" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/admission/confirmation/admission.letter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/confirmation/new.student.confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/admission/confirmation/new.student.confirmation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/confirmation/new.student.index.confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/admission/confirmation/new.student.index.confirmation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controls/db.connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/controls/db.connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library.php" beforeDir="false" afterPath="$PROJECT_DIR$/library.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/datasheet/datasheet.module" beforeDir="false" afterPath="$PROJECT_DIR$/modules/datasheet/datasheet.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/form/school.module" beforeDir="false" afterPath="$PROJECT_DIR$/modules/form/school.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/form/student.admission.entry.module" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/modules/student.admission.entry.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/form/student.module" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/modules/student.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/form/student.no.picture.module" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/modules/student.no.picture.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/menu/user.menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/menu/user.menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/stock/stock.module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/result.php" beforeDir="false" afterPath="$PROJECT_DIR$/result.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/share.php" beforeDir="false" afterPath="$PROJECT_DIR$/share.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store.php" beforeDir="false" afterPath="$PROJECT_DIR$/store.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/dashboard/dashboard.model.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/dashboard/dashboard.model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/dashboard/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/dashboard/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/setup/add.item.name.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/setup/add.item.name.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/setup/edit.item.name.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/setup/edit.item.name.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/setup/edit.supplier.contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/setup/edit.supplier.contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/setup/supplier.contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/setup/supplier.contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/stock/add.stock.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/stock/add.stock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/stock/list.issused.stock.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/stock/list.issused.stock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/stock/list.item.request.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/stock/list.item.request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/stock/list.order.stock.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/stock/list.order.stock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/stock/list.purchase.stock.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/stock/list.purchase.stock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/stock/list.stock.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/stock/list.stock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/stock/order.stock.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/stock/order.stock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/stock/purchase.stock.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/stock/purchase.stock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store_keeper/stock/view.list.stock.detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/stocks/stock/view.list.stock.detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/side.menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/template/side.menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/dashboard/dashboard.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/dashboard/lecture/dashboard.leature.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/dashboard/lecture/dashboard.module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/dashboard/register/dashboard.register.php" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/dashboard/register/global.dashboard.module" beforeDir="false" afterPath="$PROJECT_DIR$/global/global.dashboard.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/admission/view.student.profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/admission/view.student.profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/change.programme.php" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/programme/change.programme.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/enrollment/edit.student.enroll.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/enrollment/enrollment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/enrollment/list.student.enroll.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/entry/add.student.index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/entry/edit.student.index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/entry/list.student.index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/student/list.student.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/student/list.student.php" afterDir="false" />
-    </list>
+    <list default="true" id="6a9e2915-c42d-426d-b6a2-275f7d793e72" name="Default" comment="ok" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,40 +23,6 @@
     <select />
   </component>
   <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/registrar/modules/student.no.picture.module">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="89">
-                    <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/global/global.dashboard.module">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-853">
-                    <caret line="87" column="152" lean-forward="true" selection-start-line="87" selection-start-column="139" selection-end-line="87" selection-end-column="152" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
     <window id="2">
       <content type="file-editors">
         <state>
@@ -225,8 +130,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="17">
+              <caret line="77" column="30" lean-forward="true" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -441,7 +346,7 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="4" />
     <option name="y" value="282" />
     <option name="width" value="1366" />
@@ -462,17 +367,6 @@
             <path>
               <item name="smsys" type="b2602c69:ProjectViewProjectNode" />
               <item name="smsys" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="smsys" type="b2602c69:ProjectViewProjectNode" />
-              <item name="smsys" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="form" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="smsys" type="b2602c69:ProjectViewProjectNode" />
-              <item name="smsys" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -486,13 +380,6 @@
               <item name="smsys" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="student" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="smsys" type="b2602c69:ProjectViewProjectNode" />
-              <item name="smsys" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="student" type="462c0819:PsiDirectoryNode" />
-              <item name="admission" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -730,12 +617,12 @@
       <workItem from="1542043398801" duration="874000" />
       <workItem from="1542190336224" duration="1311000" />
       <workItem from="1542266992679" duration="27710000" />
-      <workItem from="1542423556211" duration="13834000" />
+      <workItem from="1542423556211" duration="14755000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="705258000" />
+    <option name="totallyTimeSpent" value="706179000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -747,10 +634,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26399395" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26399395" />
       <window_info id="Favorites" order="1" side_tool="true" weight="0.32980332" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.24962178" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -765,7 +651,7 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49924356" weight="0.32876712" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49924356" weight="0.32876712" />
-      <window_info active="true" anchor="bottom" id="File Transfer" order="12" sideWeight="0.50075644" side_tool="true" visible="true" weight="0.33442622" />
+      <window_info anchor="bottom" id="File Transfer" order="12" sideWeight="0.50075644" side_tool="true" visible="true" weight="0.33442622" />
       <window_info anchor="bottom" id="Database Changes" order="13" sideWeight="0.4969743" weight="0.32876712" />
       <window_info anchor="bottom" id="Heroku" order="14" sideWeight="0.49924356" weight="0.3295082" />
       <window_info anchor="right" id="Remote Host" order="0" weight="0.32980332" />
@@ -1086,13 +972,6 @@
         <state relative-caret-position="-1152" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/global/global.dashboard.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-853">
-          <caret line="87" column="152" lean-forward="true" selection-start-line="87" selection-start-column="139" selection-end-line="87" selection-end-column="152" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/page.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -1174,13 +1053,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/registrar/modules/student.no.picture.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/form/school.module">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1190,8 +1062,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="17">
+          <caret line="77" column="30" lean-forward="true" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registrar/modules/student.no.picture.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global/global.dashboard.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-853">
+          <caret line="87" column="152" lean-forward="true" selection-start-line="87" selection-start-column="139" selection-end-line="87" selection-end-column="152" />
         </state>
       </provider>
     </entry>
