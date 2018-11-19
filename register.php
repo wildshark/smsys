@@ -347,6 +347,12 @@ if ($user_token == $token){
                     include_once "template/table.default.php";
                 break;
 
+                case"affiliate-list";
+                    $page_title="Affiliate";
+                    $body="affiliate/list.affiliate.php";
+                    include_once "template/table.default.php";
+                break;
+
                 case"print-enrollment-form";
                     include_once "print/enrollment.form.php";
                 break;

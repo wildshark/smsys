@@ -121,9 +121,9 @@ function register($token){
         <ul class='submenu'>
 
             <li class=''>
-                <a href='register.php?page=administration.list&token={$token}&box=1&msg=1'>
+                <a href='register.php?page=affiliate-list&token={$token}&box=1&msg=1'>
                     <i class='menu-icon fa fa-caret-right'></i>
-                    Administration
+                    Affiliate
                 </a>
 
                 <b class='arrow'></b>

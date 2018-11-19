@@ -17,31 +17,7 @@ function get_affliate_school($conn){
         }else{
             $status = "Disable";
         }
-        /**
-        $school_sql = "SELECT Count(get_school.schoolID) as total, get_school.affliateID FROM get_school
-        WHERE get_school.affliateID = '$affliate_id'";
-        $result_school = $conn->query($school_sql);
-        $row_school = $result->fetch_assoc();
 
-        if (isset($row_school['total'])){
-            $total = $row_school['total'];
-        }else{
-            $total = "0";
-        }
-
-        $program_sql = "SELECT Count(get_programme.progID) AS total, get_programme.affliateID FROM get_programme
-        WHERE get_programme.affliateID ='$affliate_id'";
-        $result_program = $conn->query($program_sql);
-        $row_program = $result->fetch_assoc();
-
-        if (isset($row_program['total'])){
-            $total_programme = $row_school['total'];
-        }else{
-            $total_programme = "0";
-        }
-
-        **/
-        
         echo"
             <tr>
                     <td class='center'>
