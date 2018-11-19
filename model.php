@@ -41,12 +41,12 @@ switch ($page){
     break;
 
     case "programme";
-        include_once "modules/form/programme.module";
+        include_once "administration/programme/module/programme.module";
     break;
 
     case "course";
         //echo "course";
-        include_once "modules/form/course.module";
+        include_once "administration/course/module/course.module";
     break;
 
     case "calendar";
@@ -71,7 +71,7 @@ switch ($page){
     break;
 
     case"school";
-        include_once "modules/form/school.module";
+        include_once "administration/school/module/school.module";
     break;
 
     case "store-keeper";
@@ -112,7 +112,7 @@ switch ($page){
     break;
 
     case"affliate";
-        require_once "affiliate/module/school.affiliate.module";
+        require_once "administration/affiliate/module/school.affiliate.module";
     break;
 
     case"library";

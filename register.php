@@ -77,14 +77,14 @@ if ($user_token == $token){
                 case"position-list";
                 //echo"position-list";
                     $page_title = "Position List";
-                    $body = "views/position/list.position.php";
+                    $body = "administration/position/list.position.php";
                     include_once "template/table.default.php";
                 break;
 
                 case "edit-position";
                 //echo"edit-position";
                     $page_title = "Edit Position";
-                    $body = "views/position/edit.position.php";
+                    $body = "administration/position/edit.position.php";
                     include_once "template/form.element.php";
                 break;
 
@@ -150,19 +150,19 @@ if ($user_token == $token){
 
                 case"programme-list";
                     $page_title = "Programme List";
-                    $body = "views/programme/list.programme.php";
+                    $body = "administration/programme/list.programme.php";
                     include_once "template/table.default.php";
                     break;
 
                 case"add-programme";
                     $page_title = "Add Programme";
-                    $body = "views/programme/add.programme.php";
+                    $body = "administration/programme/add.programme.php";
                     include_once "template/form.default.php";
                     break;
 
                 case"edit-programme";
                     $page_title = "Edit Course";
-                    $body = "views/programme/edit.programme.php";
+                    $body = "administration/programme/edit.programme.php";
                     include_once "template/form.default.php";
                     break;
 
@@ -180,19 +180,19 @@ if ($user_token == $token){
 
                 case"add-course";
                     $page_title = "Add Course";
-                    $body = "views/course/add.course.php";
+                    $body = "administration/course/add.course.php";
                     include_once "template/form.default.php";
                     break;
 
                 case"course-list";
                     $page_title = "Course List";
-                    $body = "views/course/list.course.php";
+                    $body = "administration/course/list.course.php";
                     include_once "template/table.default.php";
                     break;
 
                 case"edit-course-profile";
                     $page_title = "Edit Course";
-                    $body = "views/course/edit.course.php";
+                    $body = "administration/course/edit.course.php";
                     include_once "template/form.default.php";
                     break;
 
@@ -259,14 +259,14 @@ if ($user_token == $token){
                     break;
 
                 case"school-list";
-                    $page_title = "School(s)/Faculty List";
-                    $body = "views/school/list.school.php";
+                    $page_title = "School(s) Faculty List";
+                    $body = "administration/school/list.school.php";
                     include_once "template/table.default.php";
                     break;
 
                 case"department-list";
                     $page_title = "Department List";
-                    $body = "views/school/list.department.php";
+                    $body = "administration/school/list.department.php";
                     include_once "template/table.default.php";
                     break;
 
@@ -349,7 +349,7 @@ if ($user_token == $token){
 
                 case"affiliate-list";
                     $page_title="Affiliate";
-                    $body="affiliate/list.affiliate.php";
+                    $body="administration/affiliate/list.affiliate.php";
                     include_once "template/table.default.php";
                 break;
 
