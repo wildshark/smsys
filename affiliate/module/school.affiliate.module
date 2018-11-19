@@ -49,12 +49,12 @@ if ($submit === "add-affliate"){
 }
 
 if (!isset($result)){
-    header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+    header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
 }else{
     if ($result === TRUE){
-        header("location: page.php?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
+        header("location: {$_SESSION['user-page-url']}?page={$url_page}&token={$_SESSION['user-token']}&box=2&msg={$error_no}");
     }else{
-        header("location: page.php?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
+        header("location: {$_SESSION['user-page-url']}?page=".$url_page."&token={$_SESSION['user-token']}&box=4&msg=9");
     }
 }
 

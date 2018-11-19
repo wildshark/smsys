@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6a9e2915-c42d-426d-b6a2-275f7d793e72" name="Default" comment="ok">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/affliate/add.affliate.php" beforeDir="false" afterPath="$PROJECT_DIR$/affiliate/add.affliate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/affliate/edit.affliate.php" beforeDir="false" afterPath="$PROJECT_DIR$/affiliate/edit.affliate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/affliate/list.affliate.php" beforeDir="false" afterPath="$PROJECT_DIR$/affiliate/list.affiliate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/affliate/model/school.affliate.module" beforeDir="false" afterPath="$PROJECT_DIR$/affiliate/model/school.affliate.module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registrar/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/registrar/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/affiliate/model/school.affliate.module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/affiliate/model/school.affliate.module" beforeDir="false" afterPath="$PROJECT_DIR$/affiliate/module/school.affiliate.module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +74,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="module" value="27" />
+          <entry key="module" value="29" />
           <entry key="modules" value="2" />
           <entry key="php" value="96" />
           <entry key="sql" value="1" />
@@ -85,7 +82,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="123" />
+          <entry key="PHP" value="125" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Scratch" value="1" />
         </counts>
@@ -95,7 +92,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="48" />
-          <entry key="PHP" value="3379" />
+          <entry key="PHP" value="3381" />
           <entry key="PLAIN_TEXT" value="75" />
           <entry key="SQL" value="4" />
         </counts>
@@ -104,7 +101,7 @@
         <counts>
           <entry key="module" value="1518" />
           <entry key="modules" value="73" />
-          <entry key="php" value="1913" />
+          <entry key="php" value="1915" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
@@ -135,11 +132,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="351" column="55" selection-start-line="351" selection-start-column="55" selection-end-line="351" selection-end-column="55" />
+            <state relative-caret-position="150">
+              <caret line="330" lean-forward="true" selection-start-line="330" selection-end-line="330" />
             </state>
           </provider>
         </entry>
@@ -147,8 +144,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="83" column="10" lean-forward="true" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
+            <state relative-caret-position="126">
+              <caret line="114" column="49" lean-forward="true" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/affiliate/module/school.affiliate.module">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registrar/modules/student.no.picture.module">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="304" column="50" lean-forward="true" selection-start-line="304" selection-start-column="22" selection-end-line="304" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -182,34 +197,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/datasheet/datasheet.module">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="161" column="1" lean-forward="true" selection-start-line="113" selection-end-line="161" selection-end-column="1" />
-              <folding>
-                <element signature="n#student_admission_entry#0;n#!!top" />
-                <element signature="n#add_student_admission_index#0;n#!!top" />
-                <element signature="n#course_data#0;n#!!top" />
-                <element signature="n#subject#0;n#!!top" />
-                <element signature="n#school_data#0;n#!!top" />
-                <element signature="n#administration_data#0;n#!!top" />
-                <element signature="n#marking_sheet_data#0;n#!!top" />
-                <element signature="n#get_assessment_data#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/registrar/programme/change.programme.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="55" column="28" lean-forward="true" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/registrar/modules/student.module">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="969">
@@ -229,7 +216,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>student.admission-</find>
       <find>$_POST['submit']</find>
       <find>year</find>
       <find>$r</find>
@@ -259,6 +245,7 @@
       <find>list.studen</find>
       <find>view-st</find>
       <find>affli</find>
+      <find>affl</find>
     </findStrings>
     <replaceStrings>
       <replace>template/assets</replace>
@@ -291,7 +278,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/print/card.haml" />
         <option value="$PROJECT_DIR$/print/student.idcard.php" />
         <option value="$PROJECT_DIR$/views/student/admission/add.student.index.php" />
         <option value="$PROJECT_DIR$/views/student/entry/add.student.index.php" />
@@ -337,11 +323,12 @@
         <option value="$PROJECT_DIR$/modules/form/student.no.picture.module" />
         <option value="$PROJECT_DIR$/views/student/list.student.php" />
         <option value="$PROJECT_DIR$/modules/form/student.module" />
-        <option value="$PROJECT_DIR$/model.php" />
         <option value="$PROJECT_DIR$/modules/form/school.module" />
         <option value="$PROJECT_DIR$/registrar/menu.php" />
         <option value="$PROJECT_DIR$/affiliate/list.affliate.php" />
         <option value="$PROJECT_DIR$/register.php" />
+        <option value="$PROJECT_DIR$/model.php" />
+        <option value="$PROJECT_DIR$/affiliate/module/school.affiliate.module" />
       </list>
     </option>
   </component>
@@ -381,12 +368,18 @@
               <item name="smsys" type="b2602c69:ProjectViewProjectNode" />
               <item name="smsys" type="462c0819:PsiDirectoryNode" />
               <item name="affiliate" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="smsys" type="b2602c69:ProjectViewProjectNode" />
               <item name="smsys" type="462c0819:PsiDirectoryNode" />
               <item name="registrar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="smsys" type="b2602c69:ProjectViewProjectNode" />
+              <item name="smsys" type="462c0819:PsiDirectoryNode" />
+              <item name="registrar" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="smsys" type="b2602c69:ProjectViewProjectNode" />
@@ -629,12 +622,12 @@
       <workItem from="1542043398801" duration="874000" />
       <workItem from="1542190336224" duration="1311000" />
       <workItem from="1542266992679" duration="27710000" />
-      <workItem from="1542423556211" duration="16514000" />
+      <workItem from="1542423556211" duration="17570000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="707938000" />
+    <option name="totallyTimeSpent" value="708994000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -744,13 +737,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/library/model/dashboard.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/library/ebook/list.ebook.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -1052,24 +1038,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/registrar/modules/student.no.picture.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/global/global.dashboard.module">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-853">
           <caret line="87" column="152" lean-forward="true" selection-start-line="87" selection-start-column="139" selection-end-line="87" selection-end-column="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="83" column="10" lean-forward="true" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1089,8 +1061,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="351" column="55" selection-start-line="351" selection-start-column="55" selection-end-line="351" selection-end-column="55" />
+        <state relative-caret-position="150">
+          <caret line="330" lean-forward="true" selection-start-line="330" selection-end-line="330" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="114" column="49" lean-forward="true" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registrar/modules/student.no.picture.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="304" column="50" lean-forward="true" selection-start-line="304" selection-start-column="22" selection-end-line="304" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/affiliate/module/school.affiliate.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
         </state>
       </provider>
     </entry>

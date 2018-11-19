@@ -112,7 +112,7 @@ switch ($page){
     break;
 
     case"affliate";
-        require_once "affliate/model/school.affliate.module";
+        require_once "affiliate/module/school.affiliate.module";
     break;
 
     case"library";
